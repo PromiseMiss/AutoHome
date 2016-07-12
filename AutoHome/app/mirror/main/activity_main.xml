@@ -1,19 +1,17 @@
-<!-- [ Mirror metadata ] generatedAt: 1468247777895 -->
+<!-- [ Mirror metadata ] generatedAt: 1468322823155 -->
 <!-- Generated screen file. Fill the id tags below with content with
 which to populate your previewed layout. For a complete specification
 of sample data, please see http://jimulabs.com/sample-data-specifications/ 
 
 Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
 <screen>
-    <actionbar showTabsFor="@id/act_main_viewPager"/>
     <_content layout="@layout/activity_main">
-        <act_main_viewPager>
-            <!-- Add pages to your ViewPager here like so:
-            <_page title="page title" icon="@drawable/my_icon"/>
-            <_page layout="@layout/my_page_layout">
-                <my_image_view src="@drawable/my_image"/>
-            </_page>
+        <fragLy>
+            <!-- Replace this FrameLayout with a fragment like so:
+            <_content layout="@layout/my_fragment_layout">
+                <my_text_view>TextView in fragment</my_text_view>
+            </_content>
             -->
-        </act_main_viewPager>
+        </fragLy>
     </_content>
 </screen>

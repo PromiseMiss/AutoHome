@@ -1,28 +1,39 @@
 package com.project.main.autohome.ui.adapter;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import java.util.List;
+
 /**
  * Created by youyo on 2016/7/11 0011.
+ * 推荐页Adapter
  */
 public class FragmentPagAdapter extends FragmentPagerAdapter {
-    private Context context;
+    private List<Fragment> mdata;
+    private List<String> mTitle;
 
-
-    public FragmentPagAdapter(FragmentManager fm) {
+    public FragmentPagAdapter(FragmentManager fm, List<Fragment> data, List<String> title) {
         super(fm);
+        this.mdata = data;
+        this.mTitle = title;
+
     }
 
     @Override
     public Fragment getItem(int position) {
-        return null;
+        return mdata.get(position);
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return mdata.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mTitle.get(position);
+
     }
 }

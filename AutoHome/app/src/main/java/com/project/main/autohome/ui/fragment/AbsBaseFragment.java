@@ -13,6 +13,7 @@ import com.project.main.autohome.ui.activity.AbsBaseActivity;
 
 /**
  * Created by youyo on 2016/7/11 0011.
+ * Fragment 基类
  */
 public abstract class AbsBaseFragment extends Fragment {
     private Context context;
