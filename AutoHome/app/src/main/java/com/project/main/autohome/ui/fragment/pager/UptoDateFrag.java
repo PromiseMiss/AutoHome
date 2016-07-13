@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.project.main.autohome.R;
+import com.project.main.autohome.model.bean.UpCarouselBean;
 import com.project.main.autohome.ui.adapter.UptoDateAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 
@@ -20,6 +21,7 @@ public class UptoDateFrag extends AbsBaseFragment {
     private ArrayList<String> mDate;
     private UptoDateAdapter uptoDateAdapter;
     private ViewPager uptodata_vp_head;
+    private ArrayList<UpCarouselBean> upCarouselBeen;
 
     @Override
     protected int setLayout() {
@@ -42,9 +44,14 @@ public class UptoDateFrag extends AbsBaseFragment {
         }
         View view= LayoutInflater.from(getContext()).inflate(R.layout.art_item_up_ls,null);
 
+
+
         uptoDate_ls.addHeaderView(view);
         uptoDateAdapter = new UptoDateAdapter(getContext());
         uptoDateAdapter.setmDatas(mDate);
         uptoDate_ls.setAdapter(uptoDateAdapter);
+    }
+    private void initBanner(){
+
     }
 }

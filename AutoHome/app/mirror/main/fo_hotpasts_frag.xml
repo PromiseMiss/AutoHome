@@ -1,12 +1,12 @@
-<!-- [ Mirror metadata ] generatedAt: 1468413371263 -->
+<!-- [ Mirror metadata ] generatedAt: 1468413371247 -->
 <!-- Generated screen file. Fill the id tags below with content with
 which to populate your previewed layout. For a complete specification
 of sample data, please see http://jimulabs.com/sample-data-specifications/ 
 
 Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
 <screen>
-    <_content layout="@layout/uptodate_frag">
-        <uoToDate_ls>
+    <_content layout="@layout/fo_hotpasts_frag">
+        <fo_hotpasts_ls>
             <items layout="@android:layout/simple_list_item_1" >
                 <_item>
                     <text1>Dalmatian</text1>
@@ -30,6 +30,6 @@ Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" ov
                     <text1>Chihuahua</text1>
                 </_item>
             </items>
-                </uoToDate_ls>
+                </fo_hotpasts_ls>
     </_content>
 </screen>

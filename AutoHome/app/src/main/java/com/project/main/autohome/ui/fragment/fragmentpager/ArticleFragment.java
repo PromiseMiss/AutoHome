@@ -4,6 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.project.main.autohome.R;
 import com.project.main.autohome.ui.adapter.FragmentPagAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
@@ -25,6 +27,8 @@ public class ArticleFragment extends AbsBaseFragment {
     private FragmentPagAdapter pagAdapter;
     private List<String> list_title;
     private List<Fragment> list_fragment;
+    private RequestQueue queue;
+    private String url = "";
 
 
     @Override
@@ -41,7 +45,11 @@ public class ArticleFragment extends AbsBaseFragment {
 
     @Override
     protected void initData() {
+        queue = Volley.newRequestQueue(getContext());
+
+
         initTab();
+
 
     }
 
@@ -50,7 +58,7 @@ public class ArticleFragment extends AbsBaseFragment {
         list_fragment = new ArrayList<>();
 
         list_fragment.add(new UptoDateFrag());
-        list_fragment.add(new OriginalFrag());
+        list_fragment.add(new OriginalFrag()); 
         list_fragment.add(new BulletinFrag());
         list_fragment.add(new VideoFrag());
 

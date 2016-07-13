@@ -28,7 +28,7 @@ public class FragmentPagAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return mdata.size();
+        return mdata != null ? mdata.size() : 0;
     }
 
     @Override

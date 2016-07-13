@@ -1,14 +1,17 @@
-<!-- [ Mirror metadata ] generatedAt: 1468413371255 -->
+<!-- [ Mirror metadata ] generatedAt: 1468413371250 -->
 <!-- Generated screen file. Fill the id tags below with content with
 which to populate your previewed layout. For a complete specification
 of sample data, please see http://jimulabs.com/sample-data-specifications/ 
 
 Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
 <screen>
-    <_content layout="@layout/original_frag">
+    <_content layout="@layout/fo_hotpas_item">
         <!-- TextView Examples:
-        <head_all_pop text="@string/string_resource" />
-        <head_all_pop text="Text literal" textSize="14sp" /> -->
-        <head_all_pop />
+        <fo_hotpas_title text="@string/string_resource" />
+        <fo_hotpas_title text="Text literal" textSize="14sp" /> -->
+        <fo_hotpas_title />
+        <fo_hotpas_simtitle />
+        <fo_hotpas_time />
+        <fo_hotpas_reply />
     </_content>
 </screen>

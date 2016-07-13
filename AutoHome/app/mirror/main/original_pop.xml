@@ -1,10 +1,15 @@
-<!-- [ Mirror metadata ] generatedAt: 1468413371253 -->
+<!-- [ Mirror metadata ] generatedAt: 1468413371258 -->
 <!-- Generated screen file. Fill the id tags below with content with
 which to populate your previewed layout. For a complete specification
 of sample data, please see http://jimulabs.com/sample-data-specifications/ 
 
 Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
 <screen>
-    <_content layout="@layout/my_fargment">
+    <_content layout="@layout/original_pop">
+        <!-- TextView Examples:
+        <orig_item_all_pop text="@string/string_resource" />
+        <orig_item_all_pop text="Text literal" textSize="14sp" /> -->
+        <orig_item_all_pop />
+        <orig_item_my_pop />
     </_content>
 </screen>

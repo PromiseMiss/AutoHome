@@ -37,6 +37,7 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
     @Override
     protected void initDatas() {
         act_main_radioG.setOnCheckedChangeListener(this);
+        act_main_radioG.check(R.id.act_main_article);
     }
 
     @Override
