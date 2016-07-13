@@ -1,7 +1,7 @@
 package com.project.main.autohome.ui.fragment.fragmentpager;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
@@ -11,13 +11,12 @@ import com.project.main.autohome.ui.fragment.AbsBaseFragment;
  */
 public class AllFragment extends AbsBaseFragment {
     private String url;
-    public AllFragment(){
+    private TextView all_tv;
+
+    public AllFragment() {
 
     }
 
-    public AllFragment(String url){
-        this.url = url;
-    }
 
     @Override
     protected int setLayout() {
@@ -26,17 +25,23 @@ public class AllFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
+        all_tv = byView(R.id.art_tv_all);
 
     }
 
     @Override
     protected void initData() {
-
+        Bundle bundle = getArguments();
+        this.url = bundle.getString("url_key");
+        all_tv.setText(url);
     }
-    public static Fragment getInstance(String url){
+
+    public static AllFragment getInstance(String url) {
         AllFragment allFragment = new AllFragment();
+        //        利用Activity向Fragment传值的方法，将网址传入
         Bundle bundle = new Bundle();
-        bundle.putString("url",url);
+        bundle.putString("url_key", url);
+        //        Fragment 对象调用 setArguments方法传值
         allFragment.setArguments(bundle);
         return allFragment;
     }

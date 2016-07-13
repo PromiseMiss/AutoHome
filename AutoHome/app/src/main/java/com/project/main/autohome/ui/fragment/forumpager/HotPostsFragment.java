@@ -1,6 +1,5 @@
 package com.project.main.autohome.ui.fragment.forumpager;
 
-import android.util.Log;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
@@ -18,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/13 0013.
+ * 热帖页
  */
 public class HotPostsFragment extends AbsBaseFragment {
     private ListView fo_hotpasts_ls;

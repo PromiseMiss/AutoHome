@@ -80,8 +80,8 @@ public class ArticleFragment extends AbsBaseFragment {
         list_title.add("原创视频");
         list_title.add("说客");
 
-        list_fragment.add(AllFragment.getInstance("新闻"));
-        list_fragment.add(AllFragment.getInstance("测评"));
+        list_fragment.add(AllFragment.getInstance("www.baidu.com"));
+        list_fragment.add(AllFragment.getInstance("www.souhu.con"));
         list_fragment.add(AllFragment.getInstance("导购"));
         list_fragment.add(AllFragment.getInstance("行情"));
         list_fragment.add(AllFragment.getInstance("用车"));
@@ -91,10 +91,6 @@ public class ArticleFragment extends AbsBaseFragment {
         list_fragment.add(AllFragment.getInstance("游记"));
         list_fragment.add(AllFragment.getInstance("原创视频"));
         list_fragment.add(AllFragment.getInstance("说客"));
-
-
-        //        act_main_tabLy.setTabMode(TabLayout.MODE_SCROLLABLE);
-
 
         pagAdapter = new FragmentPagAdapter(getChildFragmentManager(), list_fragment, list_title);
         act_main_viewPager.setAdapter(pagAdapter);

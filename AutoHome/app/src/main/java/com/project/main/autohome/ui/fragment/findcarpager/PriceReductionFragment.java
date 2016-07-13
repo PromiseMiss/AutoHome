@@ -1,16 +1,16 @@
-package com.project.main.autohome.ui.fragment.forumpager;
+package com.project.main.autohome.ui.fragment.findcarpager;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by youyo on 2016/7/13 0013.
- * 常用论坛
+ * 降价页 ------ 总页找车
  */
-public class CommonForumFragment extends AbsBaseFragment {
+public class PriceReductionFragment extends AbsBaseFragment{
     @Override
     protected int setLayout() {
-        return R.layout.fo_commonforum_frag;
+        return R.layout.find_price_fragment;
     }
 
     @Override
