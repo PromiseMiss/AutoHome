@@ -31,7 +31,7 @@ public class UptoDateFrag extends AbsBaseFragment {
     @Override
     protected void initView() {
         uptoDate_ls = byView(R.id.uoToDate_ls);
-//        uptoDate_vp = byView(R.id.upToDate_vp);
+        //        uptoDate_vp = byView(R.id.upToDate_vp);
         uptodata_vp_head = byView(R.id.uptodata_vp_head);
 
     }
@@ -42,16 +42,11 @@ public class UptoDateFrag extends AbsBaseFragment {
         for (int i = 0; i < 30; i++) {
             mDate.add("dddfsgfsgs");
         }
-        View view= LayoutInflater.from(getContext()).inflate(R.layout.art_item_up_ls,null);
-
-
-
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.art_item_up_ls, null);
         uptoDate_ls.addHeaderView(view);
         uptoDateAdapter = new UptoDateAdapter(getContext());
         uptoDateAdapter.setmDatas(mDate);
         uptoDate_ls.setAdapter(uptoDateAdapter);
     }
-    private void initBanner(){
 
-    }
 }
