@@ -56,7 +56,7 @@ public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResu
                 List<OriginalBean.ResultBean.FocusimgsBean> focusimgs = originalBean.getResult().getFocusimgs();
                 imgurl = new String[focusimgs.size()];
                 for (int i = 0; i < focusimgs.size(); i++) {
-                    imgurl[i] = String.valueOf(originalBean.getResult().getNewslist().get(i).getIndexdetail());
+                    imgurl[i] = originalBean.getResult().getFocusimgs().get(i).getImgurl();
                     Log.d("OriginalFrag", imgurl[i]);
                 }
                 initBanner();

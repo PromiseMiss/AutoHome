@@ -8,9 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.UpCarouselBean;
-import com.squareup.picasso.Picasso;
+import com.project.main.autohome.tools.DoubleCache;
 
 import java.util.List;
 
@@ -63,18 +66,16 @@ public class UptoDateAdapter extends BaseAdapter {
         viewHolder.art_uptodata_time.setText(carouselBean.getTime());
         viewHolder.art_updata_lengh.setText(carouselBean.getReplycount() + " ");
 
-        if (mDatas.get(position).getSmallpic().isEmpty()) {
-            viewHolder.art_headiv_uptodata.setImageResource(R.mipmap.ic_launcher);
-        } else {
-            Picasso.with(context).load(mDatas.get(position).getSmallpic()).
-                    into(viewHolder.art_headiv_uptodata);
-//            RequestQueue queue = Volley.newRequestQueue(context);
-//            ImageLoader imageLoader = new ImageLoader(queue,new DoubleCache());
-//            ImageLoader.ImageListener imageListener = ImageLoader.
-//                    getImageListener(viewHolder.art_headiv_uptodata,
-//                            R.mipmap.ic_launcher,R.mipmap.ic_launcher);
-//            imageLoader.get(mDatas.get(position).getSmallpic(),imageListener);
-        }
+
+//            Picasso.with(context).load(mDatas.get(position).getSmallpic()).
+//                    into(viewHolder.art_headiv_uptodata);
+            RequestQueue queue = Volley.newRequestQueue(context);
+            ImageLoader imageLoader = new ImageLoader(queue,new DoubleCache());
+            ImageLoader.ImageListener imageListener = ImageLoader.
+                    getImageListener(viewHolder.art_headiv_uptodata,
+                            R.mipmap.ic_launcher,R.mipmap.ic_launcher);
+            imageLoader.get(mDatas.get(position).getSmallpic(),imageListener);
+
         return convertView;
     }
 
