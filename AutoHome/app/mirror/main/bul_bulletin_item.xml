@@ -1,0 +1,20 @@
+<!-- [ Mirror metadata ] generatedAt: 1468667859601 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/bul_bulletin_item">
+        <!-- TextView Examples:
+        <bul_title text="@string/string_resource" />
+        <bul_title text="Text literal" textSize="14sp" /> -->
+        <bul_title />
+        <!-- ImageView Examples:
+        <bul_img src="@drawable/image_resource" />
+        <bul_img src="relative_path/image.jpg" /> -->
+        <bul_img />
+        <bul_num_browse />
+        <bul_time />
+    </_content>
+</screen>

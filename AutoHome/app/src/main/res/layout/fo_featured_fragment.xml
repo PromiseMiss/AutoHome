@@ -4,10 +4,25 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <ListView
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/fo_featured_recView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <com.project.main.autohome.tools.CustomListView
         android:id="@+id/fo_featured_ls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </ListView>
+    </com.project.main.autohome.tools.CustomListView>
 </LinearLayout>

@@ -7,6 +7,9 @@ import com.android.volley.toolbox.ImageLoader;
 
 /**
  * Created by youyo on 2016/7/14 0014.
+ * @date
+ * 二级缓存类
+ * 判断是否从内存或硬盘获取
  */
 public class DoubleCache implements ImageLoader.ImageCache {
     private ImageLoader.ImageCache memoryCache;

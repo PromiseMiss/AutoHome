@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="horizontal">
+
+    <com.project.main.autohome.tools.CustomView
+        android:id="@+id/custom_item"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"/>
+    <!--下拉刷新-->
+    <FrameLayout
+        android:id="@+id/custom_framLayout"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_margin="15dp"
+        android:visibility="gone">
+
+        <com.project.main.autohome.tools.PointerView
+            android:id="@+id/customPoint_view"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/load_icon_dial2x"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/custom_item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="下拉刷新"/>
+
+</LinearLayout>

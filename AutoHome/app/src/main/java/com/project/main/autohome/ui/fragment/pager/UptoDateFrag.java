@@ -2,13 +2,14 @@ package com.project.main.autohome.ui.fragment.pager;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.UpCarouselBean;
+import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
+import com.project.main.autohome.tools.CustomListView;
 import com.project.main.autohome.ui.adapter.UptoDateAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 import com.youth.banner.Banner;
@@ -19,14 +20,15 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 最新页
  */
-public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResult {
-    private ListView uptoDate_ls;
+public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
+    private CustomListView uptoDate_ls;
     private UptoDateAdapter uptoDateAdapter;
     private Banner banner;
     private String[] imgUrls;
 
-    private String url = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
-    private String strUrl = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
+    private String url = NetUrl.UP_TO_DATA_URL;
+    private String strUrl = NetUrl.UP_TO_DATA_URL;
+    private String customUrl = NetUrl.CUSTOM_UP_TO_DATA_URL;
 
     @Override
     protected int setLayout() {
@@ -63,6 +65,8 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
         View view = LayoutInflater.from(getContext()).inflate(R.layout.art_item_up_ls, null);
         banner = (Banner) view.findViewById(R.id.uptodata_banner);
         uptoDate_ls.addHeaderView(view);
+        // ListView刷新监听
+        uptoDate_ls.setOnAutoHomeRefreshListener(this);
     }
 
     private void initshowBanner() {
@@ -89,5 +93,31 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
     @Override
     public void failure() {
 
+    }
+
+    /**
+     * 下拉刷新
+     */
+    @Override
+    public void onRefresh() {
+        VolleyInstence.getInstence(getContext()).startRequest(customUrl, new VolleyInterfaceResult() {
+            @Override
+            public void success(String str) {
+                Gson gson = new Gson();
+                UpCarouselBean carouselBean = gson.fromJson(str, UpCarouselBean.class);
+                List<UpCarouselBean.ResultBean.FocusimgBean> focusimgBeen = carouselBean.getResult().getFocusimg();
+                imgUrls = new String[focusimgBeen.size()];
+                for (int i = 0; i < focusimgBeen.size(); i++) {
+                    imgUrls[i] = carouselBean.getResult().getFocusimg().get(i).getImgurl();
+                }
+                initshowBanner();
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+        uptoDate_ls.setOnRefreshComplete();
     }
 }

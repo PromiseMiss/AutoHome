@@ -4,10 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <ListView
+    <com.project.main.autohome.tools.CustomListView
         android:id="@+id/fo_hotpasts_ls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </ListView>
+    </com.project.main.autohome.tools.CustomListView>
 </LinearLayout>

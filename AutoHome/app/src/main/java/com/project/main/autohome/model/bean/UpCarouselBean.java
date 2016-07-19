@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/12 0012.
- * 最新页实体类轮播
+ * 最新页实体类 轮播图相关
  */
 public class UpCarouselBean {
 

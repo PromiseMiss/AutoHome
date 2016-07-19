@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/13 0013.
+ * 热帖页的适配器
  */
 public class HotpastsAdapter extends BaseAdapter {
     private List<HotDataBean.ResultBean.ListBean> hotpastaBeen;

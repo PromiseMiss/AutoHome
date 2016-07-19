@@ -1,17 +1,26 @@
 package com.project.main.autohome.ui.fragment.fragmentpager;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.project.main.autohome.R;
+import com.project.main.autohome.model.bean.AllOfBean;
+import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.model.net.VolleyInterfaceResult;
+import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.ui.adapter.AllIntoAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
+
+import java.util.List;
 
 /**
  * Created by youyo on 2016/7/12 0012.
+ * 推荐页 所有页   （引用了自定义ListView）
  */
-public class AllFragment extends AbsBaseFragment {
+public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
     private String url;
-    private TextView all_tv;
+    private CustomListView all_ls;
+    private AllIntoAdapter allAdapter;
 
     public AllFragment() {
 
@@ -25,7 +34,7 @@ public class AllFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
-        all_tv = byView(R.id.art_tv_all);
+        all_ls = byView(R.id.all_ls);
 
     }
 
@@ -33,7 +42,10 @@ public class AllFragment extends AbsBaseFragment {
     protected void initData() {
         Bundle bundle = getArguments();
         this.url = bundle.getString("url_key");
-        all_tv.setText(url);
+
+        allAdapter = new AllIntoAdapter(getContext());
+        VolleyInstence.getInstence(getContext()).startRequest(url, this);
+        all_ls.setOnAutoHomeRefreshListener(this);
     }
 
     public static AllFragment getInstance(String url) {
@@ -44,5 +56,39 @@ public class AllFragment extends AbsBaseFragment {
         //        Fragment 对象调用 setArguments方法传值
         allFragment.setArguments(bundle);
         return allFragment;
+    }
+
+    @Override
+    public void success(String str) {
+        Gson gson = new Gson();
+        AllOfBean bean = gson.fromJson(str, AllOfBean.class);
+        List<AllOfBean.ResultBean.NewslistBean> allbean = bean.getResult().getNewslist();
+        allAdapter.setAllBean(allbean);
+        all_ls.setAdapter(allAdapter);
+    }
+
+    @Override
+    public void failure() {
+
+    }
+
+    @Override
+    public void onRefresh() {
+       /* new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                all_ls.setOnRefreshComplete();
+            }
+        }.execute((Void[]) null);*/
     }
 }

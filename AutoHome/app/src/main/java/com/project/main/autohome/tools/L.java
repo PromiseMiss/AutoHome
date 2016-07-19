@@ -4,6 +4,7 @@ import android.util.Log;
 
 /**
  * Created by youyo on 2016/7/11 0011.
+ * 自定义打Log的实体类
  */
 public class L {
     //    被final修饰 不能被继承

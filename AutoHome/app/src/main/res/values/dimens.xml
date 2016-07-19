@@ -2,4 +2,27 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="common_layout">0dip</dimen>
+    <dimen name="activity_main_radio_height">57dip</dimen>
+    <dimen name="all_item_common_height">80dip</dimen>
+    <dimen name="all_item_common_width">80dip</dimen>
+    <dimen name="art_banner_height">200dip</dimen>
+    <dimen name="all_margin">5dip</dimen>
+    <dimen name="art_margin_left">10dip</dimen>
+    <dimen name="art_padding">10dip</dimen>
+    <dimen name="art_main_iv_width">44dip</dimen>
+    <dimen name="art_main_iv_height">48dip</dimen>
+    <dimen name="bul_margin">10dip</dimen>
+    <dimen name="fo_item_tv">15dip</dimen>
+    <dimen name="fo_item_margin_left">10dip</dimen>
+    <dimen name="orig_margin">10dip</dimen>
+    <dimen name="orig_margin_bottom">5dip</dimen>
+    <dimen name="orig_margin_top">15dip</dimen>
+    <dimen name="video_width">80dip</dimen>
+    <dimen name="video_height">80dip</dimen>
+    <dimen name="video_margin">5dip</dimen>
+    <dimen name="fo_comm_textSize">15dip</dimen>
+    <dimen name="fo_comm_margin_bottom">10dip</dimen>
+    <dimen name="fo_comm_margin_top">15dip</dimen>
+
 </resources>

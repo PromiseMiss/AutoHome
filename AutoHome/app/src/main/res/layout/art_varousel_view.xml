@@ -19,7 +19,7 @@
         android:layout_gravity="center|bottom"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="@dimen/art_padding">
 
     </LinearLayout>
 </FrameLayout>

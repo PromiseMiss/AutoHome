@@ -8,18 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.Volley;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.UpCarouselBean;
-import com.project.main.autohome.tools.DoubleCache;
+import com.project.main.autohome.model.net.VolleyInstence;
 
 import java.util.List;
 
 /**
  * Created by youyo on 2016/7/12 0012.
- * 最新页 BaseAdapter
+ * 最新页 适配器
  */
 public class UptoDateAdapter extends BaseAdapter {
     private List<UpCarouselBean.ResultBean.NewslistBean> mDatas;
@@ -61,26 +58,17 @@ public class UptoDateAdapter extends BaseAdapter {
         }
         UpCarouselBean.ResultBean.NewslistBean carouselBean =
                 (UpCarouselBean.ResultBean.NewslistBean) getItem(position);
-
         viewHolder.art_updata_tv_tit.setText(carouselBean.getTitle());
         viewHolder.art_uptodata_time.setText(carouselBean.getTime());
-        viewHolder.art_updata_lengh.setText(carouselBean.getReplycount() + " ");
-
-
-//            Picasso.with(context).load(mDatas.get(position).getSmallpic()).
-//                    into(viewHolder.art_headiv_uptodata);
-            RequestQueue queue = Volley.newRequestQueue(context);
-            ImageLoader imageLoader = new ImageLoader(queue,new DoubleCache());
-            ImageLoader.ImageListener imageListener = ImageLoader.
-                    getImageListener(viewHolder.art_headiv_uptodata,
-                            R.mipmap.ic_launcher,R.mipmap.ic_launcher);
-            imageLoader.get(mDatas.get(position).getSmallpic(),imageListener);
-
+        viewHolder.art_updata_lengh.setText(carouselBean.getReplycount() + "评论");
+        // ListView 有多少行就执行多少次getView
+        // 就创建了多少个请求队列， 请求队列里面有线程池，现在ListView 30行，30线程池
+        VolleyInstence.getInstence(context).loadImage(mDatas.get(position).getSmallpic(),
+                viewHolder.art_headiv_uptodata);
         return convertView;
     }
 
     class ViewHolder {
-
         private ImageView art_headiv_uptodata;
         private TextView art_updata_tv_tit, art_uptodata_time, art_updata_lengh;
 

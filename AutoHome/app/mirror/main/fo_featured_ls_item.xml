@@ -1,0 +1,20 @@
+<!-- [ Mirror metadata ] generatedAt: 1468667859622 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/fo_featured_ls_item">
+        <!-- ImageView Examples:
+        <fo_fea_item_iv src="@drawable/image_resource" />
+        <fo_fea_item_iv src="relative_path/image.jpg" /> -->
+        <fo_fea_item_iv />
+        <!-- TextView Examples:
+        <fo_fea_item_title text="@string/string_resource" />
+        <fo_fea_item_title text="Text literal" textSize="14sp" /> -->
+        <fo_fea_item_title />
+        <fo_fea_item_smitit />
+        <fo_fea_item_num />
+    </_content>
+</screen>

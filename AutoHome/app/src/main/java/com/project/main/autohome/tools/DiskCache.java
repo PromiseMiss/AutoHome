@@ -11,6 +11,7 @@ import java.io.IOException;
 
 /**
  * Created by youyo on 2016/7/14 0014.
+ * 图片缓存工具类
  */
 public class DiskCache implements ImageLoader.ImageCache {
     //    定义存储在硬盘中的位置

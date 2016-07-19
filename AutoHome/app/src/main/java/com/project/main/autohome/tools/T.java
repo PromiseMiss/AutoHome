@@ -7,6 +7,7 @@ import com.project.main.autohome.ui.activity.MyApp;
 
 /**
  * Created by youyo on 2016/7/11 0011.
+ * 自定义打吐司的工具类
  */
 public class T {
 

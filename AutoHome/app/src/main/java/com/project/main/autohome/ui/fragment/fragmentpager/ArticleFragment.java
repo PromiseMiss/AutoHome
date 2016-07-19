@@ -4,9 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 import com.project.main.autohome.R;
+import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.ui.adapter.FragmentPagAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 import com.project.main.autohome.ui.fragment.pager.BulletinFrag;
@@ -27,8 +26,6 @@ public class ArticleFragment extends AbsBaseFragment {
     private FragmentPagAdapter pagAdapter;
     private List<String> list_title;
     private List<Fragment> list_fragment;
-    private RequestQueue queue;
-    private String url = "";
 
 
     @Override
@@ -45,9 +42,6 @@ public class ArticleFragment extends AbsBaseFragment {
 
     @Override
     protected void initData() {
-        queue = Volley.newRequestQueue(getContext());
-
-
         initTab();
 
 
@@ -58,7 +52,7 @@ public class ArticleFragment extends AbsBaseFragment {
         list_fragment = new ArrayList<>();
 
         list_fragment.add(new UptoDateFrag());
-        list_fragment.add(new OriginalFrag()); 
+        list_fragment.add(new OriginalFrag());
         list_fragment.add(new BulletinFrag());
         list_fragment.add(new VideoFrag());
 
@@ -80,17 +74,17 @@ public class ArticleFragment extends AbsBaseFragment {
         list_title.add("原创视频");
         list_title.add("说客");
 
-        list_fragment.add(AllFragment.getInstance("www.baidu.com"));
-        list_fragment.add(AllFragment.getInstance("www.souhu.con"));
-        list_fragment.add(AllFragment.getInstance("导购"));
-        list_fragment.add(AllFragment.getInstance("行情"));
-        list_fragment.add(AllFragment.getInstance("用车"));
-        list_fragment.add(AllFragment.getInstance("技术"));
-        list_fragment.add(AllFragment.getInstance("文化"));
-        list_fragment.add(AllFragment.getInstance("改装"));
-        list_fragment.add(AllFragment.getInstance("游记"));
-        list_fragment.add(AllFragment.getInstance("原创视频"));
-        list_fragment.add(AllFragment.getInstance("说客"));
+        list_fragment.add(AllFragment.getInstance(NetUrl.NEWS_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.EVALUATION_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.GUIDE_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.QUOTATION_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.FIND_CAR_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.TECHNOLOGY_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.CULTURE_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.CONVERSION_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.TRAVEL_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.ORIGINALLY_VIDEO_URL));
+        list_fragment.add(AllFragment.getInstance(NetUrl.LOBBYIST_URL));
 
         pagAdapter = new FragmentPagAdapter(getChildFragmentManager(), list_fragment, list_title);
         act_main_viewPager.setAdapter(pagAdapter);

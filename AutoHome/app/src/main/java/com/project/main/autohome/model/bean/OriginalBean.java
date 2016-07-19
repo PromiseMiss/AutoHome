@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/14 0014.
+ * 优创页  实体类
  */
 public class OriginalBean {
 

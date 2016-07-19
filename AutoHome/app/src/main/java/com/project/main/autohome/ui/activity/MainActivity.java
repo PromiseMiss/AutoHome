@@ -15,11 +15,20 @@ import com.project.main.autohome.ui.fragment.fragmentpager.ForumFragment;
 import com.project.main.autohome.ui.fragment.fragmentpager.MyFragment;
 import com.project.main.autohome.ui.fragment.fragmentpager.SaleFragment;
 
+/**
+ * 主Activity
+ */
 public class MainActivity extends AbsBaseActivity implements RadioGroup.OnCheckedChangeListener {
     private TabLayout act_main_tabLy;
     private ViewPager act_main_viewPager;
     private RadioGroup act_main_radioG;
     private FragmentPagAdapter pagAdapter;
+
+    private ArticleFragment articleFragment;
+    private ForumFragment forumFragment;
+    private FindCarFragment findCarFragment;
+    private SaleFragment saleFragment;
+    private MyFragment myFragment;
 
 
     @Override
@@ -47,19 +56,35 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
 
         switch (checkedId) {
             case R.id.act_main_article:
-                fragmentTransaction.replace(R.id.fragLy, new ArticleFragment());
+                if (articleFragment == null) {
+                    articleFragment = new ArticleFragment();
+                }
+                fragmentTransaction.replace(R.id.fragLy, articleFragment);
                 break;
             case R.id.act_main_forum:
-                fragmentTransaction.replace(R.id.fragLy, new ForumFragment());
+                if (forumFragment == null) {
+                    forumFragment = new ForumFragment();
+                }
+                fragmentTransaction.replace(R.id.fragLy, forumFragment);
                 break;
             case R.id.act_main_findCar:
-                fragmentTransaction.replace(R.id.fragLy, new FindCarFragment());
+                if (findCarFragment == null) {
+                    findCarFragment = new FindCarFragment();
+                }
+                fragmentTransaction.replace(R.id.fragLy, findCarFragment);
                 break;
             case R.id.act_main_sale:
-                fragmentTransaction.replace(R.id.fragLy, new SaleFragment());
+                if (saleFragment == null) {
+                    saleFragment = new SaleFragment();
+                }
+                fragmentTransaction.replace(R.id.fragLy, saleFragment);
                 break;
             case R.id.act_main_my:
-                fragmentTransaction.replace(R.id.fragLy, new MyFragment());
+                if (myFragment == null) {
+
+                    myFragment = new MyFragment();
+                }
+                fragmentTransaction.replace(R.id.fragLy, myFragment);
                 break;
             default:
                 break;

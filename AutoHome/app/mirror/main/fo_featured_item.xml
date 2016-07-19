@@ -1,0 +1,14 @@
+<!-- [ Mirror metadata ] generatedAt: 1468667859618 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/fo_featured_item">
+        <!-- TextView Examples:
+        <fo_fea_item_recyc text="@string/string_resource" />
+        <fo_fea_item_recyc text="Text literal" textSize="14sp" /> -->
+        <fo_fea_item_recyc />
+    </_content>
+</screen>

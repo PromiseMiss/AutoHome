@@ -1,0 +1,20 @@
+<!-- [ Mirror metadata ] generatedAt: 1468667859629 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/origin_item_two">
+        <!-- TextView Examples:
+        <origin_two_tv text="@string/string_resource" />
+        <origin_two_tv text="Text literal" textSize="14sp" /> -->
+        <origin_two_tv />
+        <origin_tv_body />
+        <!-- ImageView Examples:
+        <origin_body_iv src="@drawable/image_resource" />
+        <origin_body_iv src="relative_path/image.jpg" /> -->
+        <origin_body_iv />
+        <origin_time_tv />
+    </_content>
+</screen>

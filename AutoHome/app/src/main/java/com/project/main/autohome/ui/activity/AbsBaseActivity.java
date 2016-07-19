@@ -10,6 +10,7 @@ import android.view.View;
 
 /**
  * Created by youyo on 2016/7/11 0011.
+ * 基类 Activity
  */
 public abstract class AbsBaseActivity extends AppCompatActivity {
     @Override

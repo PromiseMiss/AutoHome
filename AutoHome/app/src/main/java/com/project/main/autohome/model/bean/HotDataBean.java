@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/13 0013.
- * 热帖 页的解析数据
+ * 热帖 页的解析数据 实体类
  */
 public class HotDataBean {
 

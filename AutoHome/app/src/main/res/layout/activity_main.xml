@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-
+    <!--软件总布局页-->
 
     <FrameLayout
         android:id="@+id/fragLy"
@@ -16,7 +16,7 @@
     <RadioGroup
         android:id="@+id/act_main_radio"
         android:layout_width="match_parent"
-        android:layout_height="57dp"
+        android:layout_height="@dimen/activity_main_radio_height"
         android:orientation="horizontal">
 
         <RadioButton

@@ -1,23 +1,31 @@
 package com.project.main.autohome.model.net;
 
 import android.content.Context;
+import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.project.main.autohome.R;
+import com.project.main.autohome.tools.DoubleCache;
 
 /**
  * Created by youyo on 2016/7/13 0013.
+ * 网络请求，，图片缓存，单例
  */
 public class VolleyInstence {
     //    请求队列
     private RequestQueue queue;
     private static VolleyInstence instence;
+    private ImageLoader imageLoader;
 
     private VolleyInstence(Context context) {
+        // 实例化请求队列
         queue = Volley.newRequestQueue(context);
+        imageLoader = new ImageLoader(queue, new DoubleCache());
     }
 
     // 对外提供对象的方法
@@ -40,7 +48,6 @@ public class VolleyInstence {
     }
 
 
-
     public void startRequest(String url, final VolleyInterfaceResult result) {
         StringRequest sr = new StringRequest(url, new Response.Listener<String>() {
             @Override
@@ -55,5 +62,25 @@ public class VolleyInstence {
         });
         queue.add(sr);
     }
+
+    /**
+     * 图片缓存
+     *
+     * @param url
+     * @param imageView
+     */
+    public void loadImage(String url, ImageView imageView) {
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView,
+                R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+        imageLoader.get(url, listener);
+    }
+
+    public ImageLoader getImageLoader() {
+        if (imageLoader == null) {
+            imageLoader = new ImageLoader(queue, new DoubleCache());
+        }
+        return imageLoader;
+    }
+
 
 }

@@ -1,15 +1,14 @@
 package com.project.main.autohome.ui.fragment.forumpager;
 
-import android.widget.ListView;
+import android.os.AsyncTask;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.HotDataBean;
+import com.project.main.autohome.model.net.NetUrl;
+import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.model.net.VolleyInterfaceResult;
+import com.project.main.autohome.tools.CustomListView;
 import com.project.main.autohome.ui.adapter.HotpastsAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 
@@ -17,13 +16,11 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/13 0013.
- * 热帖页
+ * 热帖页  加载了自定义ListView
  */
-public class HotPostsFragment extends AbsBaseFragment {
-    private ListView fo_hotpasts_ls;
-    private String url = "http://club.app.autohome.com.cn/club_v6.1.0/club/shotfoumlist-pm1-p1-s50.json";
-    private RequestQueue queue;// 请求队列
-
+public class HotPostsFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
+    private CustomListView fo_hotpasts_ls;
+    private String url = NetUrl.HOT_POSTS_URL;
 
     @Override
     protected int setLayout() {
@@ -37,26 +34,44 @@ public class HotPostsFragment extends AbsBaseFragment {
 
     @Override
     protected void initData() {
-        queue = Volley.newRequestQueue(getContext());
-        StringRequest sr = new StringRequest(url, new Response.Listener<String>() {
+        VolleyInstence.getInstence(getContext()).startRequest(url, this);
+    }
+
+    @Override
+    public void success(String str) {
+        Gson gson = new Gson();
+        HotDataBean hotDataBean = gson.fromJson(str, HotDataBean.class);
+        List<HotDataBean.ResultBean.ListBean> as = hotDataBean.getResult().getList();
+        HotpastsAdapter hotpastsAdapter = new HotpastsAdapter(as, getContext());
+        hotpastsAdapter.setHotpastaBeen(as);
+        fo_hotpasts_ls.setAdapter(hotpastsAdapter);
+        fo_hotpasts_ls.setOnAutoHomeRefreshListener(this);
+    }
+
+    @Override
+    public void failure() {
+
+    }
+
+    @Override
+    public void onRefresh() {
+        new AsyncTask<Void, Void, Void>() {
+
             @Override
-            public void onResponse(String response) {
-                Gson gson = new Gson();
-                HotDataBean hotDataBean = gson.fromJson(response, HotDataBean.class);
-                List<HotDataBean.ResultBean.ListBean> as = hotDataBean.getResult().getList();
-                HotpastsAdapter hotpastsAdapter = new HotpastsAdapter(as, getContext());
-
-                hotpastsAdapter.setHotpastaBeen(as);
-                fo_hotpasts_ls.setAdapter(hotpastsAdapter);
-
+            protected Void doInBackground(Void... params) {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return null;
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            protected void onPostExecute(Void aVoid) {
 
+                fo_hotpasts_ls.setOnRefreshComplete();
             }
-        });
-        queue.add(sr);
-
+        }.execute((Void[]) null);
     }
 }

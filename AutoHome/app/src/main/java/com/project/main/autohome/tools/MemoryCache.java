@@ -7,6 +7,8 @@ import com.android.volley.toolbox.ImageLoader;
 
 /**
  * Created by youyo on 2016/7/14 0014.
+ * <p/>
+ * 内存缓存工具类
  */
 public class MemoryCache implements ImageLoader.ImageCache {
 
@@ -14,7 +16,7 @@ public class MemoryCache implements ImageLoader.ImageCache {
 
     public MemoryCache() {
         //        设置最大内存
-        int maxSize = (int) Runtime.getRuntime().maxMemory() / 2 ;
+        int maxSize = (int) Runtime.getRuntime().maxMemory() / 2 / 1024;
         caches = new LruCache<String, Bitmap>(maxSize) {
             @Override
             protected int sizeOf(String url, Bitmap bitmap) {
