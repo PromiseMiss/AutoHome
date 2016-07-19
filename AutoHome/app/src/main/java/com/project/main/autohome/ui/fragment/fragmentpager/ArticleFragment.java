@@ -88,6 +88,7 @@ public class ArticleFragment extends AbsBaseFragment {
 
         pagAdapter = new FragmentPagAdapter(getChildFragmentManager(), list_fragment, list_title);
         act_main_viewPager.setAdapter(pagAdapter);
+        act_main_viewPager.setOffscreenPageLimit(2);
         act_main_tabLy.setupWithViewPager(act_main_viewPager);
 
     }

@@ -21,7 +21,6 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
     private String url;
     private CustomListView all_ls;
     private AllIntoAdapter allAdapter;
-
     public AllFragment() {
 
     }
@@ -45,6 +44,7 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
 
         allAdapter = new AllIntoAdapter(getContext());
         VolleyInstence.getInstence(getContext()).startRequest(url, this);
+        // 给ListView添加刷新监听
         all_ls.setOnAutoHomeRefreshListener(this);
     }
 
@@ -64,6 +64,7 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
         AllOfBean bean = gson.fromJson(str, AllOfBean.class);
         List<AllOfBean.ResultBean.NewslistBean> allbean = bean.getResult().getNewslist();
         allAdapter.setAllBean(allbean);
+
         all_ls.setAdapter(allAdapter);
     }
 
@@ -72,23 +73,11 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
 
     }
 
+    /**
+     * 下拉刷新
+     */
     @Override
     public void onRefresh() {
-       /* new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                all_ls.setOnRefreshComplete();
-            }
-        }.execute((Void[]) null);*/
     }
 }

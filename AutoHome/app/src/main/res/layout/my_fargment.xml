@@ -10,15 +10,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/my_tabLayout"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="#1874CD"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="#1874CD">
+            android:gravity="right"
+            android:orientation="horizontal">
 
-        </android.support.design.widget.TabLayout>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/my_tabLayout"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="#1874CD"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="#1874CD">
+
+            </android.support.design.widget.TabLayout>
+
+            <Button
+                android:id="@+id/my_night"
+                android:layout_width="wrap_content"
+                android:background="@null"
+                android:layout_height="wrap_content"
+                android:text="sdf"/>
+        </LinearLayout>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/my_vp"

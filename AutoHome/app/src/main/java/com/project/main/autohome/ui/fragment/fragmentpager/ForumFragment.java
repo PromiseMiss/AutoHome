@@ -49,6 +49,7 @@ public class ForumFragment extends AbsBaseFragment {
         title_foru.add("常用论坛");
         foru_adapter = new FragmentPagAdapter(getChildFragmentManager(), frag_foru, title_foru);
         foru_vp.setAdapter(foru_adapter);
+        foru_vp.setOffscreenPageLimit(2);
         foru_tab.setupWithViewPager(foru_vp);
 
     }

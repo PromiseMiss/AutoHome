@@ -3,6 +3,7 @@ package com.project.main.autohome.ui.fragment.fragmentpager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.widget.Button;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.ui.adapter.MyIntoAdapter;
@@ -21,6 +22,8 @@ public class MyFragment extends AbsBaseFragment {
     private MyIntoAdapter myAdapter;
     private List<String> myTitle;
     private List<Fragment> myFragment;
+    private Button button;
+    private boolean appConfig;
 
     @Override
     protected int setLayout() {
@@ -31,6 +34,7 @@ public class MyFragment extends AbsBaseFragment {
     protected void initView() {
         mytab = byView(R.id.my_tabLayout);
         myPager = byView(R.id.my_vp);
+        button = byView(R.id.my_night);
 
     }
 
@@ -46,4 +50,6 @@ public class MyFragment extends AbsBaseFragment {
         mytab.setupWithViewPager(myPager);
 
     }
+
+
 }
