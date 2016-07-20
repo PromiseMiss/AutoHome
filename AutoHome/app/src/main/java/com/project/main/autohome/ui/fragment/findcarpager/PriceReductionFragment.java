@@ -7,7 +7,9 @@ import com.project.main.autohome.ui.fragment.AbsBaseFragment;
  * Created by youyo on 2016/7/13 0013.
  * 降价页 ------ 总页找车
  */
-public class PriceReductionFragment extends AbsBaseFragment{
+public class PriceReductionFragment extends AbsBaseFragment {
+
+
     @Override
     protected int setLayout() {
         return R.layout.find_price_fragment;
@@ -15,7 +17,6 @@ public class PriceReductionFragment extends AbsBaseFragment{
 
     @Override
     protected void initView() {
-
     }
 
     @Override

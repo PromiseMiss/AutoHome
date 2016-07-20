@@ -62,6 +62,7 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
         featureAdapter.setFeaturedListener(new FeaturedListener() {
             @Override
             public void FeatListent(int pos) {
+                // 解析的42页
                 VolleyInstence.getInstence(getContext()).startRequest(NetUrl.RECOMMEND_ALL[pos], new VolleyInterfaceResult() {
                     @Override
                     public void success(String str) {
@@ -77,11 +78,10 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
 
                     }
                 });
-
             }
         });
+        // 下拉刷新
         fo_featured_ls.setOnAutoHomeRefreshListener(this);
-
         initSeringTit();
     }
 

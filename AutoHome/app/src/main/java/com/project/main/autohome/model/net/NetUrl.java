@@ -87,6 +87,10 @@ public final class NetUrl {
     public static final String FIND_FIRST = "http://223.99.255.20/mobilenc.app.autohome.com.cn/discover_v5.8.0/mobile/functionlist-a2-pm2-v5.8.5-pid210000-cid210200.json";
     // 有轮播图
     public static final String FIND_FIRST_RECYCLER = "http://app.api.autohome.com.cn/autov5.0.0/mobile/appadvert-a2-pm1-v5.0.1-sid2-pid340000-cid0-lat0.000000-lng0.000000.json";
-
-
+    // 筛选
+    public static final String FILTER = "http://cars.app.autohome.com.cn/cars_v5.8.0/cars/gethotseries-a2-pm2-v6.1.0-p1-s20.json";
+    // 品牌GridV
+    public static final String BRANDGV_URL = "http://223.99.255.20/cars.app.autohome.com.cn/dealer_v5.7.0/dealer/hotbrands-pm2.json";
+    // 标志
+    public static final String BRAND_BIAOZHI = "http://app.api.autohome.com.cn/autov5.0.0/news/brandsfastnews-pm1-ts0.json";
 }

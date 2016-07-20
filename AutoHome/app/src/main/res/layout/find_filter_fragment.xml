@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@color/colorPrimary"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/price_tv"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="条件"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="热门车系"/>
+
+    <com.project.main.autohome.tools.CustomListView
+        android:id="@+id/price_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.project.main.autohome.tools.CustomListView>
 </LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/filter_item_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/filter_item_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/filter_item_iv"
+            android:text="ssss"/>
+
+        <TextView
+            android:id="@+id/filter_item_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/filter_item_iv"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/filter_item_iv"
+            android:text="ffff"
+            android:textColor="#ff0033"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
