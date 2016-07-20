@@ -1,7 +1,6 @@
 package com.project.main.autohome.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import com.project.main.autohome.R;
 import com.project.main.autohome.tools.FeaturedListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,10 +33,10 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatuHol
 
     public void setList(List<String> list) {
         this.list = list;
-        isClick = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            isClick.add(false);
-        }
+        //        isClick = new ArrayList<>();
+        //        for (int i = 0; i < list.size(); i++) {
+        //            isClick.add(false);
+        //        }
         notifyDataSetChanged();
     }
 
@@ -54,26 +52,26 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatuHol
     public void onBindViewHolder(final FeatuHolder holder, int position) {
         holder.fo_fea_item_recyc.setText(list.get(position));
 
-        if (isClick.get(getItemCount())) {
-            holder.fo_fea_item_recyc.setText(Color.parseColor("#436EEE"));
-        } else {
-            holder.fo_fea_item_recyc.setText(Color.parseColor("#1C86EE"));
-        }
-        //        if (featuredListener != null) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int pos = holder.getAdapterPosition();
-                featuredListener.FeatListent(pos);
-
-                for (int i = 0; i < isClick.size(); i++) {
-                    isClick.set(i, false);
-                }
-                isClick.set(pos, true);
-                notifyDataSetChanged();
-            }
-        });
+        //        if (isClick.get(getItemCount())) {
+        //            holder.fo_fea_item_recyc.setText(Color.parseColor("#436EEE"));
+        //        } else {
+        //            holder.fo_fea_item_recyc.setText(Color.parseColor("#1C86EE"));
         //        }
+        if (featuredListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = holder.getAdapterPosition();
+                    featuredListener.FeatListent(pos);
+
+                    //                for (int i = 0; i < isClick.size(); i++) {
+                    //                    isClick.set(i, false);
+                    //                }
+                    //                isClick.set(pos, true);
+                    notifyDataSetChanged();
+                }
+            });
+        }
 
 
     }

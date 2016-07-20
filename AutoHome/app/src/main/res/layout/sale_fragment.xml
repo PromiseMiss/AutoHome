@@ -4,8 +4,18 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
+    <com.youth.banner.Banner
+        android:id="@+id/sale_banner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="rrrrrrrrrrrrrrrrrrreeeee"/>
+        android:layout_height="130dp">
+    </com.youth.banner.Banner>
+
+    <GridView
+        android:id="@+id/sale_gv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:numColumns="4">
+    </GridView>
+
+
 </LinearLayout>

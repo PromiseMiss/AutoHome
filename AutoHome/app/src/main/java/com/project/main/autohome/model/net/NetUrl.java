@@ -83,6 +83,10 @@ public final class NetUrl {
             "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c2 26 - p1 - s30.json",//海外游记
             "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c212-p1-s30.json",//沧海遗珠
     };
+    // 发现  有8个GridView
+    public static final String FIND_FIRST = "http://223.99.255.20/mobilenc.app.autohome.com.cn/discover_v5.8.0/mobile/functionlist-a2-pm2-v5.8.5-pid210000-cid210200.json";
+    // 有轮播图
+    public static final String FIND_FIRST_RECYCLER = "http://app.api.autohome.com.cn/autov5.0.0/mobile/appadvert-a2-pm1-v5.0.1-sid2-pid340000-cid0-lat0.000000-lng0.000000.json";
 
 
 }

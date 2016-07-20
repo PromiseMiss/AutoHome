@@ -64,7 +64,6 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
         AllOfBean bean = gson.fromJson(str, AllOfBean.class);
         List<AllOfBean.ResultBean.NewslistBean> allbean = bean.getResult().getNewslist();
         allAdapter.setAllBean(allbean);
-
         all_ls.setAdapter(allAdapter);
     }
 
