@@ -4,19 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.youth.banner.Banner
-        android:id="@+id/sale_banner"
+    <WebView
+        android:id="@+id/feature_webview"
         android:layout_width="match_parent"
-        android:layout_height="130dp">
-    </com.youth.banner.Banner>
+        android:layout_height="match_parent">
 
-    <GridView
-        android:id="@+id/sale_gv"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:numColumns="4">
-    </GridView>
-
-
-
+    </WebView>
 </LinearLayout>

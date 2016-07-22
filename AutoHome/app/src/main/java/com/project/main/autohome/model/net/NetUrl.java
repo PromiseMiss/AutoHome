@@ -87,10 +87,37 @@ public final class NetUrl {
     public static final String FIND_FIRST = "http://223.99.255.20/mobilenc.app.autohome.com.cn/discover_v5.8.0/mobile/functionlist-a2-pm2-v5.8.5-pid210000-cid210200.json";
     // 有轮播图
     public static final String FIND_FIRST_RECYCLER = "http://app.api.autohome.com.cn/autov5.0.0/mobile/appadvert-a2-pm1-v5.0.1-sid2-pid340000-cid0-lat0.000000-lng0.000000.json";
+    //发现页轮播图详情
+    public static final String FIND_DETATIL = "http://app.api.autohome.com.cn/autov5.0.0/mobile/appadvert-a2-pm1-v5.0.1-sid2-pid340000-cid0-lat0.000000-lng0.000000.json";
+
     // 筛选
     public static final String FILTER = "http://cars.app.autohome.com.cn/cars_v5.8.0/cars/gethotseries-a2-pm2-v6.1.0-p1-s20.json";
     // 品牌GridV
     public static final String BRANDGV_URL = "http://223.99.255.20/cars.app.autohome.com.cn/dealer_v5.7.0/dealer/hotbrands-pm2.json";
     // 标志
     public static final String BRAND_BIAOZHI = "http://app.api.autohome.com.cn/autov5.0.0/news/brandsfastnews-pm1-ts0.json";
+
+    // 论坛页面网址拼接
+    public static final String FEATURED_QUERY = "http://forum.app.autohome.com.cn/autov5.0.0/forum/club/topiccontent-a2-pm2-v5.0.0-t";
+    public static final String FEATURED_BOTTOM = "-o0-p1-s20-c1-nt0-fs0-sp0-al0-cw320.json";
+
+    // 视频详情页
+    public static final String VIDEO_DETAILS = "http://v.autohome.com.cn/v_4_";
+    public static final String VIDEO_DETAILS_BOTTOM = ".html";
+
+    // 最新页详情
+    public static final String UPTODATA_DETAILS = "http://cont.app.autohome.com.cn/autov4.2.5/content/News/newscontent-a2-pm1-v4.2.5-n";
+    public static final String UPTODATA_BOTTOM = "-lz0-sp0-nt0-sa1-p0-c1-fs0-cw320.html";
+
+    // 热帖详情页
+    public static final String HOT_TOP_URL = "http://forum.app.autohome.com.cn/autov5.0.0/forum/club/topiccontent-a2-pm2-v5.0.0-t";
+    public static final String HTOP_BOTTOM_URL = "-o0-p1-s20-c1-nt0-fs0-sp0-al0-cw320.json";
+    // 新闻详情页
+    public static final String NEWS_TOP_URL = "http://cont.app.autohome.com.cn/autov4.2.5/content/News/newscontent-a2-pm1-v4.2.5-n";
+    public static final String NEWS_BOTTOM_URL = "-lz0-sp0-nt0-sa1-p0-c1-fs0-cw320.html";
+
+    // 快报详情页
+    public static final String BULLETIN_TOP_URL = "http://cont.app.autohome.com.cn/autov5.0.0/content/News/fastnewscontent-n";
+    public static final String BULLTIN_BOTTOM_URL = "-lastid0-o1.json";
+
 }

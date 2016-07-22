@@ -1,7 +1,9 @@
 package com.project.main.autohome.ui.fragment.pager;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
@@ -10,6 +12,7 @@ import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.ui.activity.UptoDataActivity;
 import com.project.main.autohome.ui.adapter.UptoDateAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 import com.youth.banner.Banner;
@@ -29,6 +32,8 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
     private String url = NetUrl.UP_TO_DATA_URL;
     private String strUrl = NetUrl.UP_TO_DATA_URL;
     private String customUrl = NetUrl.CUSTOM_UP_TO_DATA_URL;
+    private List<UpCarouselBean.ResultBean.NewslistBean> beanList;
+
 
     @Override
     protected int setLayout() {
@@ -67,6 +72,15 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
         uptoDate_ls.addHeaderView(view);
         // ListView刷新监听
         uptoDate_ls.setOnAutoHomeRefreshListener(this);
+        uptoDate_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(), UptoDataActivity.class);
+                String dataUrl = NetUrl.UPTODATA_DETAILS + beanList.get(position).getId() + NetUrl.UPTODATA_BOTTOM;
+                intent.putExtra("dataUrl", dataUrl);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initshowBanner() {
@@ -84,7 +98,7 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
         //        解析ListView部分
         Gson gson = new Gson();
         UpCarouselBean carouselBeans = gson.fromJson(str, UpCarouselBean.class);
-        List<UpCarouselBean.ResultBean.NewslistBean> beanList = carouselBeans.getResult().getNewslist();
+        beanList = carouselBeans.getResult().getNewslist();
         uptoDateAdapter = new UptoDateAdapter(getContext());
         uptoDateAdapter.setmDatas(beanList);
         uptoDate_ls.setAdapter(uptoDateAdapter);

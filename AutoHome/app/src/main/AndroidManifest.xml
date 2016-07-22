@@ -18,6 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.FeatureActivity"/>
+        <activity android:name=".ui.activity.VideoActivity"/>
+        <activity android:name=".ui.activity.UptoDataActivity"/>
+        <activity android:name=".ui.activity.HotPostsActivity"/>
+        <activity android:name=".ui.activity.AllActivity"/>
+        <activity android:name=".ui.activity.BulletinActivity"/>
+        <activity android:name=".ui.activity.SaleBannerActivity"/>
     </application>
 
 </manifest>

@@ -21,26 +21,28 @@ import com.project.main.autohome.R;
  * 下拉刷新   自定义listView
  */
 public class CustomListView extends ListView implements AbsListView.OnScrollListener {
-    private static final int DONE = 0;
-    private static final int PULL_TO_REFRESH = 1;
-    private static final int RELEASE_TO_REFRESH = 2;
-    private static final int REFRESHING = 3;
+    private static final int DONE = 0; // 完成
+    private static final int PULL_TO_REFRESH = 1; // 下拉刷新
+    private static final int RELEASE_TO_REFRESH = 2; // 松开刷新
+    private static final int REFRESHING = 3; // 正在刷新
     private static final int RATIO = 3;
-    private LinearLayout headerView;
-    private CustomView mAutoHome;
-    private int headerViewHeight;
-    private float startY;
+    private LinearLayout headerView; // 头布局
+    private CustomView mAutoHome;  // 自定义视图
+    private int headerViewHeight; // 头布局高度
+    private float startY; // Y轴开始坐标
     private float offsetY;
     private TextView tv_pull_to_refresh;
     private OnAutoHomeRefreshListener mOnRefreshListener;
     private int state;
     private int mFirstVisibleItem;
-    private boolean isRecord;
+    private boolean isRecord;  // 记录
     private boolean isEnd;
     private boolean isRefreable;
+
     private FrameLayout mAnimContainer;
-    private PointerView mAutoHomeAnim;
-    private Animation animation;
+    private PointerView mAutoHomeAnim; // 自定义视图
+    private Animation animation; // 动画
+    private boolean flag;
 
 
     public CustomListView(Context context) {
@@ -58,11 +60,12 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
         init(context);
     }
 
-    //	实现内部接口
+    //	实现内部接口并对外提供此方法
     public interface OnAutoHomeRefreshListener {
         void onRefresh();
     }
 
+    // 对外提供的方法，，刷新监听的方法
     public void setOnAutoHomeRefreshListener(OnAutoHomeRefreshListener onRefreshListener) {
         mOnRefreshListener = onRefreshListener;
         isRefreable = true;
@@ -75,22 +78,27 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
     }
 
     private void init(Context context) {
+        // 下拉时去掉蓝色的阴影
         setOverScrollMode(View.OVER_SCROLL_NEVER);
+        //        下面的onScroll是他的方法（触屏滑动）里面要复写两个方法onScrollStateChanged和onScroll
         setOnScrollListener(this);
         // 绑定刷新布局
+        // 头布局
         headerView = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.custom_view_item, null, false);
         mAutoHome = (CustomView) headerView.findViewById(R.id.custom_item);
         tv_pull_to_refresh = (TextView) headerView.findViewById(R.id.custom_item_tv);
         mAnimContainer = (FrameLayout) headerView.findViewById(R.id.custom_framLayout);
         mAutoHomeAnim = (PointerView) headerView.findViewById(R.id.customPoint_view);
-
+        // 动画
         animation = AnimationUtils.loadAnimation(context, R.anim.pointer_rotate);
-
+        //确定刷新的itemView的高度
         measureView(headerView);
+        // 头布局
         addHeaderView(headerView);
         headerViewHeight = headerView.getMeasuredHeight();
-        headerView.setPadding(0, -1 * headerViewHeight, 0, 0);
 
+        headerView.setPadding(0, -1 * headerViewHeight, 0, 0);
+        //一开始的状态就是下拉刷新完的状态，所以为DONE
         state = DONE;
         isEnd = true;
         isRefreable = false;// 是否正在刷新
@@ -99,11 +107,25 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
 
     @Override
     public void onScrollStateChanged(AbsListView absListView, int i) {
+
     }
 
+    /**
+     * @param absListView
+     * @param firstVisibleItem 表示显示在屏幕第一个Listitem(部分显示的也算)
+     * @param visibleItemCount 表示显示在屏幕可以见到的ListItem总数（部分显示的也算）
+     * @param totalItemCount   表示listview的listItem的总数
+     */
     @Override
     public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         mFirstVisibleItem = firstVisibleItem;
+        // 判断动态加载数据
+        //        flag = false;
+        //        if (firstVisibleItem + visibleItemCount == totalItemCount && !flag) {
+        //            flag = true;
+        //        } else {
+        //            flag = false;
+        //        }
     }
 
     @Override
@@ -114,9 +136,10 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
                     case MotionEvent.ACTION_DOWN:
                         if (mFirstVisibleItem == 0 && !isRecord) {
                             isRecord = true;
-                            startY = ev.getY();
+                            startY = (int) ev.getY();
                         }
                         break;
+
                     case MotionEvent.ACTION_MOVE:
                         float tempY = ev.getY();
                         if (mFirstVisibleItem == 0 && !isRecord) {
@@ -229,7 +252,7 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
         }
     }
 
-
+    //确定刷新的itemView的高度
     private void measureView(View child) {
         ViewGroup.LayoutParams p = child.getLayoutParams();
         if (p == null) {
@@ -247,6 +270,11 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
                     MeasureSpec.UNSPECIFIED);
         }
         child.measure(childWidthSpec, childHeightSpec);
+
+        //    public void setAdapter(BaseAdapter adapter) {
+        //        lastUpdatedTextView.setText("最近更新" + new Date().toLocaleString());
+        //        super.setAdapter(adapter);
+        //    }
     }
 
 }

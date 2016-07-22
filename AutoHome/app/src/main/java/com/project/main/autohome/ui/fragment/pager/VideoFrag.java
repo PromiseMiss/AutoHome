@@ -1,5 +1,9 @@
 package com.project.main.autohome.ui.fragment.pager;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.VideoBean;
@@ -7,6 +11,7 @@ import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.ui.activity.VideoActivity;
 import com.project.main.autohome.ui.adapter.VideoAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 
@@ -20,6 +25,7 @@ public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult,
     private CustomListView video_ls;
     private VideoAdapter videoAdapter;
     private String viseoUrl = NetUrl.VIDEO_URL;
+    private List<VideoBean.ResultBean.ListBean> listBeen;
 
     @Override
     protected int setLayout() {
@@ -37,13 +43,23 @@ public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult,
         VolleyInstence.getInstence(getContext()).startRequest(viseoUrl, this);
         // 下拉刷新监听
         video_ls.setOnAutoHomeRefreshListener(this);
+        // 行布局监听，进行二级界面跳转
+        video_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(), VideoActivity.class);
+                String url = NetUrl.VIDEO_DETAILS + listBeen.get(position).getId() + NetUrl.VIDEO_DETAILS_BOTTOM;
+                intent.putExtra("videoUrl", url);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void success(String str) {
         Gson gson = new Gson();
         VideoBean videoBean = gson.fromJson(str, VideoBean.class);
-        List<VideoBean.ResultBean.ListBean> listBeen = videoBean.getResult().getList();
+        listBeen = videoBean.getResult().getList();
         videoAdapter.setVideoBeen(listBeen);
         video_ls.setAdapter(videoAdapter);
     }

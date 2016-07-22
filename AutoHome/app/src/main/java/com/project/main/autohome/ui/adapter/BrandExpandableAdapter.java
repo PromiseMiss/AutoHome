@@ -1,7 +1,6 @@
 package com.project.main.autohome.ui.adapter;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,16 +25,6 @@ public class BrandExpandableAdapter extends BaseExpandableListAdapter {
     public BrandExpandableAdapter(Context context, List<BrandIconBean.ResultBean.BrandlistBean> brandlistBeen) {
         this.context = context;
         this.brandlistBeen = brandlistBeen;
-    }
-
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-        super.registerDataSetObserver(observer);
-    }
-
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
-        super.unregisterDataSetObserver(observer);
     }
 
     @Override

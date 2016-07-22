@@ -1,8 +1,11 @@
 package com.project.main.autohome.ui.fragment.forumpager;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
@@ -12,6 +15,7 @@ import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomListView;
 import com.project.main.autohome.tools.FeaturedListener;
+import com.project.main.autohome.ui.activity.FeatureActivity;
 import com.project.main.autohome.ui.adapter.FeatureAdapter;
 import com.project.main.autohome.ui.adapter.FeatureLSAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
@@ -23,12 +27,17 @@ import java.util.List;
  * Created by youyo on 2016/7/13 0013.
  * 论坛----子页 精选推荐页
  */
-public class FeaturedFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
+public class FeaturedFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener, View.OnClickListener {
     private CustomListView fo_featured_ls;
     private RecyclerView fo_featur_recView;
     private FeatureAdapter featureAdapter;
     private FeatureLSAdapter lsAdapter;
     private List<String> stringList;
+    private ImageView fo_feature_iv;
+
+    private String urlQuery = NetUrl.FEATURED_QUERY;
+    private String urlBott = NetUrl.FEATURED_BOTTOM;
+    private List<FeatureAllBean.ResultBean.ListBean> lists;
 
 
     @Override
@@ -40,10 +49,12 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
     protected void initView() {
         fo_featured_ls = byView(R.id.fo_featured_ls);
         fo_featur_recView = byView(R.id.fo_featured_recView);
+        fo_feature_iv = byView(R.id.fo_feature_iv);
     }
 
     @Override
     protected void initData() {
+        fo_feature_iv.setOnClickListener(this);
         // 两个适配器，一个RecyclerView横滑的，一个是ListView页的
         featureAdapter = new FeatureAdapter(getContext());
         lsAdapter = new FeatureLSAdapter(getContext());
@@ -82,6 +93,16 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
         });
         // 下拉刷新
         fo_featured_ls.setOnAutoHomeRefreshListener(this);
+        fo_featured_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int idNum = lists.get(position).getTopicid();
+                String strUrl = NetUrl.FEATURED_QUERY + idNum + NetUrl.FEATURED_BOTTOM;
+                Intent intent = new Intent(getContext(), FeatureActivity.class);
+                intent.putExtra("url", strUrl);
+                startActivity(intent);
+            }
+        });
         initSeringTit();
     }
 
@@ -132,7 +153,7 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
     public void success(String str) {
         Gson gson = new Gson();
         FeatureAllBean allBean = gson.fromJson(str, FeatureAllBean.class);
-        List<FeatureAllBean.ResultBean.ListBean> lists = allBean.getResult().getList();
+        lists = allBean.getResult().getList();
         lsAdapter.setLsList(lists);
         fo_featured_ls.setAdapter(lsAdapter);
     }
@@ -147,22 +168,11 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
      */
     @Override
     public void onRefresh() {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                fo_featured_ls.setOnRefreshComplete();
-                super.onPostExecute(aVoid);
-            }
-        }.execute((Void) null);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

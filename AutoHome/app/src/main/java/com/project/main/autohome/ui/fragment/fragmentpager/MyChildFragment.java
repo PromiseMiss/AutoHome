@@ -1,5 +1,9 @@
 package com.project.main.autohome.ui.fragment.fragmentpager;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
+
 import com.project.main.autohome.R;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 
@@ -7,7 +11,9 @@ import com.project.main.autohome.ui.fragment.AbsBaseFragment;
  * Created by youyo on 2016/7/18 0018.
  * 我 页
  */
-public class MyChildFragment extends AbsBaseFragment {
+public class MyChildFragment extends AbsBaseFragment implements View.OnClickListener {
+    private TextView my_login;
+
     @Override
     protected int setLayout() {
         return R.layout.my_child_fragment;
@@ -15,11 +21,25 @@ public class MyChildFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
+        my_login = byView(R.id.my_login);
 
     }
 
     @Override
     protected void initData() {
+        my_login.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.my_login:
+                Intent intent = new Intent();
+
+                break;
+            default:
+                break;
+        }
     }
 }

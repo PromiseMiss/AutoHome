@@ -64,6 +64,7 @@ public class FeatureLSAdapter extends BaseAdapter {
         lsHolder.fo_fea_item_smitit.setText(listBean.getBbsname());
         lsHolder.fo_fea_item_num.setText(listBean.getReplycounts() + "回");
 
+
         return convertView;
     }
 
