@@ -5,6 +5,7 @@
               android:orientation="vertical">
 
 
+    <!--注入头布局-->
     <RelativeLayout
         android:id="@+id/child_brand_RelativeLayout"
         android:layout_width="match_parent"
@@ -121,8 +122,4 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="#c0c0c0"/>
-
-
-
-
 </LinearLayout>

@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/20 0020.
+ * 筛选页
  */
 public class FilterAdapter extends BaseAdapter {
     private List<FilterBean.ResultBean.SeriesBean> pricBean;

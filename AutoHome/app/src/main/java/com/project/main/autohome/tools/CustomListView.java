@@ -42,7 +42,6 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
     private FrameLayout mAnimContainer;
     private PointerView mAutoHomeAnim; // 自定义视图
     private Animation animation; // 动画
-    private boolean flag;
 
 
     public CustomListView(Context context) {
@@ -119,13 +118,6 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
     @Override
     public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         mFirstVisibleItem = firstVisibleItem;
-        // 判断动态加载数据
-        //        flag = false;
-        //        if (firstVisibleItem + visibleItemCount == totalItemCount && !flag) {
-        //            flag = true;
-        //        } else {
-        //            flag = false;
-        //        }
     }
 
     @Override
@@ -134,7 +126,7 @@ public class CustomListView extends ListView implements AbsListView.OnScrollList
             if (isRefreable) {
                 switch (ev.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        if (mFirstVisibleItem == 0 && !isRecord) {
+                        if (mFirstVisibleItem != 0 && !isRecord) {
                             isRecord = true;
                             startY = (int) ev.getY();
                         }

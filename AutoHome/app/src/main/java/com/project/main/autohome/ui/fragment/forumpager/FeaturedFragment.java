@@ -107,10 +107,13 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
     }
 
     private void initSeringTit() {
+        String[] tit = getResources().getStringArray(R.array.feature_smiTilt);
+
+        //        Log.d("FeaturedFragment", "tit:" + tit);
         stringList.add("全部");
         stringList.add("媳妇当车模");
         stringList.add("美人“记”");
-        stringList.add("论坛名人堂");
+        stringList.add("论坛名 人堂");
         stringList.add("论坛讲师");
         stringList.add("汽车之家十年");
         stringList.add("精挑细选");

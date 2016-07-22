@@ -8,6 +8,7 @@ import com.project.main.autohome.R;
 
 /**
  * Created by youyo on 2016/7/21 0021.
+ * 发现页轮播图详情
  */
 public class SaleBannerActivity extends AbsBaseActivity {
     private WebView webView;

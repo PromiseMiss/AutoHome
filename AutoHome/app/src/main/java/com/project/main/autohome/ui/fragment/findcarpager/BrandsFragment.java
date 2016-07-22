@@ -1,9 +1,16 @@
 package com.project.main.autohome.ui.fragment.findcarpager;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
@@ -15,6 +22,8 @@ import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.ui.adapter.BrandExpandableAdapter;
 import com.project.main.autohome.ui.adapter.BrandGVAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
+import com.project.main.autohome.ui.fragment.findcarpager.brandchildfragment.BrandGroupAllFragment;
+import com.project.main.autohome.ui.fragment.findcarpager.brandchildfragment.BrandGroupNowFragment;
 
 import java.util.List;
 
@@ -22,14 +31,21 @@ import java.util.List;
  * Created by youyo on 2016/7/13 0013.
  * 品牌页 ---- 找车总页
  */
-public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceResult {
+public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceResult, ExpandableListView.OnChildClickListener, RadioGroup.OnCheckedChangeListener {
 
     private BrandGVAdapter gvAdapter;
     private BrandExpandableAdapter expandableAdapter;
-    private ExpandableListView listView;
+    private ExpandableListView listView; // 二级列表
     private GridView gridView;
     private String url = NetUrl.BRANDGV_URL;
     private String iconUrl = NetUrl.BRAND_BIAOZHI;
+
+    private DrawerLayout drawerLayout;
+    private FrameLayout frameLayout;
+    private RadioGroup radioGroup;
+    private RadioButton brand_now, brand_all;
+    private BrandGroupNowFragment brandGroupNowFragment;
+    private BrandGroupAllFragment brandGroupAllFragment;
 
     @Override
     protected int setLayout() {
@@ -38,8 +54,12 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
 
     @Override
     protected void initView() {
-
+        drawerLayout = byView(R.id.brand_drawer);
         listView = byView(R.id.brand_ExpandableListView);
+
+        radioGroup = byView(R.id.brand_radio);
+        brand_now = byView(R.id.brand_radio_now);
+        brand_all = byView(R.id.brand_radio_all);
 
     }
 
@@ -72,6 +92,9 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
             }
         });
 
+        // 二级列表监听，打开抽屉
+        listView.setOnChildClickListener(this);
+        radioGroup.setOnCheckedChangeListener(this);
     }
 
     // 解析GridView部分中间的图标
@@ -87,5 +110,51 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     @Override
     public void failure() {
 
+    }
+
+    /**
+     * 点击二级列表弹出的抽屉
+     *
+     * @param parent
+     * @param v
+     * @param groupPosition
+     * @param childPosition
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+        drawerLayout.openDrawer(GravityCompat.END);
+        return true;
+    }
+
+    /**
+     * RadioGroup 监听事件
+     * 并定义两个Fragment 用来显示不同数据信息
+     *
+     * @param group
+     * @param checkedId
+     */
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        switch (checkedId) {
+            case R.id.brand_radio_now:
+                if (brandGroupNowFragment == null) {
+                    brandGroupNowFragment = new BrandGroupNowFragment();
+                }
+                fragmentTransaction.replace(R.id.brand_frameLayout, brandGroupNowFragment);
+                break;
+            case R.id.brand_radio_all:
+                if (brandGroupAllFragment == null) {
+                    brandGroupAllFragment = new BrandGroupAllFragment();
+                }
+                fragmentTransaction.replace(R.id.brand_frameLayout, brandGroupAllFragment);
+                break;
+            default:
+                break;
+        }
+        fragmentTransaction.commit();
     }
 }

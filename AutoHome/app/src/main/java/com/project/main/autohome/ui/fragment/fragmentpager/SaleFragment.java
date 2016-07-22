@@ -125,7 +125,6 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
                 }
             });
         }
-
         intent.putExtra("url", url);
         getContext().startActivity(intent);
 
