@@ -120,4 +120,20 @@ public final class NetUrl {
     public static final String BULLETIN_TOP_URL = "http://cont.app.autohome.com.cn/autov5.0.0/content/News/fastnewscontent-n";
     public static final String BULLTIN_BOTTOM_URL = "-lastid0-o1.json";
 
+    // 找车详情
+    // 在售
+    public static final String Test = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm1-b33-t1.json";
+
+
+    public static final String BRAND_NOW_TOP = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm1-b";
+    public static final String BRAND_NOW_BOTT = "-t1.json";
+    // 全部
+    public static final String BRAND_ALL_TOP = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm2-b";
+    public static final String BARND_ALL_BOTT = "-t2.json";
+
+
+    // 发现页  轮播图下面的下面的GV
+    public static final String SALE_GVFIRST_URL = "http://223.99.255.20/mobilenc.app.autohome.com.cn/discover_v5.8.0/mall/intelligentrecommend.ashx?a=2&pm=2&v=5.8.5&uid=0&deviceid=99000628573771&gps=38.889659,121.551063&cityid=210200&pid=210000&pageindex=1&pagesize=20&hid";
+
+
 }

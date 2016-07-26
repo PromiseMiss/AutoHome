@@ -4,10 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/brand_child_radio_now"
+    <ExpandableListView
+        android:id="@+id/brand_child_radio_now_ex"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </ListView>
+    </ExpandableListView>
 </LinearLayout>

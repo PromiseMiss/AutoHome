@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/origin_two_circle_iv"
-            android:text="ssfgds"/>
+            />
     </RelativeLayout>
 
     <LinearLayout
@@ -32,10 +32,10 @@
 
         <TextView
             android:id="@+id/origin_tv_body"
-            android:layout_margin="@dimen/orig_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="sdfasf"/>
+            android:layout_margin="@dimen/orig_margin"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -55,6 +55,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/orig_margin"
             android:layout_marginTop="@dimen/orig_margin"
-            android:text="sdfgsdfg"/>
+            />
     </LinearLayout>
 </LinearLayout>

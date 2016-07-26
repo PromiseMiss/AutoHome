@@ -14,7 +14,6 @@
             android:id="@+id/fo_hotpas_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="dd"
             android:textSize="18sp"/>
 
         <RelativeLayout
@@ -28,7 +27,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#CFCFCF"
-                android:text="ff"
                 android:textSize="13sp"/>
 
             <TextView
@@ -38,7 +36,6 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="#CFCFCF"
                 android:layout_toRightOf="@+id/fo_hotpas_simtitle"
-                android:text="ee"
                 android:textSize="13sp"/>
 
 
@@ -49,7 +46,6 @@
                 android:textColor="#CFCFCF"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
-                android:text="hhh"
                 android:textSize="13sp"/>
         </RelativeLayout>
 

@@ -1,0 +1,21 @@
+<!-- [ Mirror metadata ] generatedAt: 1469266116152 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/sale_gvfirst_item">
+        <!-- ImageView Examples:
+        <sale_gvfirst_iv src="@drawable/image_resource" />
+        <sale_gvfirst_iv src="relative_path/image.jpg" /> -->
+        <sale_gvfirst_iv />
+        <!-- TextView Examples:
+        <sale_gvfirst_tv_tit text="@string/string_resource" />
+        <sale_gvfirst_tv_tit text="Text literal" textSize="14sp" /> -->
+        <sale_gvfirst_tv_tit />
+        <sale_gvfirst_tv_smitit />
+        <sale_gvfirst_tv_num />
+        <sale_gv_first_tv_smalnum />
+    </_content>
+</screen>

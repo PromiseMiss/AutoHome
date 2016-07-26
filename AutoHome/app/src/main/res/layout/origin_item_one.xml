@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/origin_circle_userpic"
-            android:text="ssfgds"/>
+            />
     </RelativeLayout>
 
     <LinearLayout
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/orig_margin"
-            android:text="sdfsgsghsdfghshs"/>
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +59,7 @@
             android:layout_marginBottom="@dimen/orig_margin_bottom"
             android:layout_marginLeft="@dimen/orig_margin"
             android:layout_marginTop="@dimen/orig_margin_top"
-            android:text="time"/>
+             />
 
     </LinearLayout>
 </LinearLayout>

@@ -15,13 +15,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:background="@mipmap/ic_launcher"/>
+            />
 
         <TextView
             android:id="@+id/item_brand_tv_cars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="11111"/>
+            />
     </LinearLayout>
 </LinearLayout>

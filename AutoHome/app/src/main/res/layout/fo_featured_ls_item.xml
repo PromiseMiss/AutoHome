@@ -21,7 +21,7 @@
             android:id="@+id/fo_fea_item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ssdfsd"/>
+             />
 
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/all_margin"
-            android:text="sdfg"/>
+             />
 
         <TextView
             android:id="@+id/fo_fea_item_num"
@@ -39,7 +39,6 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/all_margin"
-            android:text="hgjgh"
             />
     </RelativeLayout>
 </LinearLayout>

@@ -16,14 +16,19 @@ import com.google.gson.Gson;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.BrandBean;
 import com.project.main.autohome.model.bean.BrandIconBean;
+import com.project.main.autohome.model.bean.EventBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
+import com.project.main.autohome.tools.SideBar;
 import com.project.main.autohome.ui.adapter.BrandExpandableAdapter;
 import com.project.main.autohome.ui.adapter.BrandGVAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 import com.project.main.autohome.ui.fragment.findcarpager.brandchildfragment.BrandGroupAllFragment;
 import com.project.main.autohome.ui.fragment.findcarpager.brandchildfragment.BrandGroupNowFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -37,7 +42,7 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     private BrandExpandableAdapter expandableAdapter;
     private ExpandableListView listView; // 二级列表
     private GridView gridView;
-    private String url = NetUrl.BRANDGV_URL;
+    private String urls = NetUrl.BRANDGV_URL;
     private String iconUrl = NetUrl.BRAND_BIAOZHI;
 
     private DrawerLayout drawerLayout;
@@ -46,6 +51,15 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     private RadioButton brand_now, brand_all;
     private BrandGroupNowFragment brandGroupNowFragment;
     private BrandGroupAllFragment brandGroupAllFragment;
+    private EventBus eventBus;
+    private List<BrandIconBean.ResultBean.BrandlistBean> data;
+
+    private String urlss;
+    private List<BrandBean.ResultBean.ListBean> listBeen;
+    private List<BrandIconBean.ResultBean.BrandlistBean> brandlistBeanList;
+
+    private SideBar sideBar;
+    //    private ListView ls;
 
     @Override
     protected int setLayout() {
@@ -56,10 +70,11 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     protected void initView() {
         drawerLayout = byView(R.id.brand_drawer);
         listView = byView(R.id.brand_ExpandableListView);
-
         radioGroup = byView(R.id.brand_radio);
         brand_now = byView(R.id.brand_radio_now);
         brand_all = byView(R.id.brand_radio_all);
+
+        sideBar = byView(R.id.sidrbar);
 
     }
 
@@ -71,14 +86,15 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
         listView.addHeaderView(view);
         gvAdapter = new BrandGVAdapter(getContext());
         // Gradview
-        VolleyInstence.getInstence(getContext()).startRequest(url, this);
+        VolleyInstence.getInstence(getContext()).startRequest(urls, this);
         // 解析下面的二级列表
         VolleyInstence.getInstence(getContext()).startRequest(iconUrl, new VolleyInterfaceResult() {
             @Override
             public void success(String str) {
                 Gson gson = new Gson();
                 BrandIconBean brandIconBean = gson.fromJson(str, BrandIconBean.class);
-                expandableAdapter = new BrandExpandableAdapter(getContext(), brandIconBean.getResult().getBrandlist());
+                brandlistBeanList = brandIconBean.getResult().getBrandlist();
+                expandableAdapter = new BrandExpandableAdapter(getContext(), brandlistBeanList);
                 listView.setAdapter(expandableAdapter);
 
                 for (int i = 0; i < expandableAdapter.getGroupCount(); i++) {
@@ -92,9 +108,21 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
             }
         });
 
+
         // 二级列表监听，打开抽屉
         listView.setOnChildClickListener(this);
         radioGroup.setOnCheckedChangeListener(this);
+        radioGroup.check(R.id.brand_radio_now);
+
+        sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
+            @Override
+            public void OnTouchingLetterChangedListener(String s) {
+                int position = expandableAdapter.getSectionForPosition(s.charAt(0));
+                if (position != -1) {
+                    listView.setSelection(position);
+                }
+            }
+        });
     }
 
     // 解析GridView部分中间的图标
@@ -102,7 +130,7 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     public void success(String str) {
         Gson gson = new Gson();
         BrandBean brandBean = gson.fromJson(str, BrandBean.class);
-        List<BrandBean.ResultBean.ListBean> listBeen = brandBean.getResult().getList();
+        listBeen = brandBean.getResult().getList();
         gvAdapter.setBrandBeen(listBeen);
         gridView.setAdapter(gvAdapter);
     }
@@ -125,6 +153,8 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
         drawerLayout.openDrawer(GravityCompat.END);
+        urlss = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm1-b" + brandlistBeanList.get(groupPosition).getList().get(childPosition).getId() + "-t1.json";
+        EventBus.getDefault().post(new EventBean(urlss));
         return true;
     }
 
@@ -156,5 +186,13 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
                 break;
         }
         fragmentTransaction.commit();
+
     }
+
+    @Subscribe
+    public void onRecever() {
+
+    }
+
+
 }

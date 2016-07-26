@@ -1,0 +1,18 @@
+<!-- [ Mirror metadata ] generatedAt: 1469266116090 -->
+<!-- Generated screen file. Fill the id tags below with content with
+which to populate your previewed layout. For a complete specification
+of sample data, please see http://jimulabs.com/sample-data-specifications/ 
+
+Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" overlay="@drawable/mockup" -->
+<screen>
+    <_content layout="@layout/brand_item_listbody">
+        <!-- ImageView Examples:
+        <item_brand_carsBrand src="@drawable/image_resource" />
+        <item_brand_carsBrand src="relative_path/image.jpg" /> -->
+        <item_brand_carsBrand />
+        <!-- TextView Examples:
+        <item_brand_tv_cars text="@string/string_resource" />
+        <item_brand_tv_cars text="Text literal" textSize="14sp" /> -->
+        <item_brand_tv_cars />
+    </_content>
+</screen>

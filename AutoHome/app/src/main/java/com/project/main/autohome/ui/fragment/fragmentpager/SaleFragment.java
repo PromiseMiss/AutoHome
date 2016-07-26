@@ -1,19 +1,27 @@
 package com.project.main.autohome.ui.fragment.fragmentpager;
 
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.SaleAutoBean;
 import com.project.main.autohome.model.bean.SaleBannerDetailsBean;
+import com.project.main.autohome.model.bean.SaleGVFirstBean;
 import com.project.main.autohome.model.bean.SalerecycleBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.ui.activity.SaleBannerActivity;
+import com.project.main.autohome.ui.activity.SaleLsActivity;
 import com.project.main.autohome.ui.adapter.SaleAdapter;
+import com.project.main.autohome.ui.adapter.SaleGVFirstAdapter;
+import com.project.main.autohome.ui.adapter.SaleGVSeconAdapter;
+import com.project.main.autohome.ui.adapter.SaleListViewAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 import com.youth.banner.Banner;
 
@@ -23,39 +31,50 @@ import java.util.List;
  * Created by youyo on 2016/7/11 0011.
  * 发现页
  */
-public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResult, Banner.OnBannerClickListener {
+public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResult, Banner.OnBannerClickListener, AdapterView.OnItemClickListener {
     private Banner sale_banner;
     private String[] imgsurl;
-    private GridView sale_gv;
+    private GridView sale_gv, sale_gv_first, sale_gv_secon;
+    private ListView sale_ls;
     private String urls = NetUrl.FIND_DETATIL;
 
     private SaleAdapter saleAdapter;
+    private SaleGVFirstAdapter gvFirstAdapter;
+    private SaleGVSeconAdapter gvSeconAdapter;
+    private SaleListViewAdapter listViewAdapter;
 
-    private String imgUrl = NetUrl.FIND_FIRST_RECYCLER;
-    private String iconimgurl = NetUrl.FIND_FIRST;
+
     private List<SalerecycleBean.ResultBean.FunctionlistBean> funcList;
     private List<SaleBannerDetailsBean.ResultBean.ListBean> listBeen;
     private String url;
+    private String saleUrl;
+    private List<SaleGVFirstBean.ResultBean.GoodslistBean.ListBean> goodslistBeen;
 
     @Override
     protected int setLayout() {
-        return R.layout.sale_fragment;
+        return R.layout.sale_listview_item;
     }
 
     @Override
     protected void initView() {
-        sale_banner = byView(R.id.sale_banner);
-        sale_gv = byView(R.id.sale_gv);
-
+        sale_ls = byView(R.id.sale_listView_item);
     }
 
     @Override
     protected void initData() {
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.sale_fragment, null);
+        sale_banner = (Banner) view.findViewById(R.id.sale_banner);
+        sale_gv = (GridView) view.findViewById(R.id.sale_gv);
+        sale_gv_first = (GridView) view.findViewById(R.id.sale_gv_first);
+        sale_gv_secon = (GridView) view.findViewById(R.id.sale_gv_secon);
+        sale_ls.addHeaderView(view);
+        sale_ls.setOnItemClickListener(this);
+        listViewAdapter = new SaleListViewAdapter(getContext());// ls的适配器
         saleAdapter = new SaleAdapter(getContext());
         // GridView
-        VolleyInstence.getInstence(getContext()).startRequest(iconimgurl, this);
+        VolleyInstence.getInstence(getContext()).startRequest(NetUrl.FIND_FIRST, this);
         // 轮播图
-        VolleyInstence.getInstence(getContext()).startRequest(imgUrl, new VolleyInterfaceResult() {
+        VolleyInstence.getInstence(getContext()).startRequest(NetUrl.FIND_FIRST_RECYCLER, new VolleyInterfaceResult() {
             @Override
             public void success(String str) {
                 Gson gson = new Gson();
@@ -66,6 +85,43 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
                     imgsurl[i] = listBeen.get(i).getImgurl();
                 }
                 initBanner();
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+        // 下面的GV
+        VolleyInstence.getInstence(getContext()).startRequest(NetUrl.SALE_GVFIRST_URL, new VolleyInterfaceResult() {
+            @Override
+            public void success(String str) {
+                Gson gson = new Gson();
+                SaleGVFirstBean firstBean = gson.fromJson(str, SaleGVFirstBean.class);
+                List<SaleGVFirstBean.ResultBean.ModulelistBean> modulelistBeen = firstBean.getResult().getModulelist();
+                gvFirstAdapter = new SaleGVFirstAdapter(getContext());
+                gvFirstAdapter.setGvfristBean(modulelistBeen);
+                sale_gv_first.setAdapter(gvFirstAdapter);
+                // 为我推荐的解析
+                gvSeconAdapter = new SaleGVSeconAdapter(getContext());
+                gvSeconAdapter.setGvsecondBean(modulelistBeen);
+                sale_gv_secon.setAdapter(gvSeconAdapter);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+        // ListView 解析
+        VolleyInstence.getInstence(getContext()).startRequest(NetUrl.SALE_GVFIRST_URL, new VolleyInterfaceResult() {
+            @Override
+            public void success(String str) {
+                Gson gson = new Gson();
+                SaleGVFirstBean gvFirstBean = gson.fromJson(str, SaleGVFirstBean.class);
+                goodslistBeen = gvFirstBean.getResult().getGoodslist().getList();
+                listViewAdapter.setLsBean(goodslistBeen);
+                sale_ls.setAdapter(listViewAdapter);
             }
 
             @Override
@@ -85,7 +141,7 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
     }
 
     /**
-     * GridView 部分
+     * GridView 部分（轮播图下面的）
      *
      * @param str
      */
@@ -103,7 +159,12 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
 
     }
 
-
+    /**
+     * 轮播图点击事件，并进行跳转
+     *
+     * @param view
+     * @param position
+     */
     @Override
     public void OnBannerClick(View view, final int position) {
         Intent intent = new Intent(getContext(), SaleBannerActivity.class);
@@ -129,5 +190,13 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
         getContext().startActivity(intent);
 
 
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getContext(), SaleLsActivity.class);
+        intent.putExtra("saleUrl",goodslistBeen.get(position).getMurl());
+        startActivity(intent);
     }
 }

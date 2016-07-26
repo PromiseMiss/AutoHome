@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/sale_ls_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+
+    <TextView
+        android:id="@+id/sale_ls_tit_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/sale_ls_iv"
+        android:layout_toRightOf="@+id/sale_ls_iv"
+         />
+
+    <TextView
+        android:id="@+id/sale_ls_smaltit_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sale_ls_tit_tv"
+        android:layout_toEndOf="@+id/sale_ls_iv"
+        android:layout_toRightOf="@+id/sale_ls_iv"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/sale_ls_num_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/sale_ls_iv"
+        android:layout_toEndOf="@+id/sale_ls_iv"
+        android:layout_toRightOf="@+id/sale_ls_iv"
+        android:textColor="#ff0000"/>
+
+    <TextView
+        android:id="@+id/sale_ls_smalnum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/sale_ls_num_tv"
+        android:layout_toEndOf="@+id/sale_ls_num_tv"
+        android:layout_toRightOf="@+id/sale_ls_num_tv"
+        android:textSize="10sp"/>
+</RelativeLayout>

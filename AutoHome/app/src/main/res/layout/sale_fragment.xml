@@ -2,21 +2,96 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="#ffff"
               android:orientation="vertical">
     <!--发现页轮播图加下面的GridView-->
-
-    <com.youth.banner.Banner
-        android:id="@+id/sale_banner"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="130dp">
-    </com.youth.banner.Banner>
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="发现"
+        android:textSize="15sp"/>
 
-    <GridView
-        android:id="@+id/sale_gv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:numColumns="4">
-    </GridView>
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <com.youth.banner.Banner
+                android:id="@+id/sale_banner"
+                android:layout_width="match_parent"
+                android:layout_height="130dp">
+            </com.youth.banner.Banner>
+
+            <GridView
+                android:id="@+id/sale_gv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:numColumns="4">
+            </GridView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#c0c0c0"/>
+
+            <TextView
+                android:id="@+id/sale_gvfirst_tv_bigTit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="猜你喜欢"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#c0c0c0"/>
+
+            <GridView
+                android:id="@+id/sale_gv_first"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:numColumns="2">
+            </GridView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#c0c0c0"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="为我推荐"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#c0c0c0"/>
+
+            <GridView
+                android:id="@+id/sale_gv_secon"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:numColumns="2">
+            </GridView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#c0c0c0"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="商品列表"/>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

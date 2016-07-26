@@ -71,4 +71,6 @@ public class BrandGVAdapter extends BaseAdapter {
             item_brand_plate = (TextView) view.findViewById(R.id.item_brand_plate);
         }
     }
+
+
 }

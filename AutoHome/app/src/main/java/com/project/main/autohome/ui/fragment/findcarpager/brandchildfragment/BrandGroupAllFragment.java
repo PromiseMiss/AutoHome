@@ -5,6 +5,7 @@ import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by youyo on 2016/7/22 0022.
+ * 抽屉的全部页 -- 品牌总页
  */
 public class BrandGroupAllFragment extends AbsBaseFragment {
 

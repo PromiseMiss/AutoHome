@@ -25,11 +25,11 @@ public class BrandExpandableAdapter extends BaseExpandableListAdapter {
     public BrandExpandableAdapter(Context context, List<BrandIconBean.ResultBean.BrandlistBean> brandlistBeen) {
         this.context = context;
         this.brandlistBeen = brandlistBeen;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getGroupCount() {
-        /**/
         return brandlistBeen.size();
     }
 
@@ -126,5 +126,9 @@ public class BrandExpandableAdapter extends BaseExpandableListAdapter {
             item_brand_tv_cars = (TextView) view.findViewById(R.id.item_brand_tv_cars);
             item_brand_carsBrand = (ImageView) view.findViewById(R.id.item_brand_carsBrand);
         }
+    }
+
+    public int getSectionForPosition(int position) {
+        return brandlistBeen.get(position).getLetter().charAt(0);
     }
 }

@@ -25,6 +25,8 @@
         <activity android:name=".ui.activity.AllActivity"/>
         <activity android:name=".ui.activity.BulletinActivity"/>
         <activity android:name=".ui.activity.SaleBannerActivity"/>
+        <activity android:name=".ui.activity.MyLogin"/>
+        <activity android:name=".ui.activity.SaleLsActivity"/>
     </application>
 
 </manifest>
