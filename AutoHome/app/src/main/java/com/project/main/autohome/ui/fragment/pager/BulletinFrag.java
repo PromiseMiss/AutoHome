@@ -11,6 +11,7 @@ import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.BulletinActivity;
 import com.project.main.autohome.ui.adapter.BulletinAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
@@ -52,6 +53,9 @@ public class BulletinFrag extends AbsBaseFragment implements VolleyInterfaceResu
                 getContext().startActivity(intent);
             }
         });
+
+        // 检查网路
+        NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }
 
     @Override

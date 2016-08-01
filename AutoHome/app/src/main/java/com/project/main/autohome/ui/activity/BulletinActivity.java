@@ -6,7 +6,7 @@ import com.project.main.autohome.R;
 
 /**
  * Created by youyo on 2016/7/21 0021.
- * 快报
+ * 快报 详情页
  */
 public class BulletinActivity extends AbsBaseActivity {
 

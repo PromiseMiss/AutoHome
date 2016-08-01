@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.UpCarouselBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class UptoDateAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mDatas != null ? mDatas.size() : 0;
+        return mDatas.size();
     }
 
     @Override
@@ -58,12 +58,15 @@ public class UptoDateAdapter extends BaseAdapter {
         }
         UpCarouselBean.ResultBean.NewslistBean carouselBean =
                 (UpCarouselBean.ResultBean.NewslistBean) getItem(position);
+
         viewHolder.art_updata_tv_tit.setText(carouselBean.getTitle());
         viewHolder.art_uptodata_time.setText(carouselBean.getTime());
         viewHolder.art_updata_lengh.setText(carouselBean.getReplycount() + "评论");
         // ListView 有多少行就执行多少次getView
         // 就创建了多少个请求队列， 请求队列里面有线程池，现在ListView 30行，30线程池
-        VolleyInstence.getInstence(context).loadImage(mDatas.get(position).getSmallpic(),
+//        VolleyInstence.getInstence(context).loadImage(mDatas.get(position).getSmallpic(),
+        //                viewHolder.art_headiv_uptodata);
+        ImageLoaderUtil.getInstance().load(mDatas.get(position).getSmallpic(),
                 viewHolder.art_headiv_uptodata);
         return convertView;
     }

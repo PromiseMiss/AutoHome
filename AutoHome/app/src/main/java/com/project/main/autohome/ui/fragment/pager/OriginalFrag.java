@@ -12,6 +12,7 @@ import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.adapter.OriginalAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 import com.youth.banner.Banner;
@@ -76,6 +77,9 @@ public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResu
         orig_ls.setAdapter(originalAdapter);
         // 为ListView添加下拉刷新监听
         orig_ls.setOnAutoHomeRefreshListener(this);
+
+        // 检查网路
+        NetWorkConnectedToast.getConnectedToast().isNet(getContext());
 
     }
 

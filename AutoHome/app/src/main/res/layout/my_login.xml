@@ -18,12 +18,12 @@
                 android:id="@+id/my_log_back_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/ahlib_bar_btn_icon_returntext_a"
-                android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp"/>
+                android:layout_marginStart="13dp"
+                android:background="@mipmap/ahlib_bar_btn_icon_returntext_a"/>
 
             <TextView
                 android:id="@+id/my_log_back"
@@ -48,6 +48,7 @@
                 android:textSize="20sp"/>
 
             <TextView
+                android:id="@+id/my_login_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

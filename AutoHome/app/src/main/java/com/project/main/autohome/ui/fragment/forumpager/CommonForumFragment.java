@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.SideBarBean;
 import com.project.main.autohome.tools.CharacterParser;
+import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.tools.PinYincomparator;
 import com.project.main.autohome.tools.SideBar;
 import com.project.main.autohome.ui.adapter.SortAdapter;
@@ -59,6 +60,7 @@ public class CommonForumFragment extends AbsBaseFragment implements View.OnClick
         characterParser = CharacterParser.getInstance();
         pinYincomparator  =new PinYincomparator();
 
+        NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }
 
 

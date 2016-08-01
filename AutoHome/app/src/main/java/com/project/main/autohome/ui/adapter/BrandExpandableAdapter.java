@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.BrandIconBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -100,7 +100,8 @@ public class BrandExpandableAdapter extends BaseExpandableListAdapter {
             bodyHolder = (ListBodyHolder) convertView.getTag();
         }
         BrandIconBean.ResultBean.BrandlistBean.ListBean listBean = (BrandIconBean.ResultBean.BrandlistBean.ListBean) getChild(groupPosition, childPosition);
-        VolleyInstence.getInstence(context).loadImage(listBean.getImgurl(), bodyHolder.item_brand_carsBrand);
+        //        VolleyInstence.getInstence(context).loadImage(listBean.getImgurl(), bodyHolder.item_brand_carsBrand);
+        ImageLoaderUtil.getInstance().load(listBean.getImgurl(), bodyHolder.item_brand_carsBrand);
         bodyHolder.item_brand_tv_cars.setText(listBean.getName());
         return convertView;
     }

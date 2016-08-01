@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.AllOfBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by youyo on 2016/7/15 0015.
  * 推荐页  所有的Adapter 复用这一个
  */
-public class AllIntoAdapter extends BaseAdapter{
+public class AllIntoAdapter extends BaseAdapter {
     private List<AllOfBean.ResultBean.NewslistBean> allBean;
     private Context context;
 
@@ -57,7 +57,8 @@ public class AllIntoAdapter extends BaseAdapter{
             allHolder = (AllHolder) convertView.getTag();
         }
         AllOfBean.ResultBean.NewslistBean bean = (AllOfBean.ResultBean.NewslistBean) getItem(position);
-        VolleyInstence.getInstence(context).loadImage(bean.getSmallpic(), allHolder.all_img);
+        //        VolleyInstence.getInstence(context).loadImage(bean.getSmallpic(), allHolder.all_img);
+        ImageLoaderUtil.getInstance().load(bean.getSmallpic(), allHolder.all_img);
         allHolder.all_title.setText(bean.getTitle());
         allHolder.all_time.setText(bean.getTime());
         allHolder.all_broadcase.setText(bean.getReplycount() + "评论");

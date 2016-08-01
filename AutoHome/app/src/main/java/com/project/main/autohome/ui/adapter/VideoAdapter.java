@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.VideoBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -57,7 +57,8 @@ public class VideoAdapter extends BaseAdapter {
             videoHolder = (VideoHolder) convertView.getTag();
         }
         VideoBean.ResultBean.ListBean videoLsBean = (VideoBean.ResultBean.ListBean) getItem(position);
-        VolleyInstence.getInstence(context).loadImage(videoLsBean.getSmallimg(), videoHolder.video_img);
+        //        VolleyInstence.getInstence(context).loadImage(videoLsBean.getSmallimg(), videoHolder.video_img);
+        ImageLoaderUtil.getInstance().load(videoLsBean.getSmallimg(), videoHolder.video_img);
         videoHolder.video_title.setText(videoLsBean.getTitle());
         videoHolder.video_time.setText(videoLsBean.getTime());
         videoHolder.video_broadcase.setText(videoLsBean.getReplycount() + "播放");

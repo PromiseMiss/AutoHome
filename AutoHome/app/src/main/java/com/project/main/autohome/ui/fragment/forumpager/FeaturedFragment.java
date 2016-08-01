@@ -15,6 +15,7 @@ import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomListView;
 import com.project.main.autohome.tools.FeaturedListener;
+import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.FeatureActivity;
 import com.project.main.autohome.ui.adapter.FeatureAdapter;
 import com.project.main.autohome.ui.adapter.FeatureLSAdapter;
@@ -104,6 +105,8 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
             }
         });
         initSeringTit();
+
+        NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }
 
     private void initSeringTit() {
@@ -171,6 +174,16 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
      */
     @Override
     public void onRefresh() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
     }
 

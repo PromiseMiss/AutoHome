@@ -12,6 +12,7 @@ import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.HotPostsActivity;
 import com.project.main.autohome.ui.adapter.HotpastsAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
@@ -50,6 +51,8 @@ public class HotPostsFragment extends AbsBaseFragment implements VolleyInterface
                 startActivity(intent);
             }
         });
+
+        NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }
 
     @Override
@@ -60,7 +63,7 @@ public class HotPostsFragment extends AbsBaseFragment implements VolleyInterface
         HotpastsAdapter hotpastsAdapter = new HotpastsAdapter(as, getContext());
         hotpastsAdapter.setHotpastaBeen(as);
         fo_hotpasts_ls.setAdapter(hotpastsAdapter);
-//        fo_hotpasts_ls.setOnAutoHomeRefreshListener(this);
+        //        fo_hotpasts_ls.setOnAutoHomeRefreshListener(this);
     }
 
     @Override

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.BrandGroupBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -100,7 +100,8 @@ public class BrandGroupNowAdapter extends BaseExpandableListAdapter {
             bodyHolder = (ListBodyHolder) convertView.getTag();
         }
         BrandGroupBean.ResultBean.FctlistBean.SerieslistBean listBean = (BrandGroupBean.ResultBean.FctlistBean.SerieslistBean) getChild(groupPosition, childPosition);
-        VolleyInstence.getInstence(context).loadImage(listBean.getImgurl(), bodyHolder.filter_item_iv);
+        //        VolleyInstence.getInstence(context).loadImage(listBean.getImgurl(), bodyHolder.filter_item_iv);
+        ImageLoaderUtil.getInstance().load(listBean.getImgurl(), bodyHolder.filter_item_iv);
         bodyHolder.filter_item_tv.setText(listBean.getName());
         bodyHolder.filter_item_num_tv.setText(listBean.getPrice());
         return convertView;

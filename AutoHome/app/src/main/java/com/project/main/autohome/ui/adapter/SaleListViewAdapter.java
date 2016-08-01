@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.SaleGVFirstBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -55,7 +55,8 @@ public class SaleListViewAdapter extends BaseAdapter {
         } else {
             lsHolder = (LsHolder) convertView.getTag();
         }
-        VolleyInstence.getInstence(context).loadImage(lsBean.get(position).getLogo(), lsHolder.sale_ls_iv);
+//        VolleyInstence.getInstence(context).loadImage(lsBean.get(position).getLogo(), lsHolder.sale_ls_iv);
+        ImageLoaderUtil.getInstance().load(lsBean.get(position).getLogo(), lsHolder.sale_ls_iv);
         lsHolder.sale_ls_tit_tv.setText(lsBean.get(position).getTitle());
         lsHolder.sale_ls_smaltit_tv.setText(lsBean.get(position).getAdinfo());
         lsHolder.sale_ls_num_tv.setText(lsBean.get(position).getPrice());

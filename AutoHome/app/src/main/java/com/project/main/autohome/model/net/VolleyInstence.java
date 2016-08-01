@@ -28,7 +28,7 @@ public class VolleyInstence {
         imageLoader = new ImageLoader(queue, new DoubleCache());
     }
 
-    // 对外提供对象的方法
+    // 对外提供对象的方法(双重校验锁)
     public static VolleyInstence getInstence(Context context) {
         if (instence == null) {
             synchronized (VolleyInstence.class) {

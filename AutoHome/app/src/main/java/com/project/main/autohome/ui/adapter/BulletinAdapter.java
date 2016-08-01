@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.BulletinBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -59,7 +59,8 @@ public class BulletinAdapter extends BaseAdapter {
         BulletinBean.ResultBean.ListBean bulBean = (BulletinBean.ResultBean.ListBean) getItem(position);
         holder
                 .bul_title.setText(bulBean.getTitle());
-        VolleyInstence.getInstence(context).loadImage(bulBean.getBgimage(), holder.bul_img);
+        //        VolleyInstence.getInstence(context).loadImage(bulBean.getBgimage(), holder.bul_img);
+        ImageLoaderUtil.getInstance().load(bulBean.getBgimage(), holder.bul_img);
         holder.bul_num_browse.setText(bulBean.getAdvancetime());
         holder.bul_time.setText(bulBean.getCreatetime());
 

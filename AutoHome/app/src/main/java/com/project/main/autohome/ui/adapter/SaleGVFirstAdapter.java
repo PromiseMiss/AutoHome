@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.SaleGVFirstBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -57,7 +57,8 @@ public class SaleGVFirstAdapter extends BaseAdapter {
             gvfristHolder = (GvfristHolder) convertView.getTag();
         }
 
-        VolleyInstence.getInstence(context).loadImage(gvfristBean.get(0).getList().get(position).getLogo(), gvfristHolder.sale_gvfirst_iv);
+        //        VolleyInstence.getInstence(context).loadImage(gvfristBean.get(0).getList().get(position).getLogo(), gvfristHolder.sale_gvfirst_iv);
+        ImageLoaderUtil.getInstance().load(gvfristBean.get(0).getList().get(position).getLogo(), gvfristHolder.sale_gvfirst_iv);
         gvfristHolder.sale_gvfirst_tv_tit.setText(gvfristBean.get(0).getList().get(position).getTitle());
         gvfristHolder.sale_gvfirst_tv_smitit.setText(gvfristBean.get(0).getList().get(position).getShorttitle());
         gvfristHolder.sale_gvfirst_tv_num.setText(gvfristBean.get(0).getList().get(position).getPrice());

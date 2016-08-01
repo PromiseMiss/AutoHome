@@ -12,6 +12,7 @@ import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.AllActivity;
 import com.project.main.autohome.ui.adapter.AllIntoAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
@@ -63,6 +64,9 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
                 getContext().startActivity(intent);
             }
         });
+
+        // 检查网路
+        NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }
 
     public static AllFragment getInstance(String url) {

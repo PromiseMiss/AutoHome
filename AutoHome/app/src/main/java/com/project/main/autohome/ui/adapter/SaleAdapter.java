@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.SalerecycleBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -57,7 +57,8 @@ public class SaleAdapter extends BaseAdapter {
             saleHolder = (SaleHolder) convertView.getTag();
         }
         SalerecycleBean.ResultBean.FunctionlistBean bean = (SalerecycleBean.ResultBean.FunctionlistBean) getItem(position);
-        VolleyInstence.getInstence(context).loadImage(bean.getIconurl(), saleHolder.sale_item_iv);
+        //        VolleyInstence.getInstence(context).loadImage(bean.getIconurl(), saleHolder.sale_item_iv);
+        ImageLoaderUtil.getInstance().load(bean.getIconurl(), saleHolder.sale_item_iv);
         saleHolder.sale_item_tv.setText(bean.getTitle());
         return convertView;
     }

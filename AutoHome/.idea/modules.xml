@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AutoHome.iml" filepath="$PROJECT_DIR$/AutoHome.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autohomedb/autohomedb.iml" filepath="$PROJECT_DIR$/autohomedb/autohomedb.iml" />
     </modules>
   </component>
 </project>

@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.FilterBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
 /**
  * Created by youyo on 2016/7/20 0020.
- * 筛选页
+ * 筛选页 适配器
  */
 public class FilterAdapter extends BaseAdapter {
     private List<FilterBean.ResultBean.SeriesBean> pricBean;
@@ -57,7 +57,8 @@ public class FilterAdapter extends BaseAdapter {
             viewHolder = (FilterViewHolder) convertView.getTag();
         }
         FilterBean.ResultBean.SeriesBean seriesBean = (FilterBean.ResultBean.SeriesBean) getItem(position);
-        VolleyInstence.getInstence(context).loadImage(seriesBean.getThumburl(), viewHolder.filter_item_iv);
+//        VolleyInstence.getInstence(context).loadImage(seriesBean.getThumburl(), viewHolder.filter_item_iv);
+        ImageLoaderUtil.getInstance().load(seriesBean.getThumburl(), viewHolder.filter_item_iv);
         viewHolder.filter_item_tv.setText(seriesBean.getSeriesname());
         viewHolder.filter_item_num_tv.setText(seriesBean.getPricerange());
         return convertView;

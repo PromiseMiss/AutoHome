@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.FeatureAllBean;
-import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class FeatureLSAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return position-1;
     }
 
     @Override
@@ -59,7 +59,8 @@ public class FeatureLSAdapter extends BaseAdapter {
         }
         FeatureAllBean.ResultBean.ListBean listBean = (FeatureAllBean.ResultBean.ListBean) getItem(position);
 
-        VolleyInstence.getInstence(context).loadImage(listBean.getSmallpic(), lsHolder.fo_fea_item_iv);
+        //        VolleyInstence.getInstence(context).loadImage(listBean.getSmallpic(), lsHolder.fo_fea_item_iv);
+        ImageLoaderUtil.getInstance().load(listBean.getSmallpic(), lsHolder.fo_fea_item_iv);
         lsHolder.fo_fea_item_title.setText(listBean.getTitle());
         lsHolder.fo_fea_item_smitit.setText(listBean.getBbsname());
         lsHolder.fo_fea_item_num.setText(listBean.getReplycounts() + "回");
