@@ -13,7 +13,7 @@ import com.project.main.autohome.model.db.DBInstance;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
-import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.CustomRefreshListView;
 import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.UptoDataActivity;
 import com.project.main.autohome.ui.adapter.UptoDateAdapter;
@@ -26,8 +26,8 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 最新页
  */
-public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
-    private CustomListView uptoDate_ls;
+public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
+    private CustomRefreshListView uptoDate_ls;
     private UptoDateAdapter uptoDateAdapter;
     private Banner banner;
     private String[] imgUrls;
@@ -73,7 +73,7 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
         banner = (Banner) view.findViewById(R.id.uptodata_banner);
         uptoDate_ls.addHeaderView(view);
         // ListView刷新监听
-        uptoDate_ls.setOnAutoHomeRefreshListener(this);
+        uptoDate_ls.setOnCustomRefreshListener(this);
         uptoDate_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -132,42 +132,34 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
 
     }
 
+
     /**
      * 下拉刷新
      */
     @Override
     public void onRefresh() {
-        new Thread(new Runnable() {
+
+        VolleyInstence.getInstence(getContext()).startRequest(customUrl, new VolleyInterfaceResult() {
             @Override
-            public void run() {
-                try {
-                    Thread.sleep(3000);
-                    VolleyInstence.getInstence(getContext()).startRequest(customUrl, new VolleyInterfaceResult() {
-                        @Override
-                        public void success(String str) {
-                            Gson gson = new Gson();
-                            UpCarouselBean carouselBean = gson.fromJson(str, UpCarouselBean.class);
-                            focusimgBeen = carouselBean.getResult().getFocusimg();
-                            imgUrls = new String[focusimgBeen.size()];
-                            for (int i = 0; i < focusimgBeen.size(); i++) {
-                                imgUrls[i] = carouselBean.getResult().getFocusimg().get(i).getImgurl();
-                            }
-                            initshowBanner();
-                        }
-
-                        @Override
-                        public void failure() {
-
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            public void success(String str) {
+                Gson gson = new Gson();
+                UpCarouselBean carouselBean = gson.fromJson(str, UpCarouselBean.class);
+                focusimgBeen = carouselBean.getResult().getFocusimg();
+                imgUrls = new String[focusimgBeen.size()];
+                for (int i = 0; i < focusimgBeen.size(); i++) {
+                    imgUrls[i] = carouselBean.getResult().getFocusimg().get(i).getImgurl();
                 }
+                initshowBanner();
             }
-        }).start();
 
+            @Override
+            public void failure() {
+
+            }
+        });
         uptoDate_ls.setOnRefreshComplete();
         uptoDateAdapter.notifyDataSetChanged();
-        //        uptoDate_ls.setSelection(0);
     }
+
+
 }

@@ -10,7 +10,7 @@ import com.project.main.autohome.model.bean.VideoBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
-import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.CustomRefreshListView;
 import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.VideoActivity;
 import com.project.main.autohome.ui.adapter.VideoAdapter;
@@ -22,8 +22,8 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 视频页
  */
-public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
-    private CustomListView video_ls;
+public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
+    private CustomRefreshListView video_ls;
     private VideoAdapter videoAdapter;
     private String viseoUrl = NetUrl.VIDEO_URL;
     private List<VideoBean.ResultBean.ListBean> listBeen;
@@ -43,7 +43,7 @@ public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult,
         videoAdapter = new VideoAdapter(getContext());
         VolleyInstence.getInstence(getContext()).startRequest(viseoUrl, this);
         // 下拉刷新监听
-        video_ls.setOnAutoHomeRefreshListener(this);
+        video_ls.setOnCustomRefreshListener(this);
         // 行布局监听，进行二级界面跳转
         video_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

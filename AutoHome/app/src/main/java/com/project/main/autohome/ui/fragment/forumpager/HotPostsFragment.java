@@ -11,7 +11,7 @@ import com.project.main.autohome.model.bean.HotDataBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
-import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.CustomRefreshListView;
 import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.HotPostsActivity;
 import com.project.main.autohome.ui.adapter.HotpastsAdapter;
@@ -23,8 +23,8 @@ import java.util.List;
  * Created by youyo on 2016/7/13 0013.
  * 热帖页  加载了自定义ListView
  */
-public class HotPostsFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
-    private CustomListView fo_hotpasts_ls;
+public class HotPostsFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
+    private CustomRefreshListView fo_hotpasts_ls;
     private String url = NetUrl.HOT_POSTS_URL;
     private List<HotDataBean.ResultBean.ListBean> as;
 
@@ -63,7 +63,7 @@ public class HotPostsFragment extends AbsBaseFragment implements VolleyInterface
         HotpastsAdapter hotpastsAdapter = new HotpastsAdapter(as, getContext());
         hotpastsAdapter.setHotpastaBeen(as);
         fo_hotpasts_ls.setAdapter(hotpastsAdapter);
-        //        fo_hotpasts_ls.setOnAutoHomeRefreshListener(this);
+        fo_hotpasts_ls.setOnCustomRefreshListener(this);
     }
 
     @Override
@@ -71,6 +71,9 @@ public class HotPostsFragment extends AbsBaseFragment implements VolleyInterface
 
     }
 
+    /**
+     * 下拉刷新
+     */
     @Override
     public void onRefresh() {
 

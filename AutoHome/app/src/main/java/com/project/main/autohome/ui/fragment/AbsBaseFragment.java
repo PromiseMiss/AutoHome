@@ -53,7 +53,7 @@ public abstract class AbsBaseFragment extends Fragment {
 
     protected abstract void initData();
 
-    protected void go2(Context from, Class<? extends AbsBaseActivity> to) {
+    protected void goTo(Context from, Class<? extends AbsBaseActivity> to) {
         Intent intent = new Intent(context, to);
         context.startActivity(intent);
     }

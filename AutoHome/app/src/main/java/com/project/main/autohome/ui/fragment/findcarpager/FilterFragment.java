@@ -12,7 +12,7 @@ import com.project.main.autohome.model.bean.FilterBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
-import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.CustomRefreshListView;
 import com.project.main.autohome.ui.adapter.FilterAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
 
@@ -23,7 +23,7 @@ import java.util.List;
  * 筛选页  ----- 找车总页
  */
 public class FilterFragment extends AbsBaseFragment implements View.OnClickListener {
-    private CustomListView listView;
+    private CustomRefreshListView listView;
     private FilterAdapter adapter;
     private TextView price_tv;
     private PopupWindow popupWindow;

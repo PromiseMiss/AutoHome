@@ -4,10 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.project.main.autohome.tools.CustomListView
+    <com.project.main.autohome.tools.CustomRefreshListView
         android:id="@+id/video_ls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </com.project.main.autohome.tools.CustomListView>
+    </com.project.main.autohome.tools.CustomRefreshListView>
 </LinearLayout>

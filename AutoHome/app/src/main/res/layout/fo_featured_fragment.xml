@@ -1,41 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fo_feature_drawLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
     <!--精选推荐页横滑的RecyclerView-->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            android:id="@+id/fo_featured_recView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/fo_feature_iv"
-            android:scrollbars="none">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fo_featured_recView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/fo_feature_iv"
+                android:scrollbars="none">
 
-        </android.support.v7.widget.RecyclerView>
+            </android.support.v7.widget.RecyclerView>
 
-        <ImageView
-            android:id="@+id/fo_feature_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="right"
-            android:background="@mipmap/zhuti"/>
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/fo_feature_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="right"
+                android:background="@mipmap/zhuti"/>
+        </RelativeLayout>
 
-    <com.project.main.autohome.tools.CustomListView
-        android:id="@+id/fo_featured_ls"
+        <com.project.main.autohome.tools.CustomRefreshListView
+            android:id="@+id/fo_featured_ls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.project.main.autohome.tools.CustomRefreshListView>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="#fff"
+        android:orientation="vertical"
+        >
 
-    </com.project.main.autohome.tools.CustomListView>
-</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="栏目分类"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/fo_feat_draw_ls"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </ListView>
+
+
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>

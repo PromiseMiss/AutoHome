@@ -1,13 +1,30 @@
 package com.project.main.autohome.ui.fragment.findcarpager.brandchildfragment;
 
+import android.os.Bundle;
+import android.widget.ExpandableListView;
+
+import com.google.gson.Gson;
 import com.project.main.autohome.R;
+import com.project.main.autohome.model.bean.BrandGroupAllBean;
+import com.project.main.autohome.model.bean.BrandGroupBean;
+import com.project.main.autohome.model.net.VolleyInstence;
+import com.project.main.autohome.model.net.VolleyInterfaceResult;
+import com.project.main.autohome.ui.adapter.BrandGroupNowAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
+
+import java.util.List;
 
 /**
  * Created by youyo on 2016/7/22 0022.
  * 抽屉的全部页 -- 品牌总页
  */
 public class BrandGroupAllFragment extends AbsBaseFragment {
+    private ExpandableListView brand_child_radio_all_ex;
+    private BrandGroupNowAdapter nowAdapter;
+    private List<BrandGroupBean.ResultBean.FctlistBean> brandNowBeen;
+    private List<BrandGroupAllBean.ResultBean.FctlistBean.SerieslistBean> allBean;
+    private String url;
+
 
     @Override
     protected int setLayout() {
@@ -16,11 +33,36 @@ public class BrandGroupAllFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
+        brand_child_radio_all_ex = byView(R.id.brand_child_radio_all_ex);
 
     }
 
     @Override
     protected void initData() {
+        nowAdapter = new BrandGroupNowAdapter(getContext());
+        brand_child_radio_all_ex.setAdapter(nowAdapter);
+
+        // 通过Bundle取值
+        Bundle bundle = getArguments();
+        url = bundle.getString("All");
+        VolleyInstence.getInstence(getContext()).startRequest(url, new VolleyInterfaceResult() {
+            @Override
+            public void success(String str) {
+                Gson gson = new Gson();
+                BrandGroupBean groupBean = gson.fromJson(str, BrandGroupBean.class);
+                brandNowBeen = groupBean.getResult().getFctlist();
+                nowAdapter.setBrandNowBeen(brandNowBeen);
+                brand_child_radio_all_ex.setAdapter(nowAdapter);
+                for (int i = 0; i < nowAdapter.getGroupCount(); i++) {
+                    brand_child_radio_all_ex.expandGroup(i);
+                }
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
 
     }
 }

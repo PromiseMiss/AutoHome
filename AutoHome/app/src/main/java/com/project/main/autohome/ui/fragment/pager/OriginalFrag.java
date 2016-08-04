@@ -11,7 +11,7 @@ import com.project.main.autohome.model.bean.OriginalBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
-import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.CustomRefreshListView;
 import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.adapter.OriginalAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
@@ -23,12 +23,12 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 优创页
  */
-public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
+public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
     private TextView head_all_pop, orig_item_all_pop, orig_item_my_pop;
     private PopupWindow orig_pop;
     private String[] imgurl;
     private Banner banner;
-    private CustomListView orig_ls;
+    private CustomRefreshListView orig_ls;
     private OriginalAdapter originalAdapter;
 
     private String imgUrl = NetUrl.UNIHUB_URL;
@@ -76,7 +76,7 @@ public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResu
         banner = (Banner) view.findViewById(R.id.uptodata_banner);
         orig_ls.setAdapter(originalAdapter);
         // 为ListView添加下拉刷新监听
-        orig_ls.setOnAutoHomeRefreshListener(this);
+        orig_ls.setOnCustomRefreshListener(this);
 
         // 检查网路
         NetWorkConnectedToast.getConnectedToast().isNet(getContext());

@@ -57,13 +57,11 @@ public class BulletinAdapter extends BaseAdapter {
             holder = (BulletinHolder) convertView.getTag();
         }
         BulletinBean.ResultBean.ListBean bulBean = (BulletinBean.ResultBean.ListBean) getItem(position);
-        holder
-                .bul_title.setText(bulBean.getTitle());
+        holder.bul_title.setText(bulBean.getTitle());
         //        VolleyInstence.getInstence(context).loadImage(bulBean.getBgimage(), holder.bul_img);
         ImageLoaderUtil.getInstance().load(bulBean.getBgimage(), holder.bul_img);
-        holder.bul_num_browse.setText(bulBean.getAdvancetime());
+        holder.bul_num_browse.setText(bulBean.getReviewcount() + "人浏览");
         holder.bul_time.setText(bulBean.getCreatetime());
-
         return convertView;
     }
 

@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.UpCarouselBean;
+import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.ui.activity.MyChildBySetUpActivity;
 import com.project.main.autohome.ui.activity.MyChildCollection;
 import com.project.main.autohome.ui.activity.MyLogin;
@@ -40,6 +42,9 @@ public class MyChildFragment extends AbsBaseFragment implements View.OnClickList
     private TextView my_child_login_name;
     private LinearLayout my_child_user_jiemian, my_child_fragment_outer;
     private MyChildLogBroad childLogBroad;
+    private MyChildBraod myChildBraod;
+
+    private SharedPreferences mychildSp;
 
     private PlatformActionListener paListener = new PlatformActionListener() {
         // 回调成功
@@ -104,25 +109,39 @@ public class MyChildFragment extends AbsBaseFragment implements View.OnClickList
         IntentFilter intentFilter = new IntentFilter(getContext().getPackageName() + ".LOG");
         getContext().registerReceiver(childLogBroad, intentFilter);
 
+        myChildBraod = new MyChildBraod();
+        IntentFilter intentFilter1 = new IntentFilter("com.project.main.autohome.ui.activity");
+        getContext().registerReceiver(myChildBraod, intentFilter1);
+
+
+        mychildSp = getContext().getSharedPreferences("isLog", Context.MODE_PRIVATE);
+
+        boolean usflag = mychildSp.getBoolean("isClicks", false);
+        if (usflag) {
+            String usImage = mychildSp.getString("images", "");
+            String usName = mychildSp.getString("userNames", "");
+
+            VolleyInstence.getInstence(getContext()).loadImage(usImage, my_child_login_iv);
+            my_child_login_name.setText(usName);
+            my_child_user_jiemian.setVisibility(View.VISIBLE);
+            my_child_fragment_outer.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.my_login:// 登录
-                Intent intent = new Intent(getContext(), MyLogin.class);
-                startActivity(intent);
+                goTo(getContext(), MyLogin.class);
 
 
                 break;
             case R.id.my_user: // 账号登录
-                Intent intentLog = new Intent(getContext(), MyLogin.class);
-                startActivity(intentLog);
+                goTo(getContext(), MyLogin.class);
                 getActivity().overridePendingTransition(R.anim.input, R.anim.out);
                 break;
             case R.id.my_shoucang: /// 我的收藏
-                Intent intent1 = new Intent(getContext(), MyChildCollection.class);
-                startActivity(intent1);
+                goTo(getContext(), MyChildCollection.class);
                 break;
             case R.id.my_qq:  //  QQ登陆
                 Platform qq = ShareSDK.getPlatform(QQ.NAME);
@@ -130,8 +149,7 @@ public class MyChildFragment extends AbsBaseFragment implements View.OnClickList
                 qq.authorize();
                 break;
             case R.id.my_shezhi: // 设置页
-                Intent intentSetUp = new Intent(getContext(), MyChildBySetUpActivity.class);
-                startActivity(intentSetUp);
+                goTo(getContext(), MyChildBySetUpActivity.class);
                 break;
             case R.id.my_duihuan:
 
@@ -152,17 +170,32 @@ public class MyChildFragment extends AbsBaseFragment implements View.OnClickList
             String userIcon = intent.getStringExtra("image");
             String userName = intent.getStringExtra("userName");
 
+
             boolean flag = intent.getBooleanExtra("isClick", false);
-            if (my_child_login_iv != null) {
+            if (userIcon != null) {
                 ImageLoaderUtil.getInstance().load(userIcon, my_child_login_iv);
             } else {
-                my_child_login_iv.setImageResource(R.mipmap.ic_launcher);
+                my_child_login_iv.setImageResource(R.mipmap.ahlib_logo_80_80);
             }
             my_child_login_name.setText(userName);
             if (flag) {
                 my_child_user_jiemian.setVisibility(View.VISIBLE);
                 my_child_fragment_outer.setVisibility(View.GONE);
             }
+            SharedPreferences.Editor editor = context.getSharedPreferences("isLog", Context.MODE_PRIVATE).edit();
+            editor.putString("images", userIcon);
+            editor.putString("userNames", userName);
+            editor.putBoolean("isClicks", true);
+            editor.commit();
+        }
+    }
+
+    class MyChildBraod extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            my_child_user_jiemian.setVisibility(View.GONE);
+            my_child_fragment_outer.setVisibility(View.VISIBLE);
         }
     }
 

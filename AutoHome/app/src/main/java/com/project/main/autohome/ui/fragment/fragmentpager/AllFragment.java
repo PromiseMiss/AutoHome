@@ -11,7 +11,7 @@ import com.project.main.autohome.model.bean.AllOfBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
-import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.CustomRefreshListView;
 import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.AllActivity;
 import com.project.main.autohome.ui.adapter.AllIntoAdapter;
@@ -23,11 +23,12 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 推荐页 所有页   （引用了自定义ListView）
  */
-public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
+public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
     private String url;
-    private CustomListView all_ls;
+    private CustomRefreshListView all_ls;
     private AllIntoAdapter allAdapter;
     private List<AllOfBean.ResultBean.NewslistBean> allbean;
+
 
     public AllFragment() {
 
@@ -47,14 +48,13 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
 
     @Override
     protected void initData() {
+
         Bundle bundle = getArguments();
         this.url = bundle.getString("url_key");
-
         allAdapter = new AllIntoAdapter(getContext());
         VolleyInstence.getInstence(getContext()).startRequest(url, this);
         // 给ListView添加刷新监听
-        all_ls.setOnAutoHomeRefreshListener(this);
-
+        all_ls.setOnCustomRefreshListener(this);
         all_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -64,7 +64,6 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
                 getContext().startActivity(intent);
             }
         });
-
         // 检查网路
         NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }

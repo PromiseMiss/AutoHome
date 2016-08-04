@@ -33,10 +33,6 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatuHol
 
     public void setList(List<String> list) {
         this.list = list;
-        //        isClick = new ArrayList<>();
-        //        for (int i = 0; i < list.size(); i++) {
-        //            isClick.add(false);
-        //        }
         notifyDataSetChanged();
     }
 
@@ -51,23 +47,12 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatuHol
     @Override
     public void onBindViewHolder(final FeatuHolder holder, int position) {
         holder.fo_fea_item_recyc.setText(list.get(position));
-
-        //        if (isClick.get(getItemCount())) {
-        //            holder.fo_fea_item_recyc.setText(Color.parseColor("#436EEE"));
-        //        } else {
-        //            holder.fo_fea_item_recyc.setText(Color.parseColor("#1C86EE"));
-        //        }
         if (featuredListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int pos = holder.getAdapterPosition();
                     featuredListener.FeatListent(pos);
-
-                    //                for (int i = 0; i < isClick.size(); i++) {
-                    //                    isClick.set(i, false);
-                    //                }
-                    //                isClick.set(pos, true);
                     notifyDataSetChanged();
                 }
             });
@@ -78,7 +63,6 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatuHol
 
     @Override
     public int getItemCount() {
-        //        return list.size() > 0 && list != null ? list.size() : 0;
         return list != null ? list.size() : 0;
     }
 

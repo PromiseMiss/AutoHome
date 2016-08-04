@@ -1,9 +1,10 @@
 package com.project.main.autohome.ui.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.project.main.autohome.R;
 
@@ -14,6 +15,7 @@ import com.project.main.autohome.R;
 public class MyLoginByRegister extends AbsBaseActivity implements View.OnClickListener {
     private LinearLayout register_back;
     private Button register_next;
+    private EditText num_edit;// 手机号输入框
 
     @Override
     protected int setlayout() {
@@ -24,13 +26,14 @@ public class MyLoginByRegister extends AbsBaseActivity implements View.OnClickLi
     protected void initViews() {
         register_back = byView(R.id.register_back);
         register_next = byView(R.id.register_next);
+        // 手机号输入框
+        num_edit = byView(R.id.my_register_num);
     }
 
     @Override
     protected void initDatas() {
         register_back.setOnClickListener(this);
         register_next.setOnClickListener(this);
-
     }
 
     @Override
@@ -40,9 +43,10 @@ public class MyLoginByRegister extends AbsBaseActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.register_next:
-                Toast.makeText(this, "下一步", Toast.LENGTH_SHORT).show();
-                break;
-            default:
+                String user = num_edit.getText().toString();
+                Intent intent = new Intent(this, MyLogin.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
                 break;
         }
     }

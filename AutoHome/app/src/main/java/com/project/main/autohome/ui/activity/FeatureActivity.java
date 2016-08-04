@@ -1,8 +1,6 @@
 package com.project.main.autohome.ui.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -11,10 +9,8 @@ import android.widget.LinearLayout;
 
 import com.project.main.autohome.R;
 
-import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
-import cn.sharesdk.onekeyshare.ShareContentCustomizeCallback;
 
 /**
  * Created by youyo on 2016/7/21 0021.
@@ -88,27 +84,6 @@ public class FeatureActivity extends AbsBaseActivity implements View.OnClickList
         oks.setComment("我是测试评论文本");
         oks.setSiteUrl(url);
         oks.setImageUrl("http://f1.sharesdk.cn/imgs/2014/02/26/owWpLZo_638x960.jpg");
-        oks.setShareContentCustomizeCallback(new ShareContentCustomizeCallback() {
-            @Override
-            public void onShare(Platform platform, Platform.ShareParams paramsToShare) {
-                if ("QZone".equals(platform.getName())) {
-                    paramsToShare.setTitle(null);
-                    paramsToShare.setTitleUrl(null);
-                }
-                if ("SinaWeibo".equals(platform.getName())) {
-                    paramsToShare.setUrl(null);
-                    paramsToShare.setText("分享文本 http://www.baidu.com");
-                }
-                if ("Wechat".equals(platform.getName())) {
-                    Bitmap imageData = BitmapFactory.decodeResource(getResources(), R.drawable.ssdk_logo);
-                    paramsToShare.setImageData(imageData);
-                }
-                if ("WechatMoments".equals(platform.getName())) {
-                    Bitmap imageData = BitmapFactory.decodeResource(getResources(), R.drawable.ssdk_logo);
-                    paramsToShare.setImageData(imageData);
-                }
-            }
-        });
         oks.show(this);
     }
 }

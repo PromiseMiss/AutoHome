@@ -22,8 +22,11 @@ public class BrandGroupNowAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<BrandGroupBean.ResultBean.FctlistBean> brandNowBeen;
 
-    public BrandGroupNowAdapter(Context context, List<BrandGroupBean.ResultBean.FctlistBean> brandNowBeen) {
+    public BrandGroupNowAdapter(Context context) {
         this.context = context;
+    }
+
+    public void setBrandNowBeen(List<BrandGroupBean.ResultBean.FctlistBean> brandNowBeen) {
         this.brandNowBeen = brandNowBeen;
         notifyDataSetChanged();
     }

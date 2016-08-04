@@ -24,8 +24,6 @@ public class MyFragment extends AbsBaseFragment implements View.OnClickListener 
     private List<String> myTitle;
     private List<Fragment> myFragment;
     private Button my_night;
-    private boolean appConfig;
-    boolean flag;
 
     @Override
     protected int setLayout() {

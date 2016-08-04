@@ -17,6 +17,10 @@ public final class NetUrl {
     public static final String VIDEO_URL = "http://app.api.autohome.com.cn/autov4.8.8/news/videolist-pm1-vt0-s30-lastid0.json";
     // 快报
     public static final String BULLETIN_URL = "http://app.api.autohome.com.cn/autov4.8.8/news/fastnewslist-pm1-b0-l0-s20-lastid0.json";
+    // 快报刷新
+    public static final String BULLETIN_CUSTOM_TOP = "http://app.api.autohome.com.cn/autov5.0.0/news/fastnewslistpm2-b0-l0-s20-lastid";
+    public static final String BULLETIN_CUSTOM_BOTTOM = ".json";
+
     // 新闻
     public static final String NEWS_URL = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt1-p1-s30-l0.json";
     // 评测

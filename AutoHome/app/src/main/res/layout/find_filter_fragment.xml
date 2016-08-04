@@ -18,10 +18,10 @@
         android:layout_height="wrap_content"
         android:text="热门车系"/>
 
-    <com.project.main.autohome.tools.CustomListView
+    <com.project.main.autohome.tools.CustomRefreshListView
         android:id="@+id/price_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </com.project.main.autohome.tools.CustomListView>
+    </com.project.main.autohome.tools.CustomRefreshListView>
 </LinearLayout>

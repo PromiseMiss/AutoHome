@@ -4,6 +4,53 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/hotposts_LL_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/hotposts_iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ahlib_bar_btn_icon_previous_a"/>
+
+            <TextView
+                android:id="@+id/hotposts_tv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="返回"
+                android:textSize="17sp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/hotposts_iv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="14dp"
+            android:layout_marginRight="14dp"
+            android:background="@mipmap/ahlib_nav_share"/>
+
+        <ImageView
+            android:id="@+id/hotposts_iv_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/hotposts_iv_share"
+            android:layout_toStartOf="@+id/hotposts_iv_share"
+            android:background="@mipmap/collect_kong"/>
+    </RelativeLayout>
+
     <WebView
         android:id="@+id/hotposts_webView"
         android:layout_width="match_parent"

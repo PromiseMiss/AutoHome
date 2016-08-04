@@ -18,7 +18,7 @@ import cn.sharesdk.tencent.qq.QQ;
 
 /**
  * Created by youyo on 2016/7/23 0023.
- * 我  页  登录
+ * 我页  登录
  */
 public class MyLogin extends AbsBaseActivity implements View.OnClickListener {
     private SharedPreferences sharedPreferences;
@@ -27,10 +27,11 @@ public class MyLogin extends AbsBaseActivity implements View.OnClickListener {
 
     private TextView my_log_back, my_login_register;
     private ImageView my_log_sina, my_log_qq;
-    private EditText my_log_user, my_log_pass;
+    private EditText my_log_user_edit, my_log_pass;
     private Button my_log_btnlog;
     private String userName;
     private String password;
+    private SharedPreferences sp;
 
 
     @Override
@@ -43,7 +44,7 @@ public class MyLogin extends AbsBaseActivity implements View.OnClickListener {
     protected void initViews() {
         my_log_back = byView(R.id.my_log_back);
         my_login_register = byView(R.id.my_login_register);
-        my_log_user = byView(R.id.my_log_user);
+        my_log_user_edit = byView(R.id.my_log_user);
         my_log_pass = byView(R.id.my_log_pass);
         my_log_btnlog = byView(R.id.my_log_btnlog);
 
@@ -59,11 +60,12 @@ public class MyLogin extends AbsBaseActivity implements View.OnClickListener {
         my_log_sina.setOnClickListener(this);
         my_log_qq.setOnClickListener(this);
 
-        userName = my_log_user.getText().toString();
+        userName = my_log_user_edit.getText().toString();
         password = my_log_pass.getText().toString();
 
 
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        isLogInfo();
     }
 
     @Override
@@ -77,7 +79,10 @@ public class MyLogin extends AbsBaseActivity implements View.OnClickListener {
                 Intent intent = new Intent(this, MyLoginByRegister.class);
                 startActivity(intent);
                 break;
-            case R.id.my_log_btnlog:
+            case R.id.my_log_btnlog:// 登录按钮
+
+
+
 
                 break;
             case R.id.my_log_qq: // QQ登陆
@@ -95,8 +100,9 @@ public class MyLogin extends AbsBaseActivity implements View.OnClickListener {
         }
     }
 
-    private void userLogin() {
-
-
+    public void isLogInfo() {
+        Intent intent = getIntent();
+        String userNum = intent.getStringExtra("user");
+        my_log_user_edit.setText(userNum);
     }
 }

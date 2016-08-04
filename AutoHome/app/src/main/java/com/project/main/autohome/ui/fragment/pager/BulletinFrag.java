@@ -10,7 +10,7 @@ import com.project.main.autohome.model.bean.BulletinBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
-import com.project.main.autohome.tools.CustomListView;
+import com.project.main.autohome.tools.CustomRefreshListView;
 import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.BulletinActivity;
 import com.project.main.autohome.ui.adapter.BulletinAdapter;
@@ -22,11 +22,13 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 快报页
  */
-public class BulletinFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomListView.OnAutoHomeRefreshListener {
-    private CustomListView bul_ls;
+public class BulletinFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
+    private CustomRefreshListView bul_ls;
     private BulletinAdapter bulAdapter;
     private String url = NetUrl.BULLETIN_URL;
     private List<BulletinBean.ResultBean.ListBean> listBeen;
+    private String bulletinCus;
+    private BulletinBean bullBean;
 
     @Override
     protected int setLayout() {
@@ -43,12 +45,13 @@ public class BulletinFrag extends AbsBaseFragment implements VolleyInterfaceResu
     protected void initData() {
         bulAdapter = new BulletinAdapter(getContext());
         VolleyInstence.getInstence(getContext()).startRequest(url, this);
-        bul_ls.setOnAutoHomeRefreshListener(this);
+        bul_ls.setOnCustomRefreshListener(this);
         bul_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), BulletinActivity.class);
                 String bullUrl = NetUrl.BULLETIN_TOP_URL + listBeen.get(position).getId() + NetUrl.BULLTIN_BOTTOM_URL;
+                bulletinCus = NetUrl.BULLETIN_CUSTOM_TOP + listBeen.get(position) + NetUrl.BULLETIN_CUSTOM_BOTTOM;
                 intent.putExtra("bullUrl", bullUrl);
                 getContext().startActivity(intent);
             }
@@ -61,7 +64,7 @@ public class BulletinFrag extends AbsBaseFragment implements VolleyInterfaceResu
     @Override
     public void success(String str) {
         Gson gson = new Gson();
-        BulletinBean bullBean = gson.fromJson(str, BulletinBean.class);
+        bullBean = gson.fromJson(str, BulletinBean.class);
         listBeen = bullBean.getResult().getList();
         bulAdapter.setBulletinBeen(listBeen);
         bul_ls.setAdapter(bulAdapter);
@@ -77,6 +80,23 @@ public class BulletinFrag extends AbsBaseFragment implements VolleyInterfaceResu
      */
     @Override
     public void onRefresh() {
+        VolleyInstence.getInstence(getContext()).startRequest(bulletinCus, new VolleyInterfaceResult() {
+            @Override
+            public void success(String str) {
+                Gson gson = new Gson();
+                bullBean = gson.fromJson(str, BulletinBean.class);
+                listBeen = bullBean.getResult().getList();
+                bulAdapter.setBulletinBeen(listBeen);
+                bul_ls.setAdapter(bulAdapter);
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
+        bul_ls.setOnRefreshComplete();
+        bulAdapter.notifyDataSetChanged();
 
     }
 }
