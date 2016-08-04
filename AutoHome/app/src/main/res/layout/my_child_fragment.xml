@@ -59,7 +59,6 @@
             </RelativeLayout>
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -289,6 +288,11 @@
                             android:text="设置"/>
 
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="#fff"
+                        android:layout_height="20dp"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

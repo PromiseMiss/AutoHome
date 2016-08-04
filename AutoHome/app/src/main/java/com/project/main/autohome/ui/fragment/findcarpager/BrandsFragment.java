@@ -44,7 +44,7 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     private String urls = NetUrl.BRANDGV_URL;
     private String iconUrl = NetUrl.BRAND_BIAOZHI;
 
-    private DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout; // 抽屉
     private LinearLayout brand_frameLayout;
     private RadioGroup radioGroup;
     private RadioButton brand_now, brand_all;
@@ -80,6 +80,7 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
 
     @Override
     protected void initData() {
+
         // 布局注入，原这个布局是ExpandableListView 需要这个页面滑动
         View view = LayoutInflater.from(getContext()).inflate(R.layout.find_brands_fragment, null);
         gridView = (GridView) view.findViewById(R.id.brand_GridView);// 初始化GridView
@@ -153,6 +154,7 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
         drawerLayout.openDrawer(Gravity.RIGHT);
+
         initBody(groupPosition, childPosition);
         return true;
     }
@@ -185,7 +187,7 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
                 switch (checkedId) {
                     case R.id.brand_radio_now:
                         if (flag) {
-//                            transaction.hide(brandGroupNowFragment).show(brandGroupAllFragment).commit();
+                            //                            transaction.hide(brandGroupNowFragment).show(brandGroupAllFragment).commit();
                         } else {
                             transaction.hide(brandGroupAllFragment).show(brandGroupNowFragment).commit();
                         }

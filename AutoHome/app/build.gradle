@@ -35,4 +35,6 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile files('libs/MobCommons-2016.0707.1708.jar')
     compile 'de.greenrobot:greendao:2.1.0'
+
+    compile 'cn.yipianfengye.android:zxing-library:1.4'
 }

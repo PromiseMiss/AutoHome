@@ -5,6 +5,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,7 +33,7 @@ import java.util.List;
  * Created by youyo on 2016/7/13 0013.
  * 论坛----子页 精选推荐页
  */
-public class FeaturedFragment extends AbsBaseFragment implements VolleyInterfaceResult, View.OnClickListener, CustomRefreshListView.OnCustomRefreshListener, AdapterView.OnItemClickListener {
+public class FeaturedFragment extends AbsBaseFragment implements VolleyInterfaceResult, View.OnClickListener, CustomRefreshListView.OnCustomRefreshListener, AdapterView.OnItemClickListener, View.OnTouchListener {
     private CustomRefreshListView fo_featured_ls;
     private DrawerLayout fo_drawer;
     private RecyclerView fo_featur_recView;
@@ -65,6 +66,8 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
 
     @Override
     protected void initData() {
+        // 触摸事件监听
+        fo_feat_draw_ls.setOnTouchListener(this);
         // 图片监听
         fo_feature_iv.setOnClickListener(this);
         // 两个适配器，一个RecyclerView横滑的，一个是ListView页的
@@ -209,9 +212,15 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
 
     }
 
+    /**
+     * 打开抽屉的监听事件
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         fo_drawer.openDrawer(GravityCompat.END);
+
     }
 
     /**
@@ -224,6 +233,7 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         VolleyInstence.getInstence(getContext()).startRequest(NetUrl.RECOMMEND_ALL[position], new VolleyInterfaceResult() {
             @Override
             public void success(String str) {
@@ -239,7 +249,25 @@ public class FeaturedFragment extends AbsBaseFragment implements VolleyInterface
 
             }
         });
+        // 关闭手势滑动，不能从侧边被划出
+        fo_drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
 
+                break;
+            case MotionEvent.ACTION_MOVE:
+                fo_drawer.closeDrawers();
+                break;
+            case MotionEvent.ACTION_UP:
+
+                break;
+            default:
+                break;
+        }
+        return false;
     }
 }
