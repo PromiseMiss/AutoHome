@@ -3,12 +3,11 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-
+    <!--热帖页适配器布局-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <TextView
             android:id="@+id/fo_hotpas_title"
@@ -17,9 +16,9 @@
             android:textSize="18sp"/>
 
         <RelativeLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -34,21 +33,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textColor="#CFCFCF"
                 android:layout_toRightOf="@+id/fo_hotpas_simtitle"
+                android:textColor="#CFCFCF"
                 android:textSize="13sp"/>
-
 
             <TextView
                 android:id="@+id/fo_hotpas_reply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#CFCFCF"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
+                android:textColor="#CFCFCF"
                 android:textSize="13sp"/>
         </RelativeLayout>
-
-
     </LinearLayout>
 </LinearLayout>

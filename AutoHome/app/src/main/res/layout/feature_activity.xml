@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-
+    <!--精选推荐-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,30 +38,28 @@
                 android:id="@+id/feature_iv_share"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/ahlib_nav_share"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
-                android:layout_marginEnd="12dp"/>
+                android:background="@mipmap/ahlib_nav_share"/>
 
             <ImageView
                 android:id="@+id/feature_iv_collect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/collect_kong"
-                android:layout_marginRight="12dp"
-                android:layout_marginEnd="12dp"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
                 android:layout_toLeftOf="@+id/feature_iv_share"
-                android:layout_toStartOf="@+id/feature_iv_share"/>
+                android:layout_toStartOf="@+id/feature_iv_share"
+                android:background="@mipmap/collect_kong"/>
         </RelativeLayout>
     </LinearLayout>
 
     <WebView
         android:id="@+id/feature_webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </WebView>
+        android:layout_height="match_parent"/>
 </LinearLayout>

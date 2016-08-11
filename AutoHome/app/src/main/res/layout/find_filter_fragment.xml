@@ -4,24 +4,22 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
     <!--找车筛选页-->
-
+    <!--浅灰色背景-->
     <TextView
         android:id="@+id/price_tv"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#c0c0c0"
+        android:background="@color/gray_shallow"
         android:gravity="center"
-        android:text="条件"/>
+        android:text="@string/price_tv"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="热门车系"/>
+        android:text="@string/price_tv_hot"/>
 
     <com.project.main.autohome.tools.CustomRefreshListView
         android:id="@+id/price_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </com.project.main.autohome.tools.CustomRefreshListView>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

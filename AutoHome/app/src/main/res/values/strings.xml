@@ -1,7 +1,110 @@
 <resources>
     <string name="app_name">AutoHome</string>
-    <string-array name="feature_smiTilt">
-        <item>全 部</item>
+    <string name="featured_all">全 部</string>
+    <string name="featured_wife">媳妇当车模</string>
+    <string name="featured_gile">美人“记”</string>
+    <string name="featured_forum_person">论坛名人堂</string>
+    <string name="featured_forum">论坛讲师</string>
+    <string name="featured_car">汽车之家十年</string>
+    <string name="featured_carefu">精挑细选</string>
+    <string name="featured_now">现身说法</string>
+    <string name="featured_height">高端阵地</string>
+    <string name="featured_power">电动车</string>
+    <string name="featured_gather">汇买车</string>
+    <string name="featured_bridge">行车点评</string>
+    <string name="featured_super">超级试驾员</string>
+    <string name="featured_overseas">海外购车</string>
+    <string name="featured_classics">经典老车</string>
+    <string name="featured_youger">妹子选车</string>
+    <string name="featured_ample">优惠购车</string>
+    <string name="featured_original">原创大片</string>
+    <string name="featured_crown">顶配风采</string>
+    <string name="featured_change">改装有理</string>
+    <string name="featured_keep">养车有道</string>
+    <string name="featured_first">首发阵营</string>
+    <string name="featured_newcar">新车直播</string>
+    <string name="featured_history">历史选题</string>
+    <string name="featured_friend">摩友天地</string>
+    <string name="featured_honey">蜜月之旅</string>
+    <string name="featured_sticky">甜蜜婚礼</string>
+    <string name="featured_shoot">摄影课堂</string>
+    <string name="featured_carfriend">车友聚会</string>
+    <string name="featured_bicycle">单车部落</string>
+    <string name="featured_bytalk">杂谈俱乐部</string>
+    <string name="featured_NC">华北游记</string>
+    <string name="featured_SW">西南游记</string>
+    <string name="featured_EN">东北游记</string>
+    <string name="featured_WN">西北游记</string>
+    <string name="featured_central">华中游记</string>
+    <string name="featured_south">华南游记</string>
+    <string name="featured_harbor">港澳台游</string>
+    <string name="featured_over">海外游记</string>
+    <string name="featured_thesea">沧海遗珠</string>
+    <string-array name="date">
+        <item>安凯客车</item>
+        <item>Arash</item>
+        <item>奥迪</item>
+        <item>阿尔法罗密欧</item>
+        <item>奔驰</item>
+        <item>布加迪</item>
+        <item>别克</item>
+        <item>宾利</item>
+        <item>长安</item>
+        <item>长城</item>
+        <item>道奇</item>
+        <item>大迪</item>
+        <item>Elementak</item>
+        <item>弗那萨利</item>
+        <item>白菲亚特</item>
+        <item>法拉利</item>
+        <item>GMC</item>
+        <item>光冈</item>
+        <item>Gumpert</item>
+        <item>悍马</item>
+        <item>华颂</item>
+        <item>海马</item>
+        <item>捷豹</item>
+        <item>江淮</item>
+        <item>科尼塞克</item>
+        <item>凯翼</item>
+        <item>凯迪拉克</item>
+        <item>兰博基尼</item>
+        <item>林肯</item>
+        <item>劳斯莱斯</item>
+        <item>雷丁</item>
+        <item>迈凯轮</item>
+        <item>迈巴赫</item>
+        <item>纳智捷</item>
+        <item>欧宝</item>
+        <item>帕加尼</item>
+        <item>前途</item>
+        <item>如虎</item>
+        <item>赛麟</item>
+        <item>萨博</item>
+        <item>特拉斯</item>
+        <item>威兹曼</item>
+        <item>雪佛兰</item>
+        <item>游侠</item>
+        <item>英菲尼迪</item>
+        <item>中华</item>
+        <item>#</item>
+        <item>凯佰赫</item>
+    </string-array>
+    <string name="brand_radio_now">在售</string>
+    <string name="brand_radio_all">全部</string>
+    <string name="price_tv">条件</string>
+    <string name="price_tv_hot">热门车系</string>
+    <string name="fo_comm_carcomm">车系论坛</string>
+    <string name="fo_comm_carcomm_small">为你的爱车找到对伍</string>
+    <string name="fo_comm_city">地区论坛</string>
+    <string name="fo_comm_city_small">老乡见老乡，两眼泪汪汪</string>
+    <string name="fo_comm_theme_comm">主题论坛</string>
+    <string name="fo_comm_theme_comm_small">兴趣爱好的聚集地</string>
+    <string name="fo_featured_tv">栏目分类</string>
+
+
+    <array name="all">
+        <item>全部</item>
         <item>媳妇当车模</item>
         <item>美人“记”</item>
         <item>论坛名人堂</item>
@@ -41,50 +144,42 @@
         <item>港澳台游</item>
         <item>海外游记</item>
         <item>沧海遗珠</item>
-    </string-array>
-    <string-array name="date">
-        <item>阿妹</item>
-        <item>阿郎</item>
-        <item>陈奕迅</item>
-        <item>周杰伦</item>
-        <item>曾一鸣</item>
-        <item>成龙</item>
-        <item>王力宏</item>
-        <item>汪峰</item>
-        <item>王菲</item>
-        <item>那英</item>
-        <item>张伟</item>
-        <item>张学友</item>
-        <item>李德华</item>
-        <item>郑源</item>
-        <item>白水水</item>
-        <item>白天不亮</item>
-        <item>陈龙</item>
-        <item>陈丽丽</item>
-        <item>哈林</item>
-        <item>高进</item>
-        <item>高雷</item>
-        <item>阮今天</item>
-        <item>龚琳娜</item>
-        <item>苏醒</item>
-        <item>苏永康</item>
-        <item>陶喆</item>
-        <item>沙宝亮</item>
-        <item>宋冬野</item>
-        <item>宋伟</item>
-        <item>袁成杰</item>
-        <item>戚薇</item>
-        <item>齐大友</item>
-        <item>齐天大圣</item>
-        <item>品冠</item>
-        <item>吴克群</item>
-        <item>BOBO</item>
-        <item>Jobs</item>
-        <item>动力火车</item>
-        <item>伍佰</item>
-        <item>#蔡依林</item>
-        <item>$797835344$</item>
-        <item>Jack</item>
-        <item>~夏先生</item>
-    </string-array>
+    </array>
+
+    <string name="my_user_login_tv">账号登录</string>
+    <string name="my_qqLogin_tv">QQ登录</string>
+    <string name="my_weiboLogin_tv">微博登录</string>
+    <string name="my_login">立即登录，体验更多</string>
+    <string name="my_help">帮助值:50</string>
+    <string name="my_comeOn">家油券:0张</string>
+    <string name="my_medal">勋章:0</string>
+    <string name="register_protocol_tv">注册即视为同意用户服务协议</string>
+
+    <string name="my_log_user">手机号/邮箱/用户名</string>
+    <string name="my_log_pass">密码</string>
+    <string name="my_log_btnlog">登录</string>
+    <string name="forget_pass">忘记密码</string>
+    <string name="other_way">还可以用一下方式登录</string>
+    <string name="my_register_num">请输入手机号</string>
+    <string name="pass_edit_judge">不能为空哦！</string>
+    <string name="collect_ok">收藏成功</string>
+    <string name="collect_cancel">取消收藏</string>
+    <string name="welcome_loading">正在加载，请稍等...</string>
+    <string name="my_barn">免费获取车辆违章提醒、车主认证服务</string>
+    <string name="my_friend">我的好友</string>
+    <string name="news">最新</string>
+    <string name="origin">优创+</string>
+    <string name="bulle">快报</string>
+    <string name="video">视频</string>
+    <string name="newss">新闻</string>
+    <string name="review">测评</string>
+    <string name="buys">导购</string>
+    <string name="price">行情</string>
+    <string name="car">用车</string>
+    <string name="skill">技术</string>
+    <string name="culture">文化</string>
+    <string name="change">改装</string>
+    <string name="travels">游记</string>
+    <string name="original">原创视频</string>
+    <string name="talk">说客</string>
 </resources>

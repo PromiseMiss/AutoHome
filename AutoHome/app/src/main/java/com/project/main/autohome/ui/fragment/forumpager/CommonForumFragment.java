@@ -5,7 +5,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.SideBarBean;
@@ -25,16 +24,14 @@ import java.util.List;
  * 常用论坛
  */
 public class CommonForumFragment extends AbsBaseFragment implements View.OnClickListener {
-    private LinearLayout fo_comm_carcomm, fo_comm_city, fo_comm_theme_comm;
+    private LinearLayout fo_comm_carcomm;
     private DrawerLayout fo_comm_drawer;
     private SideBar sideBar;
     private SortAdapter sortAdapter;
     private ListView listView;
-    private CharacterParser characterParser;
+    private CharacterParser characterParser; // 汉字转换拼音
     private List<SideBarBean> sideBarBeen;
     private PinYincomparator pinYincomparator;
-
-
 
     @Override
     protected int setLayout() {
@@ -44,8 +41,6 @@ public class CommonForumFragment extends AbsBaseFragment implements View.OnClick
     @Override
     protected void initView() {
         fo_comm_carcomm = byView(R.id.fo_comm_carcomm);
-        fo_comm_city = byView(R.id.fo_comm_city);
-        fo_comm_theme_comm = byView(R.id.fo_comm_theme_comm);
         fo_comm_drawer = byView(R.id.fo_common_drawer);
         sideBar = byView(R.id.fo_sideBar);
         listView = byView(R.id.fo_commdrawer_ls);
@@ -54,72 +49,56 @@ public class CommonForumFragment extends AbsBaseFragment implements View.OnClick
     @Override
     protected void initData() {
         fo_comm_carcomm.setOnClickListener(this);
-        fo_comm_city.setOnClickListener(this);
-        fo_comm_theme_comm.setOnClickListener(this);
-
         characterParser = CharacterParser.getInstance();
-        pinYincomparator  =new PinYincomparator();
-
+        pinYincomparator = new PinYincomparator();
         NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }
-
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fo_comm_carcomm:
+            case R.id.fo_comm_carcomm:// 车系论坛
                 fo_comm_drawer.openDrawer(GravityCompat.END);
                 sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
                     @Override
                     public void OnTouchingLetterChangedListener(String s) {
                         int position = sortAdapter.getPositionForSection(s.charAt(0));
-                        if(position != -1){
+                        if (position != -1) {
                             listView.setSelection(position);
                         }
                     }
                 });
                 sideBarBeen = filledData(getResources().getStringArray(R.array.date));
                 Collections.sort(sideBarBeen, pinYincomparator);
-                sortAdapter = new SortAdapter(getContext(),sideBarBeen);
+                sortAdapter = new SortAdapter(getContext(), sideBarBeen);
                 listView.setAdapter(sortAdapter);
-
-                break;
-            case R.id.fo_comm_city:
-                Toast.makeText(getContext(), "地区", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.fo_comm_theme_comm:
-                Toast.makeText(getContext(), "主题", Toast.LENGTH_SHORT).show();
-                break;
-            default:
                 break;
         }
     }
+
     /**
      * 为ListView填充数据
+     *
      * @param date
      * @return
      */
-    private List<SideBarBean> filledData(String [] date){
+    private List<SideBarBean> filledData(String[] date) {
         List<SideBarBean> mSortList = new ArrayList<SideBarBean>();
-
-        for(int i=0; i<date.length; i++){
+        for (int i = 0; i < date.length; i++) {
             SideBarBean sortModel = new SideBarBean();
             sortModel.setName(date[i]);
             //汉字转换成拼音
             String pinyin = characterParser.getSelling(date[i]);
             String sortString = pinyin.substring(0, 1).toUpperCase();
-
             // 正则表达式，判断首字母是否是英文字母
-            if(sortString.matches("[A-Z]")){
+            if (sortString.matches("[A-Z]")) {
                 sortModel.setSortLetters(sortString.toUpperCase());
-            }else{
+            } else {
                 sortModel.setSortLetters("#");
             }
-
             mSortList.add(sortModel);
         }
         return mSortList;
-
     }
 }
 

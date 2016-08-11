@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/21 0021.
- * 发现页轮播图详情
+ * 发现页轮播图详情 实体类
  */
 public class SaleBannerDetailsBean {
 

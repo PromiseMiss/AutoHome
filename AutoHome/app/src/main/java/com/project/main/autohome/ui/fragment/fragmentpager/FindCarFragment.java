@@ -35,19 +35,16 @@ public class FindCarFragment extends AbsBaseFragment {
     protected void initView() {
         findcar_vp = byView(R.id.findcar_vp);
         findcar_tab = byView(R.id.findcar_tabL);
-
     }
 
     @Override
     protected void initData() {
         findcar_title = new ArrayList<>();
         findcar_fragment = new ArrayList<>();
-
         findcar_fragment.add(new BrandsFragment());
         findcar_fragment.add(new FilterFragment());
         findcar_fragment.add(new PriceReductionFragment());
         findcar_fragment.add(new SecondHeadCar());
-
         findcar_title.add("品牌");
         findcar_title.add("筛选");
         findcar_title.add("降价");
@@ -55,6 +52,5 @@ public class FindCarFragment extends AbsBaseFragment {
         findcar_adapter = new FragmentPagAdapter(getChildFragmentManager(), findcar_fragment, findcar_title);
         findcar_vp.setAdapter(findcar_adapter);
         findcar_tab.setupWithViewPager(findcar_vp);
-
     }
 }

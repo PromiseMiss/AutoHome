@@ -2,10 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#ffffff"
+              android:background="@color/white_white"
               android:orientation="vertical">
-
-
     <!--  我  -->
     <ScrollView
         android:layout_width="match_parent"
@@ -15,30 +13,76 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
+            <!--立即登录TV部分-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
+                <!--GONE的布局用来显示登录后的界面-->
                 <LinearLayout
                     android:id="@+id/my_child_user_jiemian"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    >
 
-                    <ImageView
-                        android:id="@+id/my_child_login_iv"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center_vertical"
-                        android:background="@mipmap/ic_launcher"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp">
 
-                    <TextView
-                        android:id="@+id/my_child_login_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="sdfsfd"/>
+                        <ImageView
+                            android:id="@+id/my_child_login_iv"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:background="@mipmap/ic_launcher"/>
+                        <!--用户名-->
+                        <TextView
+                            android:id="@+id/my_child_login_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/my_child_login_iv"
+                            android:layout_gravity="center_vertical"
+                            android:layout_toEndOf="@+id/my_child_login_iv"
+                            android:layout_toRightOf="@+id/my_child_login_iv"
+                            android:text="sdfsfd"
+                            android:textSize="20sp"/>
+                        <!--帮助值-->
+                        <TextView
+                            android:id="@+id/my_help"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/my_child_login_iv"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_toEndOf="@+id/my_child_login_iv"
+                            android:layout_toRightOf="@+id/my_child_login_iv"
+                            android:text="@string/my_help"/>
+                        <!--家油券-->
+                        <TextView
+                            android:id="@+id/my_comeOn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/my_help"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_toEndOf="@+id/my_help"
+                            android:layout_toRightOf="@+id/my_help"
+                            android:text="@string/my_comeOn"/>
+                        <!--勋章-->
+                        <TextView
+                            android:id="@+id/my_medal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/my_comeOn"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_toEndOf="@+id/my_comeOn"
+                            android:layout_toRightOf="@+id/my_comeOn"
+                            android:text="@string/my_medal"/>
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -52,92 +96,168 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:gravity="center"
-                        android:text="立即登录，体验更多"
+                        android:text="@string/my_login"
                         android:textSize="16sp"
                         />
                 </LinearLayout>
-            </RelativeLayout>
 
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 >
-
-
-                <RelativeLayout
+                <!--账号，QQ，微博登录-->
+                <LinearLayout
+                    android:id="@+id/my_thread_party_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    >
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/my_user"
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:src="@mipmap/user"/>
+                        >
 
-                    <ImageView
-                        android:id="@+id/my_qq"
-                        android:layout_width="wrap_content"
+                        <ImageView
+                            android:id="@+id/my_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@mipmap/userpic"/>
+
+                        <ImageView
+                            android:id="@+id/my_qq"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="50dp"
+                            android:layout_toRightOf="@+id/my_user"
+                            android:src="@mipmap/qq"/>
+
+                        <ImageView
+                            android:id="@+id/my_xinlang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="50dp"
+                            android:layout_toRightOf="@+id/my_qq"
+                            android:src="@mipmap/xinlang"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
-                        android:layout_marginLeft="50dp"
-                        android:layout_toRightOf="@+id/my_user"
-                        android:src="@mipmap/qq"/>
-
-                    <ImageView
-                        android:id="@+id/my_xinlang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:layout_toRightOf="@+id/my_qq"
-                        android:src="@mipmap/xinlang"/>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/my_user_login_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="45dp"
-                        android:text="账号登录"/>
-
-                    <TextView
-                        android:id="@+id/my_qqLogin_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="65dp"
-                        android:layout_toRightOf="@+id/my_user_login_tv"
-                        android:text="QQ登录"/>
-
-                    <TextView
-                        android:id="@+id/my_weiboLogin_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="65dp"
-                        android:layout_toRightOf="@+id/my_qqLogin_tv"
-                        android:text="微博登录"/>
-
-                </RelativeLayout>
+                        android:orientation="horizontal">
+                        <!--账号-->
+                        <TextView
+                            android:id="@+id/my_user_login_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="45dp"
+                            android:text="@string/my_user_login_tv"/>
+                        <!--QQ登录-->
+                        <TextView
+                            android:id="@+id/my_qqLogin_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="65dp"
+                            android:layout_toRightOf="@+id/my_user_login_tv"
+                            android:text="@string/my_qqLogin_tv"/>
+                        <!--微博登录-->
+                        <TextView
+                            android:id="@+id/my_weiboLogin_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="65dp"
+                            android:layout_toRightOf="@+id/my_qqLogin_tv"
+                            android:text="@string/my_weiboLogin_tv"/>
+                    </RelativeLayout>
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
                     android:layout_marginTop="15dp"
-                    android:background="#f5f5f5"/>
+                    android:background="@color/white_dark"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <LinearLayout
+                        android:id="@+id/my_login_visib"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/mycar"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:text="我的车库"/>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/white_dark"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white_dark"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/my_barn"/>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/white_dark"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/myfriend"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:text="@string/my_friend"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/white_dark"/>
+
+                    </LinearLayout>
+                    <!--兑换-->
                     <LinearLayout
                         android:id="@+id/my_duihuan"
                         android:layout_width="match_parent"
@@ -162,8 +282,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#f5f5f5"/>
-
+                        android:background="@color/white_dark"/>
+                    <!--我的优惠券-->
                     <LinearLayout
                         android:id="@+id/my_youhui"
                         android:layout_width="match_parent"
@@ -188,8 +308,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#f5f5f5"/>
-
+                        android:background="@color/white_dark"/>
+                    <!--我的收藏-->
                     <LinearLayout
                         android:id="@+id/my_shoucang"
                         android:layout_width="match_parent"
@@ -214,8 +334,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#f5f5f5"/>
-
+                        android:background="@color/white_dark"/>
+                    <!--浏览历史-->
                     <LinearLayout
                         android:id="@+id/my_liulan"
                         android:layout_width="match_parent"
@@ -240,8 +360,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#f5f5f5"/>
-
+                        android:background="@color/white_dark"/>
+                    <!--草稿箱-->
                     <LinearLayout
                         android:id="@+id/my_caogao"
                         android:layout_width="match_parent"
@@ -266,8 +386,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="15dp"
-                        android:background="#f5f5f5"/>
-
+                        android:background="@color/white_dark"/>
+                    <!--设置-->
                     <LinearLayout
                         android:id="@+id/my_shezhi"
                         android:layout_width="match_parent"
@@ -291,8 +411,8 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:background="#fff"
-                        android:layout_height="20dp"/>
+                        android:layout_height="20dp"
+                        android:background="@color/white"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/16 0016.
- * ListView  的适配器
+ * ListView  的适配器  精选推荐
  */
 public class FeatureLSAdapter extends BaseAdapter {
     private List<FeatureAllBean.ResultBean.ListBean> lsList;
@@ -49,7 +49,6 @@ public class FeatureLSAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         FeatuLSHolder lsHolder = null;
-
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.fo_featured_ls_item, parent, false);
             lsHolder = new FeatuLSHolder(convertView);
@@ -58,14 +57,10 @@ public class FeatureLSAdapter extends BaseAdapter {
             lsHolder = (FeatuLSHolder) convertView.getTag();
         }
         FeatureAllBean.ResultBean.ListBean listBean = (FeatureAllBean.ResultBean.ListBean) getItem(position);
-
-        //        VolleyInstence.getInstence(context).loadImage(listBean.getSmallpic(), lsHolder.fo_fea_item_iv);
         ImageLoaderUtil.getInstance().load(listBean.getSmallpic(), lsHolder.fo_fea_item_iv);
         lsHolder.fo_fea_item_title.setText(listBean.getTitle());
         lsHolder.fo_fea_item_smitit.setText(listBean.getBbsname());
         lsHolder.fo_fea_item_num.setText(listBean.getReplycounts() + "回");
-
-
         return convertView;
     }
 

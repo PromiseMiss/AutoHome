@@ -14,12 +14,10 @@ public class FragmentPagAdapter extends FragmentPagerAdapter {
     private List<Fragment> mdata;
     private List<String> mTitle;
 
-
     public FragmentPagAdapter(FragmentManager fm, List<Fragment> data, List<String> title) {
         super(fm);
         this.mdata = data;
         this.mTitle = title;
-
     }
 
     @Override

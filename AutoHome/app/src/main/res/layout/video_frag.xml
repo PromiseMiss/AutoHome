@@ -7,7 +7,5 @@
     <com.project.main.autohome.tools.CustomRefreshListView
         android:id="@+id/video_ls"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </com.project.main.autohome.tools.CustomRefreshListView>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

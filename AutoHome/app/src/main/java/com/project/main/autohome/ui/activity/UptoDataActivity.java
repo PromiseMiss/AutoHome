@@ -58,9 +58,8 @@ public class UptoDataActivity extends AbsBaseActivity implements View.OnClickLis
         content = intent.getStringExtra("content");
         info = intent.getStringExtra("info");
         classify = intent.getStringExtra("classify");
-
         flag = intent.getBooleanExtra("isClick", true);
-
+        // 将返回来的网址直接放到WebView
         webView.loadUrl(dataUrl);
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -69,10 +68,9 @@ public class UptoDataActivity extends AbsBaseActivity implements View.OnClickLis
                 return true;
             }
         });
-        uptadata_iv_collect.setOnClickListener(this);
+        uptadata_iv_collect.setOnClickListener(this); // 收藏
         uptodata_LL_back.setOnClickListener(this);
         uptadata_iv_share.setOnClickListener(this);
-
     }
 
     @Override
@@ -89,23 +87,22 @@ public class UptoDataActivity extends AbsBaseActivity implements View.OnClickLis
             case R.id.uptodata_LL_back: // 返回
                 finish();
                 break;
-            case R.id.uptadata_iv_collect: // 收藏
+            case R.id.uptadata_iv_collect:
+                // 判断是否收藏
                 if (flag) {
                     DBInstance.getsInstance().insert(new AutoHomeBean(title, price, imageUrl, url, content, info, classify));
                     uptadata_iv_collect.setImageResource(R.mipmap.collect_shi);
-                    Toast.makeText(this, "添加成功了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getText(R.string.collect_ok), Toast.LENGTH_SHORT).show();
                     flag = false;
                 } else {
                     DBInstance.getsInstance().deleByTitle(title);
                     uptadata_iv_collect.setImageResource(R.mipmap.collect_kong);
-                    Toast.makeText(this, "删除数据了", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getText(R.string.collect_cancel), Toast.LENGTH_SHORT).show();
                     flag = true;
                 }
                 break;
             case R.id.uptadata_iv_share: // 分享
                 showShare();
-                break;
-            default:
                 break;
         }
     }

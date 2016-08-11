@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/20 0020.
- * 品牌页 GridView
+ * 品牌页 GridView 车标志的
  */
 public class BrandGVAdapter extends BaseAdapter {
     private List<BrandBean.ResultBean.ListBean> brandBeen;
@@ -57,7 +57,6 @@ public class BrandGVAdapter extends BaseAdapter {
             brandHolder = (BrandHolder) convertView.getTag();
         }
         BrandBean.ResultBean.ListBean listBean = (BrandBean.ResultBean.ListBean) getItem(position);
-//        VolleyInstence.getInstence(context).loadImage(listBean.getImg(), brandHolder.item_brand_imageView);
         ImageLoaderUtil.getInstance().load(listBean.getImg(), brandHolder.item_brand_imageView);
         brandHolder.item_brand_plate.setText(listBean.getName());
         return convertView;

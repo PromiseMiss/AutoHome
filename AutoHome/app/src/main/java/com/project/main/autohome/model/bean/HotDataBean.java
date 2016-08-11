@@ -7,7 +7,6 @@ import java.util.List;
  * 热帖 页的解析数据 实体类
  */
 public class HotDataBean {
-
     /**
      * returncode : 0
      * message :

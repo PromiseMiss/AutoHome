@@ -3,11 +3,9 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-
+    <!--我的收藏详情页-->
     <ListView
         android:id="@+id/mychild_collection"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
+        android:layout_height="match_parent"/>
 </LinearLayout>

@@ -7,7 +7,6 @@ import java.util.List;
  * 推荐页所有页共有的实体类
  */
 public class AllOfBean {
-
     /**
      * rowcount : 2672
      * isloadmore : true

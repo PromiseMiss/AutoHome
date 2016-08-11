@@ -1,8 +1,8 @@
 package com.project.main.autohome.model.bean;
 
 /**
- * Created by Beyond on 2016/7/22.
- * 索引实体类
+ * Created by youyo on 2016/7/14 0014.
+ * 索引实体类  【找车-常用论坛-车系论坛】
  */
 public class SideBarBean {
     private String name;//显示的数据

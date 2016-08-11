@@ -7,8 +7,6 @@ import java.util.List;
  * 优创页  实体类
  */
 public class OriginalBean {
-
-
     /**
      * returncode : 0
      * message :

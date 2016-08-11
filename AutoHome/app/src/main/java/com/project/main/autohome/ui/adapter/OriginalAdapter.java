@@ -88,8 +88,6 @@ public class OriginalAdapter extends BaseAdapter {
             // 小图
             case TYPE_0:
                 fistHolder.origin_username_tv.setText(newslistBean.getUsername());
-                //                VolleyInstence.getInstence(context).loadImage(oriBean.get(position).getUserpic(), fistHolder.origin_circle_userpic);
-                //                VolleyInstence.getInstence(context).loadImage(newslistBean.getThumbnailpics().get(0), fistHolder.origin_iv_index);
                 ImageLoaderUtil.getInstance().load(oriBean.get(position).getUserpic(), fistHolder.origin_circle_userpic);
                 ImageLoaderUtil.getInstance().load(newslistBean.getThumbnailpics().get(0), fistHolder.origin_iv_index);
                 fistHolder.origin_title_tv.setText(newslistBean.getTitle());
@@ -97,11 +95,9 @@ public class OriginalAdapter extends BaseAdapter {
                 break;
             // 大图
             case TYPE_1:
-                //                VolleyInstence.getInstence(context).loadImage(oriBean.get(position).getUserpic(), secondHolder.origin_two_circle_iv);
                 ImageLoaderUtil.getInstance().load(oriBean.get(position).getUserpic(), secondHolder.origin_two_circle_iv);
                 secondHolder.origin_two_tv.setText(newslistBean.getUsername());
                 secondHolder.origin_tv_body.setText(newslistBean.getTitle());
-                //                VolleyInstence.getInstence(context).loadImage(newslistBean.getIndexdetail().get(0), secondHolder.origin_body_iv);
                 ImageLoaderUtil.getInstance().load(newslistBean.getIndexdetail().get(0), secondHolder.origin_body_iv);
                 secondHolder.origin_time_tv.setText(newslistBean.getPublishtime());
                 break;

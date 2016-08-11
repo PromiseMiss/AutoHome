@@ -39,7 +39,6 @@ public class BrandGroupNowFragment extends AbsBaseFragment {
         nowAdapter = new BrandGroupNowAdapter(getContext());
         expandableListView.setGroupIndicator(null);
         expandableListView.setAdapter(nowAdapter);
-
         // 通过Bundle取值
         Bundle bundle = getArguments();
         url = bundle.getString("key");

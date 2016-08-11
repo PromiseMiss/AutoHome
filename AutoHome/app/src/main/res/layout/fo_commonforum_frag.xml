@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-
+    <!--常用论坛-->
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/fo_common_drawer"
         android:layout_width="match_parent"
@@ -13,14 +13,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffff"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
+                <!--车系论坛-->
                 <LinearLayout
                     android:id="@+id/fo_comm_carcomm"
                     android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/fo_comm_margin_top"
-                            android:text="车系论坛"
+                            android:text="@string/fo_comm_carcomm"
                             android:textSize="@dimen/fo_comm_textSize"/>
 
                         <TextView
@@ -50,17 +50,16 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="@dimen/fo_comm_margin_bottom"
-                            android:text="为你的爱车找到对伍"
+                            android:text="@string/fo_comm_carcomm_small"
                             android:textColor="#C0C0C0"/>
                     </RelativeLayout>
                 </LinearLayout>
 
-
-                <TextView
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dip"
-                    android:background="#C0C0C0"/>
-
+                    android:background="@color/gray_shallow"/>
+                <!--地区论坛-->
                 <LinearLayout
                     android:id="@+id/fo_comm_city"
                     android:layout_width="match_parent"
@@ -75,14 +74,13 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#ffffff"
-                        >
+                        android:background="#ffffff">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/fo_comm_margin_top"
-                            android:text="地区论坛"
+                            android:text="@string/fo_comm_city"
                             android:textSize="@dimen/fo_comm_textSize"/>
 
                         <TextView
@@ -90,15 +88,16 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="@dimen/fo_comm_margin_bottom"
-                            android:text="老乡见老乡，两眼泪汪汪"
+                            android:text="@string/fo_comm_city_small"
                             android:textColor="#C0C0C0"/>
                     </RelativeLayout>
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dip"
                     android:background="#C0C0C0"/>
-
+                <!--主题论坛-->
                 <LinearLayout
                     android:id="@+id/fo_comm_theme_comm"
                     android:layout_width="match_parent"
@@ -113,14 +112,13 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#ffffff"
-                        >
+                        android:background="@color/white">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/fo_comm_margin_top"
-                            android:text="主题论坛"
+                            android:text="@string/fo_comm_theme_comm"
                             android:textSize="@dimen/fo_comm_textSize"/>
 
                         <TextView
@@ -128,7 +126,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="@dimen/fo_comm_margin_bottom"
-                            android:text="兴趣爱好的聚集地"
+                            android:text="@string/fo_comm_theme_comm_small"
                             android:textColor="#C0C0C0"/>
                     </RelativeLayout>
                 </LinearLayout>
@@ -136,15 +134,15 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dip"
-                    android:background="#C0C0C0"/>
+                    android:background="@color/white"/>
             </LinearLayout>
         </LinearLayout>
-
+        <!--抽屉的布局-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:background="#ffff"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <FrameLayout
@@ -164,8 +162,6 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="right|center"/>
             </FrameLayout>
-
-
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

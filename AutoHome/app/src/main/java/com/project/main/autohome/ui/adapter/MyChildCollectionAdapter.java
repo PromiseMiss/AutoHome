@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/26 0026.
+ * 我的收藏详情页适配器
  */
 public class MyChildCollectionAdapter extends BaseAdapter {
     private List<AutoHomeBean> mDatas;
@@ -68,12 +69,7 @@ public class MyChildCollectionAdapter extends BaseAdapter {
         viewHolder.art_updata_tv_tit.setText(autoHomeBean.getTitle());
         viewHolder.art_uptodata_time.setText(autoHomeBean.getContent());
         viewHolder.art_updata_lengh.setText(autoHomeBean.getClassify());
-        // ListView 有多少行就执行多少次getView
-        // 就创建了多少个请求队列， 请求队列里面有线程池，现在ListView 30行，30线程池
-//        VolleyInstence.getInstence(context).loadImage(autoHomeBean.getPrice(),
-//                viewHolder.art_headiv_uptodata);
-
-        ImageLoaderUtil.getInstance().load(autoHomeBean.getPrice(),viewHolder.art_headiv_uptodata);
+        ImageLoaderUtil.getInstance().load(autoHomeBean.getPrice(), viewHolder.art_headiv_uptodata);
 
         return convertView;
     }

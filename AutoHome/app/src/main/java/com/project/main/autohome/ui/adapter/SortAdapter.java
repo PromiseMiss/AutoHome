@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by Beyond on 2016/7/22.
+ * 索引栏适配器【找车-常用论坛-车系论坛】
  */
 public class SortAdapter extends BaseAdapter implements SectionIndexer {
     private List<SideBarBean> list;
@@ -62,7 +63,6 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
 
         //根据position获取分类的首字母的Char ascii值
         int section = getSectionForPosition(position);
-
         //如果当前位置等于该分类首字母的Char的位置 ，则认为是第一次出现
         if (position == getPositionForSection(section)) {
             viewHolder.tvLetter.setVisibility(View.VISIBLE);
@@ -70,19 +70,14 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
         } else {
             viewHolder.tvLetter.setVisibility(View.GONE);
         }
-
         viewHolder.tvTitle.setText(this.list.get(position).getName());
-
         return view;
-
     }
-
 
     final static class ViewHolder {
         TextView tvLetter;
         TextView tvTitle;
     }
-
 
     /**
      * 根据ListView的当前位置获取分类的首字母的Char ascii值
@@ -102,7 +97,6 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer {
                 return i;
             }
         }
-
         return -1;
     }
 

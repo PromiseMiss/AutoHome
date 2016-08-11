@@ -57,7 +57,6 @@ public class FilterAdapter extends BaseAdapter {
             viewHolder = (FilterViewHolder) convertView.getTag();
         }
         FilterBean.ResultBean.SeriesBean seriesBean = (FilterBean.ResultBean.SeriesBean) getItem(position);
-//        VolleyInstence.getInstence(context).loadImage(seriesBean.getThumburl(), viewHolder.filter_item_iv);
         ImageLoaderUtil.getInstance().load(seriesBean.getThumburl(), viewHolder.filter_item_iv);
         viewHolder.filter_item_tv.setText(seriesBean.getSeriesname());
         viewHolder.filter_item_num_tv.setText(seriesBean.getPricerange());

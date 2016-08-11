@@ -1,7 +1,7 @@
 package com.project.main.autohome.tools;
 
 /**
- * Created by Beyond on 2016/7/22.
+ * Created by youyo on 2016/7/14 0014.
  * JAVA 汉字转换拼音
  */
 public class CharacterParser {

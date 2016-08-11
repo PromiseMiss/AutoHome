@@ -9,7 +9,6 @@ import com.project.main.autohome.ui.fragment.AbsBaseFragment;
  */
 public class PriceReductionFragment extends AbsBaseFragment {
 
-
     @Override
     protected int setLayout() {
         return R.layout.find_price_fragment;

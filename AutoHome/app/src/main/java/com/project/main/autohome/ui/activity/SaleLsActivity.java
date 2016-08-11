@@ -8,6 +8,8 @@ import com.project.main.autohome.R;
 
 /**
  * Created by youyo on 2016/7/23 0023.
+ *
+ * 发现页详情
  */
 public class SaleLsActivity extends AbsBaseActivity {
     private WebView sale_ls_web;

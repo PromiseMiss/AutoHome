@@ -33,7 +33,6 @@ public class VideoActivity extends AbsBaseActivity implements View.OnClickListen
         video_LL_back = byView(R.id.video_LL_back); // 返回
         video_iv_collect = byView(R.id.video_iv_collect); // 收藏
         video_iv_share = byView(R.id.video_iv_share); // 分享
-
     }
 
     @Override

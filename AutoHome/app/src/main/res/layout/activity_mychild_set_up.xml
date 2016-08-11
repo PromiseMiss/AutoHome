@@ -4,6 +4,49 @@
               android:layout_height="match_parent"
               android:background="#fff"
               android:orientation="vertical">
+    <!--标题栏-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/my_setup_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:src="@mipmap/ahlib_bar_btn_icon_returntext_a"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageView2"
+                android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"
+                android:layout_toEndOf="@+id/imageView2"
+                android:layout_toRightOf="@+id/imageView2"
+                android:text="返回"
+                android:textColor="#1C86EE"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="设置"
+            android:textSize="15sp"/>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,56 +57,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/my_setup_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginStart="15dp"
-                        android:src="@mipmap/ahlib_bar_btn_icon_returntext_a"/>
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/imageView2"
-                        android:layout_marginLeft="11dp"
-                        android:layout_marginStart="11dp"
-                        android:layout_toEndOf="@+id/imageView2"
-                        android:layout_toRightOf="@+id/imageView2"
-                        android:text="返回"
-                        android:textColor="#1C86EE"/>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
-                    android:text="设置"
-                    android:textSize="15sp"/>
-            </RelativeLayout>
-
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#e5e5e5"/>
 
-
+            <!--正文-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#c0c0c0"/>
-
+            <!--文章/帖子-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -149,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#c0c0c0"/>
-
+            <!--夜间模式-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -182,7 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#c0c0c0"/>
-
+            <!--车型图片-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -224,7 +223,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#c0c0c0"/>
-
+            <!--推送设置-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -241,14 +240,13 @@
                         android:text="推送设置"
                         android:textSize="17sp"/>
                 </RelativeLayout>
-
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#c0c0c0"/>
-
+            <!--清楚缓存-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -271,7 +269,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="#e5e5e5"/>
-
+            <!--帮助与反馈-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -288,14 +286,13 @@
                         android:textSize="17sp"/>
 
                 </RelativeLayout>
-
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#c0c0c0"/>
-
+            <!--检测更新-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -312,14 +309,13 @@
                         android:textSize="17sp"/>
 
                 </RelativeLayout>
-
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#c0c0c0"/>
-
+            <!--给汽车之家评分-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -336,14 +332,13 @@
                         android:textSize="17sp"/>
 
                 </RelativeLayout>
-
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#c0c0c0"/>
-
+            <!--关于-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -368,6 +363,7 @@
                 android:layout_height="5dp"
                 android:background="#e5e5e5"/>
 
+            <!--退出登录-->
             <LinearLayout
                 android:id="@+id/mychild_back_login_layout"
                 android:layout_width="match_parent"
@@ -381,12 +377,10 @@
                     android:id="@+id/back_Login_btn"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:background="#ff3030"
+                    android:background="@drawable/my_child_btn_shape"
                     android:text="退出当前账号"
                     android:textColor="#fff"
                     android:textSize="16sp"/>
-
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

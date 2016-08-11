@@ -8,8 +8,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <android.support.design.widget.TabLayout
             android:id="@+id/act_main_tabLy"
@@ -18,14 +17,7 @@
             android:layout_weight="1"
             app:tabIndicatorColor="#1874CD"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="#1874CD">
-        </android.support.design.widget.TabLayout>
-
-        <ImageView
-            android:layout_width="@dimen/art_main_iv_width"
-            android:layout_height="@dimen/art_main_iv_height"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/sousuo"/>
+            app:tabSelectedTextColor="#1874CD"/>
 
     </LinearLayout>
 
@@ -33,9 +25,5 @@
         android:id="@+id/act_main_viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-    </android.support.v4.view.ViewPager>
-
-
+        android:layout_weight="1"/>
 </LinearLayout>

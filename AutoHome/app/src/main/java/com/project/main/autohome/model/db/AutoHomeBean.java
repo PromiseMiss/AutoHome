@@ -6,6 +6,8 @@ import com.project.main.autohome.util.ImageLoaderUtil;
 
 /**
  * Entity mapped to table "AUTO_HOME_BEAN".
+ *
+ * 实体类
  */
 public class AutoHomeBean {
 

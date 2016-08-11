@@ -1,7 +1,6 @@
 package com.project.main.autohome.ui.fragment.forumpager;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -25,7 +24,6 @@ import java.util.List;
  */
 public class HotPostsFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
     private CustomRefreshListView fo_hotpasts_ls;
-    private String url = NetUrl.HOT_POSTS_URL;
     private List<HotDataBean.ResultBean.ListBean> as;
 
     @Override
@@ -40,18 +38,16 @@ public class HotPostsFragment extends AbsBaseFragment implements VolleyInterface
 
     @Override
     protected void initData() {
-        VolleyInstence.getInstence(getContext()).startRequest(url, this);
+        VolleyInstence.getInstence(getContext()).startRequest(NetUrl.HOT_POSTS_URL, this);
         fo_hotpasts_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), HotPostsActivity.class);
                 String hotUrl = NetUrl.HOT_TOP_URL + as.get(position).getTopicid() + NetUrl.HTOP_BOTTOM_URL;
-                Log.d("HotPostsFragment", hotUrl);
                 intent.putExtra("url", hotUrl);
                 startActivity(intent);
             }
         });
-
         NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }
 

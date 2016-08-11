@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-
+    <!--品牌-->
     <!--注入头布局-->
     <RelativeLayout
         android:id="@+id/child_brand_RelativeLayout"
@@ -43,8 +43,7 @@
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toStartOf="@+id/child_brand_LinearLayout_history"
-            />
+            android:layout_toStartOf="@+id/child_brand_LinearLayout_history"/>
 
         <LinearLayout
             android:id="@+id/child_brand_LinearLayout_history"
@@ -57,6 +56,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
                 android:layout_marginTop="10dp"
                 android:background="@mipmap/history"/>
 
@@ -91,6 +91,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/imageView"
+                android:layout_marginLeft="7dp"
                 android:background="@mipmap/top"/>
 
             <TextView
@@ -114,7 +115,7 @@
     <GridView
         android:id="@+id/brand_GridView"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="100dp"
         android:numColumns="5"
         android:stackFromBottom="true"/>
 

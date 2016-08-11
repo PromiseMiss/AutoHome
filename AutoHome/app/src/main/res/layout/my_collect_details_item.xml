@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-
+<!--我的收藏详情页-->
     <WebView
         android:id="@+id/my_child_details_webView"
         android:layout_width="match_parent"

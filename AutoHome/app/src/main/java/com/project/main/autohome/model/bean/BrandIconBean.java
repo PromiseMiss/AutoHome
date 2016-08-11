@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/20 0020.\
- * 二级列表的字
+ * 品牌页主页 二级列表的字
  */
 public class BrandIconBean {
 

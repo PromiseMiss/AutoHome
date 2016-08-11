@@ -13,16 +13,14 @@
             android:id="@+id/origin_two_circle_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/orig_margin"
-            />
+            android:layout_margin="@dimen/orig_margin"/>
 
         <TextView
             android:id="@+id/origin_two_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/origin_two_circle_iv"
-            />
+            android:layout_toRightOf="@+id/origin_two_circle_iv"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -34,8 +32,7 @@
             android:id="@+id/origin_tv_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/orig_margin"
-            />
+            android:layout_margin="@dimen/orig_margin"/>
     </LinearLayout>
 
     <LinearLayout
@@ -46,15 +43,13 @@
         <ImageView
             android:id="@+id/origin_body_iv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/origin_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/orig_margin"
-            android:layout_marginTop="@dimen/orig_margin"
-            />
+            android:layout_marginTop="@dimen/orig_margin"/>
     </LinearLayout>
 </LinearLayout>

@@ -3,20 +3,17 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal">
-
-
+    <!--我的收藏适配器布局-->
     <ImageView
         android:id="@+id/art_headiv_uptodata"
         android:layout_width="@dimen/all_item_common_width"
         android:layout_height="@dimen/all_item_common_height"
-        android:layout_marginLeft="@dimen/art_margin_left"
-        />
+        android:layout_marginLeft="@dimen/art_margin_left"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/all_margin"
-        >
+        android:layout_margin="@dimen/all_margin">
 
         <TextView
             android:id="@+id/art_updata_tv_tit"
@@ -29,8 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_margin="@dimen/all_margin"
-            />
+            android:layout_margin="@dimen/all_margin"/>
 
         <TextView
             android:id="@+id/art_updata_lengh"
@@ -38,7 +34,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_margin="@dimen/all_margin"
-            />
+            android:layout_margin="@dimen/all_margin"/>
     </RelativeLayout>
 </LinearLayout>

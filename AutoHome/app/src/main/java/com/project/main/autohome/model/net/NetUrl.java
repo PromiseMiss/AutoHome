@@ -5,6 +5,8 @@ package com.project.main.autohome.model.net;
  * 网址常量类
  */
 public final class NetUrl {
+    // 欢迎页
+    public static final String WELCOME = "http://pic.3gbizhi.com/2014/0330/20140330023650838.jpg";
     // 最新
     public static final String UP_TO_DATA_URL = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
     // 刷新最新
@@ -91,9 +93,6 @@ public final class NetUrl {
     public static final String FIND_FIRST = "http://223.99.255.20/mobilenc.app.autohome.com.cn/discover_v5.8.0/mobile/functionlist-a2-pm2-v5.8.5-pid210000-cid210200.json";
     // 有轮播图
     public static final String FIND_FIRST_RECYCLER = "http://app.api.autohome.com.cn/autov5.0.0/mobile/appadvert-a2-pm1-v5.0.1-sid2-pid340000-cid0-lat0.000000-lng0.000000.json";
-    //发现页轮播图详情
-    public static final String FIND_DETATIL = "http://app.api.autohome.com.cn/autov5.0.0/mobile/appadvert-a2-pm1-v5.0.1-sid2-pid340000-cid0-lat0.000000-lng0.000000.json";
-
     // 筛选
     public static final String FILTER = "http://cars.app.autohome.com.cn/cars_v5.8.0/cars/gethotseries-a2-pm2-v6.1.0-p1-s20.json";
     // 品牌GridV
@@ -125,10 +124,6 @@ public final class NetUrl {
     public static final String BULLTIN_BOTTOM_URL = "-lastid0-o1.json";
 
     // 找车详情
-    // 在售
-    public static final String Test = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm1-b33-t1.json";
-
-
     public static final String BRAND_NOW_TOP = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm1-b";
     public static final String BRAND_NOW_BOTT = "-t1.json";
     // 全部
@@ -138,6 +133,4 @@ public final class NetUrl {
 
     // 发现页  轮播图下面的下面的GV
     public static final String SALE_GVFIRST_URL = "http://223.99.255.20/mobilenc.app.autohome.com.cn/discover_v5.8.0/mall/intelligentrecommend.ashx?a=2&pm=2&v=5.8.5&uid=0&deviceid=99000628573771&gps=38.889659,121.551063&cityid=210200&pid=210000&pageindex=1&pagesize=20&hid";
-
-
 }

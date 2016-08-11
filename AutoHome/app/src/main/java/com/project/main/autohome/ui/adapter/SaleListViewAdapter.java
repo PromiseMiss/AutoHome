@@ -16,6 +16,8 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/23 0023.
+ * <p/>
+ * 发现页listview的适配器
  */
 public class SaleListViewAdapter extends BaseAdapter {
     private Context context;
@@ -55,7 +57,6 @@ public class SaleListViewAdapter extends BaseAdapter {
         } else {
             lsHolder = (LsHolder) convertView.getTag();
         }
-//        VolleyInstence.getInstence(context).loadImage(lsBean.get(position).getLogo(), lsHolder.sale_ls_iv);
         ImageLoaderUtil.getInstance().load(lsBean.get(position).getLogo(), lsHolder.sale_ls_iv);
         lsHolder.sale_ls_tit_tv.setText(lsBean.get(position).getTitle());
         lsHolder.sale_ls_smaltit_tv.setText(lsBean.get(position).getAdinfo());

@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/18 0018.
+ * 我 页
  */
 public class MyIntoAdapter extends FragmentPagAdapter {
     private List<Fragment> myData;

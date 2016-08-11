@@ -81,15 +81,11 @@ public class DBInstance implements IDBHelper<AutoHomeBean> {
         return autoHomeBeanDao;
     }
 
-    private AutoHomeBeanDao _getAutoHomeBeanDao() {
-        return _getAutoHomeBeanDao();
-    }
-
     /*对外提供增删改查*/
     // 增
     @Override
     public void insert(AutoHomeBean autoHomeBean) {
-//        getsInstance()._insert(autoHomeBean);
+        //        getsInstance()._insert(autoHomeBean);
         autoHomeBeanDao.insertOrReplace(autoHomeBean);
     }
 
@@ -109,27 +105,6 @@ public class DBInstance implements IDBHelper<AutoHomeBean> {
 
     public void deleByTitle(String title) {
         autoHomeBeanDao.deleteInTx(query(title));
-    }
-
-    public void deleteBatch(List<AutoHomeBean> autoHomeBeen) {
-        daoSession.getAutoHomeBeanDao().deleteInTx(autoHomeBeen);
-    }
-
-    public List<AutoHomeBean> delete(Long id) {
-        daoSession.getAutoHomeBeanDao().deleteByKey(id);
-        return queryBuilder.list();
-    }
-
-
-    // 改
-    @Override
-    public void change(AutoHomeBean autoHomeBean) {
-        getsInstance()._change(autoHomeBean);
-    }
-
-
-    private void _change(AutoHomeBean autoHomeBean) {
-        autoHomeBeanDao.update(autoHomeBean);
     }
 
     // 查

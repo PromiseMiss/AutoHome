@@ -3,11 +3,9 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
-
+<!--优创-->
     <com.project.main.autohome.tools.CustomRefreshListView
         android:id="@+id/orig_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </com.project.main.autohome.tools.CustomRefreshListView>
+        android:layout_height="match_parent"/>
 </LinearLayout>

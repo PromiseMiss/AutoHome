@@ -12,9 +12,9 @@
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
 
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    
-    
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
@@ -28,20 +28,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateHidden|adjustResize">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.WelcomeAvtivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.MainActivity"/>
         <activity android:name=".ui.activity.FeatureActivity"/>
         <activity android:name=".ui.activity.VideoActivity"/>
         <activity android:name=".ui.activity.UptoDataActivity"/>
         <activity android:name=".ui.activity.HotPostsActivity"/>
         <activity android:name=".ui.activity.AllActivity"/>
         <activity android:name=".ui.activity.BulletinActivity"/>
-        <activity android:name=".ui.activity.SaleBannerActivity"/>
         <activity android:name=".ui.activity.MyLogin"/>
         <activity android:name=".ui.activity.SaleLsActivity"/>
         <activity android:name=".ui.activity.MyChildCollection"/>
@@ -68,7 +68,12 @@
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+            <!--隐藏powered by shareSdk-->
+            <meta-data
+                android:name="AuthorizeAdapter"
+                android:value="cn.sharesdk.MyAdapter"/>
         </activity>
+        <activity android:name=".ui.activity.MyPersonalActivity"/>
 
     </application>
 

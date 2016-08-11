@@ -5,13 +5,6 @@
               android:background="#ffff"
               android:orientation="vertical">
     <!--发现页轮播图加下面的GridView-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="发现"
-        android:textSize="15sp"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,13 +17,13 @@
             <com.youth.banner.Banner
                 android:id="@+id/sale_banner"
                 android:layout_width="match_parent"
-                android:layout_height="130dp">
+                android:layout_height="150dp">
             </com.youth.banner.Banner>
-
+            <!--8个GV-->
             <GridView
                 android:id="@+id/sale_gv"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:numColumns="4">
             </GridView>
 
@@ -50,11 +43,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="#c0c0c0"/>
-
+            <!--猜你喜欢GV-->
             <GridView
                 android:id="@+id/sale_gv_first"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:numColumns="2">
             </GridView>
 
@@ -73,11 +66,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="#c0c0c0"/>
-
+            <!--为我推荐GV-->
             <GridView
                 android:id="@+id/sale_gv_secon"
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
+                android:layout_height="wrap_content"
                 android:numColumns="2">
             </GridView>
 

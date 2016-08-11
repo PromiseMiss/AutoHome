@@ -4,44 +4,52 @@
               android:layout_height="match_parent"
               android:background="#ffff"
               android:orientation="vertical">
-
+    <!--登录-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!--标题栏-->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="35dp">
 
-            <ImageView
-                android:id="@+id/my_log_back_iv"
+            <RelativeLayout
+                android:id="@+id/my_log_back_LL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp"
-                android:background="@mipmap/ahlib_bar_btn_icon_returntext_a"/>
+                android:layout_marginTop="5dp">
+                <!--返回（图片）-->
+                <ImageView
+                    android:id="@+id/my_log_back_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/my_log_back"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginStart="13dp"
+                    android:background="@mipmap/ahlib_bar_btn_icon_returntext_a"/>
+                <!--返回-->
+                <TextView
+                    android:id="@+id/my_log_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/my_log_back_iv"
+                    android:layout_toRightOf="@+id/my_log_back_iv"
+                    android:text="返回"
+                    android:textColor="#3a6ab5"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
 
             <TextView
-                android:id="@+id/my_log_back"
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_toEndOf="@+id/my_log_back_iv"
-                android:layout_toRightOf="@+id/my_log_back_iv"
-                android:text="返回"
-                android:textColor="#3a6ab5"
-                android:textSize="20sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/my_log_back"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:text="登录"
@@ -53,12 +61,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_alignTop="@+id/textView"
+                android:layout_marginEnd="18dp"
+                android:layout_marginRight="18dp"
                 android:text="注册"
                 android:textColor="#3a6ab5"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -66,60 +74,64 @@
         android:layout_width="match_parent"
         android:layout_height="15dp"
         android:background="#F5F5F5"/>
-
-    <EditText
+    <!--手机号(自定义EditText)-->
+    <com.project.main.autohome.tools.CustomEditText
         android:id="@+id/my_log_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:hint="手机号/邮箱/用户名"
-        android:padding="10dp"/>
+        android:hint="@string/my_log_user"
+        android:padding="10dp"
+        android:textColorHint="@color/gray_hint"
+        android:textCursorDrawable="@null"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginLeft="5dp"
         android:background="#d2d2d2"/>
-
-    <EditText
+    <!--密码(自定义EditText)-->
+    <com.project.main.autohome.tools.CustomEditText
         android:id="@+id/my_log_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:hint="密码"
-        android:padding="10dp"/>
+        android:hint="@string/my_log_pass"
+        android:padding="10dp"
+        android:textColorHint="@color/gray_hint"
+        android:textCursorDrawable="@null"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#d2d2d2"/>
-
+    <!--登录-->
     <Button
         android:id="@+id/my_log_btnlog"
         android:layout_width="345dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
-        android:background="#3a6ab5"
-        android:text="登录"
+        android:background="@drawable/my_login_btn_shape"
+        android:text="@string/my_log_btnlog"
         android:textColor="#ffff"
         android:textSize="20sp"/>
-
+    <!--忘记密码-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_margin="18dp"
-        android:text="忘记密码"
+        android:text="@string/forget_pass"
         android:textColor="#3a6ab5"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="还可以用一下方式登录"
+        android:text="@string/other_way"
         android:textColor="#d2d2d2"/>
-
+    <!--微博登录-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -148,7 +160,7 @@
             android:background="@mipmap/qq"/>
 
     </RelativeLayout>
-
+    <!--QQ-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -163,7 +175,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="46dp"
             android:layout_marginStart="46dp"
-            android:text="微博登录"
+            android:text="@string/my_weiboLogin_tv"
             android:textColor="#d2d2d2"/>
 
         <TextView
@@ -175,7 +187,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginEnd="64dp"
             android:layout_marginRight="64dp"
-            android:text="QQ登录"
+            android:text="@string/my_qqLogin_tv"
             android:textColor="#d2d2d2"/>
     </RelativeLayout>
 

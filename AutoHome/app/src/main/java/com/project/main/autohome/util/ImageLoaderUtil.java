@@ -8,6 +8,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.project.main.autohome.R;
 import com.project.main.autohome.ui.activity.MyApp;
 
 /**
@@ -34,11 +35,13 @@ public class ImageLoaderUtil {
 
     // configBuilder.imageDownloader();
     private void init() {
-
         mUiImageLoader = ImageLoader.getInstance();
         options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisc(true)
+                // 设置图片为空或错误的时候显示的图片
+                .showImageForEmptyUri(R.mipmap.ahlib_logo_180_136)
+                // 设置图片以何种编码方式显示
                 .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2).build();
         ImageLoaderConfiguration.Builder configBuilder = new ImageLoaderConfiguration.Builder(MyApp.getContext());
         configBuilder.defaultDisplayImageOptions(options);

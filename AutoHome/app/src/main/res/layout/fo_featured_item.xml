@@ -3,11 +3,10 @@
               android:layout_width="wrap_content"
               android:layout_height="match_parent"
               android:orientation="horizontal">
-
+<!--RecyclerView 横滑  适配器  精选推荐-->
     <TextView
         android:id="@+id/fo_fea_item_recyc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fo_item_tv"
-         />
+        android:layout_margin="@dimen/fo_item_tv"/>
 </LinearLayout>

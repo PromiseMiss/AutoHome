@@ -10,13 +10,11 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.SaleAutoBean;
-import com.project.main.autohome.model.bean.SaleBannerDetailsBean;
 import com.project.main.autohome.model.bean.SaleGVFirstBean;
 import com.project.main.autohome.model.bean.SalerecycleBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
-import com.project.main.autohome.ui.activity.SaleBannerActivity;
 import com.project.main.autohome.ui.activity.SaleLsActivity;
 import com.project.main.autohome.ui.adapter.SaleAdapter;
 import com.project.main.autohome.ui.adapter.SaleGVFirstAdapter;
@@ -31,23 +29,16 @@ import java.util.List;
  * Created by youyo on 2016/7/11 0011.
  * 发现页
  */
-public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResult, Banner.OnBannerClickListener, AdapterView.OnItemClickListener {
+public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResult, AdapterView.OnItemClickListener {
     private Banner sale_banner;
     private String[] imgsurl;
     private GridView sale_gv, sale_gv_first, sale_gv_secon;
     private ListView sale_ls;
-    private String urls = NetUrl.FIND_DETATIL;
-
     private SaleAdapter saleAdapter;
     private SaleGVFirstAdapter gvFirstAdapter;
     private SaleGVSeconAdapter gvSeconAdapter;
     private SaleListViewAdapter listViewAdapter;
-
-
     private List<SalerecycleBean.ResultBean.FunctionlistBean> funcList;
-    private List<SaleBannerDetailsBean.ResultBean.ListBean> listBeen;
-    private String url;
-    private String saleUrl;
     private List<SaleGVFirstBean.ResultBean.GoodslistBean.ListBean> goodslistBeen;
 
     @Override
@@ -99,6 +90,7 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
                 Gson gson = new Gson();
                 SaleGVFirstBean firstBean = gson.fromJson(str, SaleGVFirstBean.class);
                 List<SaleGVFirstBean.ResultBean.ModulelistBean> modulelistBeen = firstBean.getResult().getModulelist();
+                // 猜你喜欢
                 gvFirstAdapter = new SaleGVFirstAdapter(getContext());
                 gvFirstAdapter.setGvfristBean(modulelistBeen);
                 sale_gv_first.setAdapter(gvFirstAdapter);
@@ -113,7 +105,7 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
 
             }
         });
-        // ListView 解析
+        // ListView 解析(商品列表)
         VolleyInstence.getInstence(getContext()).startRequest(NetUrl.SALE_GVFIRST_URL, new VolleyInterfaceResult() {
             @Override
             public void success(String str) {
@@ -129,8 +121,6 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
 
             }
         });
-
-        sale_banner.setOnBannerClickListener(this);
         initBanner();
     }
 
@@ -160,43 +150,17 @@ public class SaleFragment extends AbsBaseFragment implements VolleyInterfaceResu
     }
 
     /**
-     * 轮播图点击事件，并进行跳转
+     * 商品列表详情
      *
+     * @param parent
      * @param view
      * @param position
+     * @param id
      */
-    @Override
-    public void OnBannerClick(View view, final int position) {
-        Intent intent = new Intent(getContext(), SaleBannerActivity.class);
-        //        final int num = funcList.get(position).getId();
-        for (int i = 0; i < funcList.get(position).getId(); i++) {
-
-            VolleyInstence.getInstence(getContext()).startRequest(urls, new VolleyInterfaceResult() {
-                @Override
-                public void success(String str) {
-                    Gson gson = new Gson();
-                    SaleBannerDetailsBean detailsBean = gson.fromJson(str, SaleBannerDetailsBean.class);
-                    listBeen = detailsBean.getResult().getList();
-                    url = listBeen.get(position).getUrl();
-                }
-
-                @Override
-                public void failure() {
-
-                }
-            });
-        }
-        intent.putExtra("url", url);
-        getContext().startActivity(intent);
-
-
-    }
-
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(getContext(), SaleLsActivity.class);
-        intent.putExtra("saleUrl",goodslistBeen.get(position).getMurl());
+        intent.putExtra("saleUrl", goodslistBeen.get(position).getMurl());
         startActivity(intent);
     }
 }

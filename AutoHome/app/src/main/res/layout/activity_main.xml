@@ -6,12 +6,11 @@
     android:orientation="vertical"
     >
     <!--软件总布局页-->
-
     <FrameLayout
         android:id="@+id/fragLy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"></FrameLayout>
+        android:layout_weight="1"/>
 
     <RadioGroup
         android:id="@+id/act_main_radio"
@@ -26,8 +25,7 @@
             android:layout_weight="1"
             android:background="@drawable/act_main_article"
             android:button="@null"
-            android:gravity="center"
-            />
+            android:gravity="center"/>
 
         <RadioButton
             android:id="@+id/act_main_forum"
@@ -36,8 +34,7 @@
             android:layout_weight="1"
             android:background="@drawable/act_main_forum"
             android:button="@null"
-            android:gravity="center"
-            />
+            android:gravity="center"/>
 
         <RadioButton
             android:id="@+id/act_main_findCar"
@@ -46,8 +43,7 @@
             android:layout_weight="1"
             android:background="@drawable/act_main_findcar"
             android:button="@null"
-            android:gravity="center"
-            />
+            android:gravity="center"/>
 
         <RadioButton
             android:id="@+id/act_main_sale"
@@ -56,8 +52,7 @@
             android:layout_weight="1"
             android:background="@drawable/act_main_sale"
             android:button="@null"
-            android:gravity="center"
-            />
+            android:gravity="center"/>
 
         <RadioButton
             android:id="@+id/act_main_my"
@@ -66,10 +61,6 @@
             android:layout_weight="1"
             android:background="@drawable/act_main_my"
             android:button="@null"
-            android:gravity="center"
-            />
-
+            android:gravity="center"/>
     </RadioGroup>
-
-
 </LinearLayout>

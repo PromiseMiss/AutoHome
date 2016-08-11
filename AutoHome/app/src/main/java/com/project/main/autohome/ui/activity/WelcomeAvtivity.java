@@ -1,70 +1,56 @@
 package com.project.main.autohome.ui.activity;
 
-import android.content.Intent;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.main.autohome.R;
+import com.project.main.autohome.model.net.NetUrl;
+import com.project.main.autohome.util.ImageLoaderUtil;
 
 /**
  * Created by youyo on 2016/7/27 0027.
+ * 欢迎页
  */
 public class WelcomeAvtivity extends AbsBaseActivity implements View.OnClickListener {
     private TextView wel_tv;
-    private static final int GOTO_MAIN_ACTIVITY = 0;
+    private ImageView imageView;
     private CountDownTimer timer;
 
     @Override
     protected int setlayout() {
-        mHandler.sendEmptyMessageDelayed(GOTO_MAIN_ACTIVITY, 1000);
-
         return R.layout.welcome_activity;
     }
 
     @Override
     protected void initViews() {
         wel_tv = byView(R.id.welcome_tv_time);
+        imageView = byView(R.id.welcome_iv);
     }
 
     @Override
     protected void initDatas() {
         wel_tv.setOnClickListener(this);
-        timer = new CountDownTimer(1000, 1000) {
+        ImageLoaderUtil.getInstance().load(NetUrl.WELCOME, imageView);
+        // 延时显示
+        timer = new CountDownTimer(2500, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                wel_tv.setText("跳过");
+                wel_tv.setText(getText(R.string.welcome_loading));
             }
 
             @Override
             public void onFinish() {
-
+                goTo(WelcomeAvtivity.this, MainActivity.class);
+                finish();
             }
         }.start();
     }
 
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case GOTO_MAIN_ACTIVITY:
-                    Intent intent = new Intent(WelcomeAvtivity.this, MainActivity.class);
-                    startActivity(intent);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
-
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(WelcomeAvtivity.this, MainActivity.class);
-        startActivity(intent);
+        goTo(WelcomeAvtivity.this, MainActivity.class);
         finish();
     }
 

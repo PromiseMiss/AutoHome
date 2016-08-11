@@ -3,11 +3,9 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-
+    <!--找车品牌抽屉-->
     <ExpandableListView
         android:id="@+id/brand_child_radio_now_ex"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ExpandableListView>
+        android:layout_height="match_parent"/>
 </LinearLayout>

@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/22 0022.
- * 抽屉的实体类
+ * 品牌页  抽屉的实体类
  */
 public class BrandGroupBean {
 

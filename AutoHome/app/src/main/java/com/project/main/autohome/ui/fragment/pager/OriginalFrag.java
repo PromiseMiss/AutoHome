@@ -2,8 +2,6 @@ package com.project.main.autohome.ui.fragment.pager;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
@@ -23,14 +21,11 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 优创页
  */
-public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
-    private TextView head_all_pop, orig_item_all_pop, orig_item_my_pop;
-    private PopupWindow orig_pop;
+public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResult {
     private String[] imgurl;
     private Banner banner;
     private CustomRefreshListView orig_ls;
     private OriginalAdapter originalAdapter;
-
     private String imgUrl = NetUrl.UNIHUB_URL;
     private String url = NetUrl.UNIHUB_URL;
 
@@ -42,8 +37,6 @@ public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResu
     @Override
     protected void initView() {
         orig_ls = byView(R.id.orig_listview);
-        orig_item_all_pop = byView(R.id.orig_item_all_pop);
-        orig_item_my_pop = byView(R.id.orig_item_my_pop);
     }
 
     @Override
@@ -75,12 +68,8 @@ public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResu
         orig_ls.addHeaderView(view);
         banner = (Banner) view.findViewById(R.id.uptodata_banner);
         orig_ls.setAdapter(originalAdapter);
-        // 为ListView添加下拉刷新监听
-        orig_ls.setOnCustomRefreshListener(this);
-
         // 检查网路
         NetWorkConnectedToast.getConnectedToast().isNet(getContext());
-
     }
 
     @Override
@@ -104,13 +93,5 @@ public class OriginalFrag extends AbsBaseFragment implements VolleyInterfaceResu
         banner.setDelayTime(3000);
         //        轮播图片
         banner.setImages(imgurl);
-    }
-
-    /**
-     * 下拉刷新
-     */
-    @Override
-    public void onRefresh() {
-
     }
 }

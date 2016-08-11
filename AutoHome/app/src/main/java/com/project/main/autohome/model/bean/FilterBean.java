@@ -4,9 +4,9 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/20 0020.
+ * 筛选页实体类
  */
 public class FilterBean {
-
     /**
      * returncode : 0
      * message :

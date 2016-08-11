@@ -57,7 +57,6 @@ public class AllIntoAdapter extends BaseAdapter {
             allHolder = (AllHolder) convertView.getTag();
         }
         AllOfBean.ResultBean.NewslistBean bean = (AllOfBean.ResultBean.NewslistBean) getItem(position);
-        //        VolleyInstence.getInstence(context).loadImage(bean.getSmallpic(), allHolder.all_img);
         ImageLoaderUtil.getInstance().load(bean.getSmallpic(), allHolder.all_img);
         allHolder.all_title.setText(bean.getTitle());
         allHolder.all_time.setText(bean.getTime());

@@ -22,7 +22,7 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 视频页
  */
-public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
+public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult {
     private CustomRefreshListView video_ls;
     private VideoAdapter videoAdapter;
     private String viseoUrl = NetUrl.VIDEO_URL;
@@ -42,8 +42,6 @@ public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult,
     protected void initData() {
         videoAdapter = new VideoAdapter(getContext());
         VolleyInstence.getInstence(getContext()).startRequest(viseoUrl, this);
-        // 下拉刷新监听
-        video_ls.setOnCustomRefreshListener(this);
         // 行布局监听，进行二级界面跳转
         video_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -54,7 +52,6 @@ public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult,
                 startActivity(intent);
             }
         });
-
         //检查网路
         NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }
@@ -70,14 +67,6 @@ public class VideoFrag extends AbsBaseFragment implements VolleyInterfaceResult,
 
     @Override
     public void failure() {
-
-    }
-
-    /**
-     * 下拉刷新方法
-     */
-    @Override
-    public void onRefresh() {
 
     }
 }

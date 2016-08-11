@@ -1,7 +1,6 @@
 package com.project.main.autohome.ui.activity;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -31,22 +30,17 @@ public class MyChildCollection extends AbsBaseActivity implements AdapterView.On
     @Override
     protected void initViews() {
         ls = byView(R.id.mychild_collection);
-
     }
 
     @Override
     protected void initDatas() {
         homeBeen = new ArrayList<>();
         homeBeen = DBInstance.getsInstance().query(10);
-        Log.d("MyChildCollection", "homeBeen.size():" + homeBeen.size());
         collectionAdapter = new MyChildCollectionAdapter(this);
         collectionAdapter.setmDatas(homeBeen);
         ls.setAdapter(collectionAdapter);
         ls.setOnItemClickListener(this);
         ls.setOnItemLongClickListener(this);
-
-        //testcode
-//
     }
 
     @Override

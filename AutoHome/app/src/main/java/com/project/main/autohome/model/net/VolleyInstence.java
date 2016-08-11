@@ -71,7 +71,7 @@ public class VolleyInstence {
      */
     public void loadImage(String url, ImageView imageView) {
         ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView,
-                R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+                R.mipmap.ahlib_logo_80_80, R.mipmap.ahlib_logo_80_80);
         imageLoader.get(url, listener);
     }
 
@@ -81,6 +81,4 @@ public class VolleyInstence {
         }
         return imageLoader;
     }
-
-
 }

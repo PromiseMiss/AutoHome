@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/26 0026.
+ * <p/>
+ * 数据库操作类
  */
 public interface IDBHelper<T> {
     // 增
@@ -11,9 +13,6 @@ public interface IDBHelper<T> {
 
     // 删
     void dele(T t);
-
-    // 改
-    void change(T t);
 
     // 查
 

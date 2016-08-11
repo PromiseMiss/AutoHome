@@ -63,7 +63,7 @@ public class FeatureActivity extends AbsBaseActivity implements View.OnClickList
             case R.id.feature_iv_collect:
 
                 break;
-            case R.id.feature_iv_share:
+            case R.id.feature_iv_share:// 分享
                 showShare();
                 break;
             default:

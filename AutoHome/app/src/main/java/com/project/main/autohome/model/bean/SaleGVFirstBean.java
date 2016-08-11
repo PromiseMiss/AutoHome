@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/23 0023.
- * 发现页 第二个GridView的实体类  猜你喜欢 为我推荐
  *
+ * 发现页 第二个GridView的实体类  【猜你喜欢 为我推荐】
  */
 public class SaleGVFirstBean {
 

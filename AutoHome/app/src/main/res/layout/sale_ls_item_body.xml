@@ -2,23 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
+                android:orientation="vertical"
+                android:padding="12dp">
+    <!--发现页listview的适配器-->
     <ImageView
         android:id="@+id/sale_ls_iv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
-
+        android:layout_height="wrap_content"/>
+    <!--商品标题-->
     <TextView
         android:id="@+id/sale_ls_tit_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/sale_ls_iv"
-        android:layout_toRightOf="@+id/sale_ls_iv"
-         />
-
+        android:layout_toRightOf="@+id/sale_ls_iv"/>
+    <!--商品详细信息-->
     <TextView
         android:id="@+id/sale_ls_smaltit_tv"
         android:layout_width="wrap_content"
@@ -26,8 +25,11 @@
         android:layout_below="@+id/sale_ls_tit_tv"
         android:layout_toEndOf="@+id/sale_ls_iv"
         android:layout_toRightOf="@+id/sale_ls_iv"
+        android:ellipsize="end"
+        android:maxEms="20"
+        android:singleLine="true"
         android:textSize="10sp"/>
-
+    <!--商品优惠价格-->
     <TextView
         android:id="@+id/sale_ls_num_tv"
         android:layout_width="wrap_content"
@@ -36,7 +38,7 @@
         android:layout_toEndOf="@+id/sale_ls_iv"
         android:layout_toRightOf="@+id/sale_ls_iv"
         android:textColor="#ff0000"/>
-
+    <!--商品原价-->
     <TextView
         android:id="@+id/sale_ls_smalnum"
         android:layout_width="wrap_content"

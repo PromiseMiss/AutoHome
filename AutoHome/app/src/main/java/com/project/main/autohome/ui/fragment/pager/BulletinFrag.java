@@ -50,13 +50,14 @@ public class BulletinFrag extends AbsBaseFragment implements VolleyInterfaceResu
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), BulletinActivity.class);
+                // 详情页网址
                 String bullUrl = NetUrl.BULLETIN_TOP_URL + listBeen.get(position).getId() + NetUrl.BULLTIN_BOTTOM_URL;
+                // 刷新的网址
                 bulletinCus = NetUrl.BULLETIN_CUSTOM_TOP + listBeen.get(position) + NetUrl.BULLETIN_CUSTOM_BOTTOM;
                 intent.putExtra("bullUrl", bullUrl);
                 getContext().startActivity(intent);
             }
         });
-
         // 检查网路
         NetWorkConnectedToast.getConnectedToast().isNet(getContext());
     }

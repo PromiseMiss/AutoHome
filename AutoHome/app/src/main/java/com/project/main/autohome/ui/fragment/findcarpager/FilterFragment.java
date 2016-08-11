@@ -27,7 +27,6 @@ public class FilterFragment extends AbsBaseFragment implements View.OnClickListe
     private FilterAdapter adapter;
     private TextView price_tv;
     private PopupWindow popupWindow;
-    private String url = NetUrl.FILTER;
 
     @Override
     protected int setLayout() {
@@ -43,7 +42,7 @@ public class FilterFragment extends AbsBaseFragment implements View.OnClickListe
     @Override
     protected void initData() {
         adapter = new FilterAdapter(getContext());
-        VolleyInstence.getInstence(getContext()).startRequest(url, new VolleyInterfaceResult() {
+        VolleyInstence.getInstence(getContext()).startRequest(NetUrl.FILTER, new VolleyInterfaceResult() {
             @Override
             public void success(String str) {
                 Gson gson = new Gson();
@@ -58,13 +57,12 @@ public class FilterFragment extends AbsBaseFragment implements View.OnClickListe
 
             }
         });
-
         price_tv.setOnClickListener(this);
-
     }
 
     /**
      * 弹出pop的事件监听
+     *
      * @param v
      */
     @Override

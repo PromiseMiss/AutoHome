@@ -8,11 +8,12 @@ import android.widget.AdapterView;
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.AllOfBean;
+import com.project.main.autohome.model.db.AutoHomeBean;
+import com.project.main.autohome.model.db.DBInstance;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
 import com.project.main.autohome.model.net.VolleyInterfaceResult;
 import com.project.main.autohome.tools.CustomRefreshListView;
-import com.project.main.autohome.tools.NetWorkConnectedToast;
 import com.project.main.autohome.ui.activity.AllActivity;
 import com.project.main.autohome.ui.adapter.AllIntoAdapter;
 import com.project.main.autohome.ui.fragment.AbsBaseFragment;
@@ -23,17 +24,15 @@ import java.util.List;
  * Created by youyo on 2016/7/12 0012.
  * 推荐页 所有页   （引用了自定义ListView）
  */
-public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResult, CustomRefreshListView.OnCustomRefreshListener {
+public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResult
+        , CustomRefreshListView.OnCustomRefreshListener {
     private String url;
     private CustomRefreshListView all_ls;
     private AllIntoAdapter allAdapter;
     private List<AllOfBean.ResultBean.NewslistBean> allbean;
 
-
     public AllFragment() {
-
     }
-
 
     @Override
     protected int setLayout() {
@@ -43,29 +42,41 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
     @Override
     protected void initView() {
         all_ls = byView(R.id.all_ls);
-
     }
 
     @Override
     protected void initData() {
-
         Bundle bundle = getArguments();
         this.url = bundle.getString("url_key");
         allAdapter = new AllIntoAdapter(getContext());
         VolleyInstence.getInstence(getContext()).startRequest(url, this);
         // 给ListView添加刷新监听
         all_ls.setOnCustomRefreshListener(this);
+        // 跳转详情页
         all_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), AllActivity.class);
                 String allUrl = NetUrl.NEWS_TOP_URL + id + NetUrl.NEWS_BOTTOM_URL;
                 intent.putExtra("allUrl", allUrl);
+                // 判断数据库里有没有
+                List<AutoHomeBean> allOfBeen = DBInstance.getsInstance().query(allbean.get(position).getTitle());
+                if (allOfBeen.size() != 0) {
+                    intent.putExtra("flag", false);
+                } else {
+                    intent.putExtra("flag", true);
+                }
+                String title = allbean.get(position).getTitle();
+                String content = allbean.get(position).getTime();
+                String pric = allbean.get(position).getSmallpic();
+                intent.putExtra("title", title);
+                intent.putExtra("content", content);
+                intent.putExtra("pric", pric);
+
                 getContext().startActivity(intent);
             }
         });
-        // 检查网路
-        NetWorkConnectedToast.getConnectedToast().isNet(getContext());
+
     }
 
     public static AllFragment getInstance(String url) {
@@ -97,6 +108,15 @@ public class AllFragment extends AbsBaseFragment implements VolleyInterfaceResul
      */
     @Override
     public void onRefresh() {
-
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

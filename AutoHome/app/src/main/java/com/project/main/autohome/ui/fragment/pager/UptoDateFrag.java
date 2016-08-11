@@ -31,11 +31,9 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
     private UptoDateAdapter uptoDateAdapter;
     private Banner banner;
     private String[] imgUrls;
-
     private String customUrl = NetUrl.CUSTOM_UP_TO_DATA_URL;
     private List<UpCarouselBean.ResultBean.NewslistBean> beanList;
     private List<UpCarouselBean.ResultBean.FocusimgBean> focusimgBeen;
-
 
     @Override
     protected int setLayout() {
@@ -77,22 +75,18 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
         uptoDate_ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Intent intent = new Intent(getContext(), UptoDataActivity.class);
                 String dataUrl = NetUrl.UPTODATA_DETAILS + beanList.get(position).getId() + NetUrl.UPTODATA_BOTTOM;
                 intent.putExtra("dataUrl", dataUrl);
-
                 String title = beanList.get(position).getTitle();
                 String price = beanList.get(position).getSmallpic();
                 String content = beanList.get(position).getTime();
-
                 List<AutoHomeBean> carouselBeen = DBInstance.getsInstance().query(beanList.get(position).getTitle());
                 if (carouselBeen.size() != 0) {
                     intent.putExtra("isClick", false);
                 } else {
                     intent.putExtra("isClick", true);
                 }
-
                 intent.putExtra("title", title);
                 intent.putExtra("content", content);
                 intent.putExtra("price", price);
@@ -100,10 +94,8 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
                 startActivity(intent);
             }
         });
-
         // 检查是否有网络连接
         NetWorkConnectedToast.getConnectedToast().isNet(getContext());
-
     }
 
     private void initshowBanner() {
@@ -132,13 +124,11 @@ public class UptoDateFrag extends AbsBaseFragment implements VolleyInterfaceResu
 
     }
 
-
     /**
      * 下拉刷新
      */
     @Override
     public void onRefresh() {
-
         VolleyInstence.getInstence(getContext()).startRequest(customUrl, new VolleyInterfaceResult() {
             @Override
             public void success(String str) {

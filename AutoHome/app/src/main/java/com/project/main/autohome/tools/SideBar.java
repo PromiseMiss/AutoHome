@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.project.main.autohome.R;
 
 /**
- * Created by Beyond on 2016/7/22.
- * 自定义索引栏
+ * Created by youyo on 2016/7/14 0014.
+ * 自定义索引栏【找车-常用论坛-车系论坛】
  */
 public class SideBar extends View {
     // 26字母

@@ -17,7 +17,9 @@ import android.widget.RelativeLayout;
 import com.project.main.autohome.R;
 
 /**
- * Created by Hankkin on 16/4/10.
+ * Created by youyo on 2016/7/18 0018.
+ *
+ * 下拉刷新工具类
  */
 public class CustomRefreshListView extends ListView implements AbsListView.OnScrollListener {
     private static final int DONE = 0;      //刷新完毕状态
@@ -35,7 +37,6 @@ public class CustomRefreshListView extends ListView implements AbsListView.OnScr
     private boolean isRecord;   //是否记录
     private boolean isEnd;  //是否结束
     private boolean isRefreable;    //是否刷新
-
     private ImageView ivWheel1, ivWheel2;    //轮组图片组件
     private ImageView ivRider;  //骑手图片组件
     private ImageView ivSun, ivBack1, ivBack2;    //太阳、背景图片1、背景图片2

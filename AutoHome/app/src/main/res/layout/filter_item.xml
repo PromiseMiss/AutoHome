@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-
+    <!--筛选适配器行布局-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,23 +15,20 @@
             android:layout_height="50dp"
             android:layout_margin="10dp"
             />
-
+        <!--名字-->
         <TextView
             android:id="@+id/filter_item_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/filter_item_iv"
-            android:text="www"
-            />
-
+            android:layout_toRightOf="@+id/filter_item_iv"/>
+        <!--车价-->
         <TextView
             android:id="@+id/filter_item_num_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/filter_item_iv"
             android:layout_toEndOf="@+id/filter_item_iv"
-            android:text="dd"
             android:textColor="#ff0033"
             android:textSize="10sp"/>
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/19 0019.
- * 发现页 没有轮播图
+ * 发现页 【没有轮播图部分】实体类
  */
 public class SalerecycleBean {
 

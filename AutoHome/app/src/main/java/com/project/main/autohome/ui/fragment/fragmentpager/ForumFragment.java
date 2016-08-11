@@ -34,7 +34,6 @@ public class ForumFragment extends AbsBaseFragment {
     protected void initView() {
         foru_tab = byView(R.id.foru_tab);
         foru_vp = byView(R.id.foru_vp);
-
     }
 
     @Override
@@ -51,6 +50,5 @@ public class ForumFragment extends AbsBaseFragment {
         foru_vp.setAdapter(foru_adapter);
         foru_vp.setOffscreenPageLimit(2);
         foru_tab.setupWithViewPager(foru_vp);
-
     }
 }

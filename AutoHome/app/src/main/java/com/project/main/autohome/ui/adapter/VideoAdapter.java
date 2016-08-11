@@ -57,7 +57,6 @@ public class VideoAdapter extends BaseAdapter {
             videoHolder = (VideoHolder) convertView.getTag();
         }
         VideoBean.ResultBean.ListBean videoLsBean = (VideoBean.ResultBean.ListBean) getItem(position);
-        //        VolleyInstence.getInstence(context).loadImage(videoLsBean.getSmallimg(), videoHolder.video_img);
         ImageLoaderUtil.getInstance().load(videoLsBean.getSmallimg(), videoHolder.video_img);
         videoHolder.video_title.setText(videoLsBean.getTitle());
         videoHolder.video_time.setText(videoLsBean.getTime());

@@ -14,7 +14,7 @@ import com.project.main.autohome.R;
 /**
  * Created by youyo on 2016/7/31 0031.
  * <p>
- * 判断网络是否连接并打印Toast的单例
+ * 判断网络是否连接并打印 Toast 的单例
  */
 public class NetWorkConnectedToast {
     private static NetWorkConnectedToast connectedToast;
@@ -29,6 +29,12 @@ public class NetWorkConnectedToast {
         return connectedToast;
     }
 
+    /**
+     * 自定义吐司
+     * @param context
+     * @param str
+     * @param showTime
+     */
     private void minToast(Context context, String str, int showTime) {
         Toast toast = Toast.makeText(context, str, showTime);
         View v = LayoutInflater.from(context).inflate(R.layout.toast_item, null);
@@ -40,10 +46,19 @@ public class NetWorkConnectedToast {
         toast.show();
     }
 
+    /**
+     * 对外提供的方法
+     * @param context
+     */
     public void isNet(Context context) {
         isNetWordConnected(context);
     }
 
+    /**
+     * 对内的网络判断是否连接方法
+     * @param context
+     * @return
+     */
     private boolean isNetWordConnected(Context context) {
         if (context != null) {
             ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

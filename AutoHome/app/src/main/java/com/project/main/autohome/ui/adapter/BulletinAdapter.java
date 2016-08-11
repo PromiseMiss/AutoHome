@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/15 0015.
- * 快报页 Adapter
+ * 快报页 Adapter【一级界面】
  */
 public class BulletinAdapter extends BaseAdapter {
     private List<BulletinBean.ResultBean.ListBean> bulletinBeen;
@@ -58,7 +58,6 @@ public class BulletinAdapter extends BaseAdapter {
         }
         BulletinBean.ResultBean.ListBean bulBean = (BulletinBean.ResultBean.ListBean) getItem(position);
         holder.bul_title.setText(bulBean.getTitle());
-        //        VolleyInstence.getInstence(context).loadImage(bulBean.getBgimage(), holder.bul_img);
         ImageLoaderUtil.getInstance().load(bulBean.getBgimage(), holder.bul_img);
         holder.bul_num_browse.setText(bulBean.getReviewcount() + "人浏览");
         holder.bul_time.setText(bulBean.getCreatetime());

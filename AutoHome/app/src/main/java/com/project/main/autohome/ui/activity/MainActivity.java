@@ -1,14 +1,11 @@
 package com.project.main.autohome.ui.activity;
 
 
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup;
 
 import com.project.main.autohome.R;
-import com.project.main.autohome.ui.adapter.FragmentPagAdapter;
 import com.project.main.autohome.ui.fragment.fragmentpager.ArticleFragment;
 import com.project.main.autohome.ui.fragment.fragmentpager.FindCarFragment;
 import com.project.main.autohome.ui.fragment.fragmentpager.ForumFragment;
@@ -19,17 +16,12 @@ import com.project.main.autohome.ui.fragment.fragmentpager.SaleFragment;
  * 主Activity
  */
 public class MainActivity extends AbsBaseActivity implements RadioGroup.OnCheckedChangeListener {
-    private TabLayout act_main_tabLy;
-    private ViewPager act_main_viewPager;
     private RadioGroup act_main_radioG;
-    private FragmentPagAdapter pagAdapter;
-
     private ArticleFragment articleFragment;
     private ForumFragment forumFragment;
     private FindCarFragment findCarFragment;
     private SaleFragment saleFragment;
     private MyFragment myFragment;
-
 
     @Override
     protected int setlayout() {
@@ -39,8 +31,6 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
     @Override
     protected void initViews() {
         act_main_radioG = byView(R.id.act_main_radio);
-
-
     }
 
     @Override
@@ -53,7 +43,6 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
         switch (checkedId) {
             case R.id.act_main_article:
                 if (articleFragment == null) {

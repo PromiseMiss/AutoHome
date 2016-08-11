@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -17,7 +18,6 @@ import android.widget.RadioGroup;
 import com.google.gson.Gson;
 import com.project.main.autohome.R;
 import com.project.main.autohome.model.bean.BrandBean;
-import com.project.main.autohome.model.bean.BrandGroupAllBean;
 import com.project.main.autohome.model.bean.BrandIconBean;
 import com.project.main.autohome.model.net.NetUrl;
 import com.project.main.autohome.model.net.VolleyInstence;
@@ -36,29 +36,21 @@ import java.util.List;
  * 品牌页 ---- 找车总页
  */
 public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceResult, ExpandableListView.OnChildClickListener {
-
     private BrandGVAdapter gvAdapter;
     private BrandExpandableAdapter expandableAdapter;
     private ExpandableListView listView; // 二级列表
     private GridView gridView;
-    private String urls = NetUrl.BRANDGV_URL;
-    private String iconUrl = NetUrl.BRAND_BIAOZHI;
-
     private DrawerLayout drawerLayout; // 抽屉
-    private LinearLayout brand_frameLayout;
+    private LinearLayout child_brand_collection;
+    private FrameLayout brand_frameLayout;
     private RadioGroup radioGroup;
     private RadioButton brand_now, brand_all;
     private BrandGroupNowFragment brandGroupNowFragment;
     private BrandGroupAllFragment brandGroupAllFragment;
-    private List<BrandIconBean.ResultBean.BrandlistBean> data;
-
     private List<BrandBean.ResultBean.ListBean> listBeen;
     private List<BrandIconBean.ResultBean.BrandlistBean> brandlistBeanList;
-    private List<BrandGroupAllBean.ResultBean.FctlistBean> allBean;
-
     private SideBar sideBar;
-    boolean flag;
-
+    boolean flags = false;
 
     @Override
     protected int setLayout() {
@@ -72,24 +64,24 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
         radioGroup = byView(R.id.brand_radio);
         brand_now = byView(R.id.brand_radio_now);
         brand_all = byView(R.id.brand_radio_all);
-
         sideBar = byView(R.id.sidrbar);
+        // 抽屉占位布局
         brand_frameLayout = byView(R.id.brand_frameLayout);
-
+        //我的收藏
+        child_brand_collection = byView(R.id.child_brand_LinearLayout_collection);
     }
 
     @Override
     protected void initData() {
-
         // 布局注入，原这个布局是ExpandableListView 需要这个页面滑动
         View view = LayoutInflater.from(getContext()).inflate(R.layout.find_brands_fragment, null);
         gridView = (GridView) view.findViewById(R.id.brand_GridView);// 初始化GridView
         listView.addHeaderView(view);
         gvAdapter = new BrandGVAdapter(getContext());
         // Gradview
-        VolleyInstence.getInstence(getContext()).startRequest(urls, this);
+        VolleyInstence.getInstence(getContext()).startRequest(NetUrl.BRANDGV_URL, this);
         // 解析下面的二级列表
-        VolleyInstence.getInstence(getContext()).startRequest(iconUrl, new VolleyInterfaceResult() {
+        VolleyInstence.getInstence(getContext()).startRequest(NetUrl.BRAND_BIAOZHI, new VolleyInterfaceResult() {
             @Override
             public void success(String str) {
                 Gson gson = new Gson();
@@ -97,7 +89,6 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
                 brandlistBeanList = brandIconBean.getResult().getBrandlist();
                 expandableAdapter = new BrandExpandableAdapter(getContext(), brandlistBeanList);
                 listView.setAdapter(expandableAdapter);
-
                 for (int i = 0; i < expandableAdapter.getGroupCount(); i++) {
                     listView.expandGroup(i);
                 }
@@ -109,12 +100,10 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
             }
         });
 
-
         listView.setGroupIndicator(null);
         // 二级列表监听，打开抽屉
         listView.setOnChildClickListener(this);
-        radioGroup.check(R.id.brand_radio_now);
-
+        radioGroup.check(R.id.brand_radio_all);
         sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
             @Override
             public void OnTouchingLetterChangedListener(String s) {
@@ -154,23 +143,22 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
         drawerLayout.openDrawer(Gravity.RIGHT);
-
         initBody(groupPosition, childPosition);
         return true;
     }
 
     /*通过Bundle传值*/
     private void initBody(int groupPosition, int childPosition) {
-        String urlNow = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm1-b" + brandlistBeanList.get(groupPosition).getList().get(childPosition).getId() + "-t1.json";
-        String urlAll = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm2-b" + brandlistBeanList.get(groupPosition).getList().get(childPosition).getId() + "-t2.json";
+        String urlNow = NetUrl.BRAND_NOW_TOP + brandlistBeanList.get(groupPosition).getList().get(childPosition).getId() + NetUrl.BRAND_NOW_BOTT;
+        String urlAll = NetUrl.BRAND_ALL_TOP + brandlistBeanList.get(groupPosition).getList().get(childPosition).getId() + NetUrl.BARND_ALL_BOTT;
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         brandGroupAllFragment = new BrandGroupAllFragment();
         brandGroupNowFragment = new BrandGroupNowFragment();
         transaction.add(R.id.brand_frameLayout, brandGroupNowFragment);
         transaction.add(R.id.brand_frameLayout, brandGroupAllFragment);
-
         transaction.replace(R.id.brand_frameLayout, brandGroupNowFragment);
+        transaction.replace(R.id.brand_frameLayout, brandGroupAllFragment);
         transaction.commit();
         //        通过Bundle传值
         Bundle bundle = new Bundle();
@@ -186,21 +174,15 @@ public class BrandsFragment extends AbsBaseFragment implements VolleyInterfaceRe
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 switch (checkedId) {
                     case R.id.brand_radio_now:
-                        if (flag) {
-                            //                            transaction.hide(brandGroupNowFragment).show(brandGroupAllFragment).commit();
+                        if (flags) {
+
                         } else {
                             transaction.hide(brandGroupAllFragment).show(brandGroupNowFragment).commit();
                         }
                         break;
                     case R.id.brand_radio_all:
-                        if (flag) {
-                            transaction.show(brandGroupNowFragment).hide(brandGroupAllFragment).commit();
-
-                        } else {
-                            transaction.show(brandGroupAllFragment).hide(brandGroupNowFragment).commit();
-                            flag = true;
-
-                        }
+                        transaction.show(brandGroupAllFragment).hide(brandGroupNowFragment).commit();
+                        flags = false;
                         break;
                 }
             }

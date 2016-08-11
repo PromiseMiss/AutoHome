@@ -7,9 +7,7 @@
     <com.youth.banner.Banner
         android:id="@+id/uptodata_banner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/art_banner_height">
-
-    </com.youth.banner.Banner>
+        android:layout_height="@dimen/art_banner_height"/>
 
 
 </LinearLayout>

@@ -3,11 +3,5 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-
-    <GridView
-        android:id="@+id/find_second_gv"
-        android:layout_width="match_parent"
-        android:numColumns="4"
-        android:stretchMode="columnWidth"
-        android:layout_height="wrap_content"></GridView>
+    <!--找二手车-->
 </LinearLayout>

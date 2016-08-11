@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Created by youyo on 2016/7/23 0023.
- * 发现 GridView 轮播图下面的下面
+ * 发现 GridView 猜你喜欢
  */
 public class SaleGVFirstAdapter extends BaseAdapter {
     private Context context;
@@ -56,8 +56,6 @@ public class SaleGVFirstAdapter extends BaseAdapter {
         } else {
             gvfristHolder = (GvfristHolder) convertView.getTag();
         }
-
-        //        VolleyInstence.getInstence(context).loadImage(gvfristBean.get(0).getList().get(position).getLogo(), gvfristHolder.sale_gvfirst_iv);
         ImageLoaderUtil.getInstance().load(gvfristBean.get(0).getList().get(position).getLogo(), gvfristHolder.sale_gvfirst_iv);
         gvfristHolder.sale_gvfirst_tv_tit.setText(gvfristBean.get(0).getList().get(position).getTitle());
         gvfristHolder.sale_gvfirst_tv_smitit.setText(gvfristBean.get(0).getList().get(position).getShorttitle());

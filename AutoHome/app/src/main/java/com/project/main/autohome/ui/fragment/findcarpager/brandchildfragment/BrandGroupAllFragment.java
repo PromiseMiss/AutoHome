@@ -25,7 +25,6 @@ public class BrandGroupAllFragment extends AbsBaseFragment {
     private List<BrandGroupAllBean.ResultBean.FctlistBean.SerieslistBean> allBean;
     private String url;
 
-
     @Override
     protected int setLayout() {
         return R.layout.brand_child_radio_all;
@@ -34,14 +33,12 @@ public class BrandGroupAllFragment extends AbsBaseFragment {
     @Override
     protected void initView() {
         brand_child_radio_all_ex = byView(R.id.brand_child_radio_all_ex);
-
     }
 
     @Override
     protected void initData() {
         nowAdapter = new BrandGroupNowAdapter(getContext());
         brand_child_radio_all_ex.setAdapter(nowAdapter);
-
         // 通过Bundle取值
         Bundle bundle = getArguments();
         url = bundle.getString("All");
@@ -63,6 +60,5 @@ public class BrandGroupAllFragment extends AbsBaseFragment {
 
             }
         });
-
     }
 }

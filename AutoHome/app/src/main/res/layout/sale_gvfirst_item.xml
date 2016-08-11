@@ -2,18 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-
-
+                android:orientation="vertical"
+                android:padding="16dp">
+    <!--车图-->
     <ImageView
         android:id="@+id/sale_gvfirst_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-         />
-
+        />
+    <!--标题-->
     <TextView
         android:id="@+id/sale_gvfirst_tv_tit"
         android:layout_width="wrap_content"
@@ -21,8 +20,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/sale_gvfirst_iv"
+        android:lines="2"
         />
-
+    <!--优惠内容-->
     <TextView
         android:id="@+id/sale_gvfirst_tv_smitit"
         android:layout_width="wrap_content"
@@ -30,8 +30,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/sale_gvfirst_tv_tit"
-         />
-
+        android:ellipsize="end"
+        android:maxEms="10"
+        android:singleLine="true"
+        android:textSize="10sp"
+        />
+    <!--优惠价格-->
     <TextView
         android:id="@+id/sale_gvfirst_tv_num"
         android:layout_width="wrap_content"
@@ -40,14 +44,14 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/sale_gvfirst_tv_smitit"
         android:textColor="#ff0000"/>
-
+    <!--原价-->
     <TextView
         android:id="@+id/sale_gv_first_tv_smalnum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
         android:layout_alignBaseline="@+id/sale_gvfirst_tv_num"
         android:layout_alignBottom="@+id/sale_gvfirst_tv_num"
+        android:layout_toEndOf="@+id/sale_gvfirst_tv_num"
         android:layout_toRightOf="@+id/sale_gvfirst_tv_num"
-        android:layout_toEndOf="@+id/sale_gvfirst_tv_num"/>
+        android:textSize="10sp"/>
 </RelativeLayout>
